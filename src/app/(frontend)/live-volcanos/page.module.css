@@ -1,0 +1,167 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-section);
+  padding: 80px 0;
+}
+
+.howToReach {
+  background-color: var(--color-bg-secondary) !important;
+  padding: var(--space-14) var(--space-10);
+  position: relative;
+}
+
+.howToReachContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-14);
+  z-index: 1;
+}
+
+.dottedWave {
+  z-index: 0;
+}
+
+/* Explore Section Styles */
+.exploreSection {
+  padding: var(--space-16) 0;
+  background-color: var(--color-bg-light);
+}
+
+.exploreTitleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-12);
+}
+
+.exploreTitle {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-heading-2);
+  font-weight: 600;
+  color: var(--color-black);
+}
+
+.exploreDescription {
+  font-size: var(--font-size-body-lg);
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+.exploreGrid {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-5);
+  width: 100%;
+  justify-content: center;
+  max-width: 1200px;
+}
+
+.exploreCard {
+  flex: none;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .howToReach {
+    padding: var(--space-10) var(--space-6);
+  }
+
+  .exploreGrid {
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .exploreCard {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main {
+    padding: 60px 0;
+    gap: var(--space-4);
+  }
+  .howToReach {
+    padding: var(--space-8) var(--space-4);
+  }
+
+  .howToReachContainer {
+    gap: var(--space-8);
+  }
+
+  .description {
+    max-width: unset;
+  }
+
+  .imageContainer {
+    max-width: 100%;
+    border-radius: var(--radius-card);
+  }
+
+  .exploreSection {
+    padding: var(--space-12) 0;
+  }
+
+  .exploreTitleContainer {
+    margin-bottom: var(--space-8);
+  }
+
+  .exploreTitle {
+    font-size: var(--font-size-heading-3);
+  }
+
+  .exploreDescription {
+    font-size: var(--font-size-body-md);
+  }
+
+  .exploreGrid {
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .exploreCard {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main {
+    padding: var(--space-2) 0;
+  }
+
+  .howToReach {
+    padding: var(--space-6) var(--space-3);
+  }
+
+  .exploreSection {
+    padding: var(--space-10) 0;
+  }
+
+  .exploreTitleContainer {
+    margin-bottom: var(--space-6);
+  }
+
+  .exploreTitle {
+    font-size: var(--font-size-heading-4);
+  }
+
+  .exploreCard {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+/* Feature Cards Responsive */
+@media (max-width: 768px) {
+  .howToReachContainer [class*="Row"] {
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+}

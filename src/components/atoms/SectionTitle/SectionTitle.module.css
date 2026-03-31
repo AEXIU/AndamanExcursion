@@ -1,0 +1,187 @@
+.sectionTitle {
+  position: relative;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.title {
+  font-family: var(--font-family-primary);
+  font-style: normal;
+  font-weight: 500;
+  font-size: var(--font-size-4xl);
+  /* 40px */
+  line-height: 110%;
+  color: var(--color-black);
+  margin: var(--space-0);
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  text-wrap: balance;
+  line-break: loose;
+}
+
+.specialWord {
+  font-weight: 400;
+  font-family: var(--font-family-display);
+  color: var(--color-secondary);
+  transition: color 0.3s ease;
+  position: relative;
+  display: inline;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.underline {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  max-width: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  will-change: transform;
+  /* Better SVG rendering */
+  overflow: visible;
+  /* Allow SVG to render properly */
+}
+
+.underlineImage {
+  height: clamp(0.1875rem, 1.5vw, 0.375rem);
+  object-fit: cover;
+  object-position: center;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  width: 100%;
+}
+
+.shortUnderline {
+  /* height: 4px; */
+  object-fit: contain;
+}
+
+/* Add specific styling for the SVG images */
+/*  */
+
+/* Tablet Responsive Design */
+@media (max-width: 1024px) {
+  .title {
+    font-size: 36px;
+    line-height: 110%;
+  }
+
+  .sectionTitle {
+    max-width: 100%;
+  }
+
+  .underline {
+    /* Better scaling for tablet */
+    transform: translateZ(0);
+    /* GPU acceleration */
+  }
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+  .sectionTitle {
+    width: 100%;
+  }
+
+  .title {
+    max-width: 100%;
+    line-height: 110%;
+  }
+
+  .specialWord {
+    word-break: break-word;
+    overflow-wrap: anywhere;
+  }
+
+  .underline {
+    /* Remove scaling - let the responsive offset handle spacing */
+    transform: translateZ(0);
+  }
+
+  /* More subtle underlines on mobile */
+  .underline img {
+    height: clamp(0.125rem,
+        1vw,
+        0.25rem) !important;
+    /* Even smaller on mobile */
+    opacity: 0.8;
+    /* Slightly transparent for less attention */
+  }
+}
+
+/* Small Mobile Responsive Design */
+@media (max-width: 480px) {
+  .sectionTitle {
+    max-width: 100%;
+  }
+
+  .title {
+    font-size: var(--font-size-heading-4);
+    line-height: 110%;
+  }
+
+  .specialWord {
+    word-break: break-word;
+    hyphens: auto;
+  }
+
+  .underline {
+    /* Remove aggressive scaling that was causing cramped appearance */
+    transform: translateZ(0);
+  }
+
+  /* Even more subtle underlines on small mobile */
+  .underline img {
+    height: 0.125rem !important;
+    /* Fixed small height */
+    opacity: 0.7;
+    /* More transparent */
+  }
+}
+
+/* Very small screens */
+@media (max-width: 360px) {
+  .specialWord {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+
+  /* Minimal underlines on very small screens */
+  .underline img {
+    height: 0.0625rem !important;
+    /* Very thin line */
+    opacity: 0.6;
+    /* Quite transparent */
+  }
+}
+
+/* High-DPI displays - ensure consistent rendering */
+@media (-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi),
+(min-resolution: 2dppx) {
+  .underline {
+    /* Ensure crisp rendering on high-DPI displays */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .underline img {
+    /* Better rendering on retina displays */
+    image-rendering: -webkit-optimize-contrast;
+  }
+}
+
+/* Safari/iOS: push underline SVG down for proper gap from text.
+   JS sets offset=0 on Safari (placing underline AT the text bottom).
+   This transform then adds 6px of visual gap below the text.
+   margin-top was wrong here — transform works additively with position:absolute.
+   @supports (-webkit-touch-callout: none) targets Safari on macOS and iOS only. */
+@supports (-webkit-touch-callout: none) {
+  .underline {
+    transform: translateY(6px);
+  }
+}

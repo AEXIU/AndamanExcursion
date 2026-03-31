@@ -1,0 +1,138 @@
+.section {
+    padding: var(--space-section) 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    max-width: var(--max-width-container);
+    margin: 0 auto;
+    padding: 0 var(--space-4);
+}
+
+/*
+ * Figma layout (1440px page, 1200px content area):
+ *   Left image:   321×424  at (122, 961)  border-radius: 20px 60px
+ *   Title:        394×152  at (522, 935)
+ *   Center image: 484×252  at (478, 1171) border-radius: 60px 20px
+ *   Right image:  322×442  at (997, 878)  border-radius: 20px 60px
+ *
+ * Right image is highest, left is 83px lower, title is 57px below right.
+ */
+.collageGrid {
+    display: grid;
+    grid-template-columns: 0.85fr 1.2fr 0.85fr;
+    gap: 20px;
+    align-items: start;
+}
+
+/* Left image - portrait, offset 83px below right image */
+.imageLeft {
+    position: relative;
+    border-radius: 20px 60px;
+    overflow: hidden;
+    aspect-ratio: 321 / 424;
+    width: 100%;
+    margin-top: 83px;
+}
+
+/* Center column - title + landscape image */
+.centerColumn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 80px;
+    margin-top: 100px;
+}
+
+.titleWrapper {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.sectionTitle {
+    max-width: 100%;
+    align-items: center;
+}
+
+.specialWordBlock {
+    display: block;
+}
+
+/* Center image - landscape, opposite corner pattern */
+.imageCenter {
+    position: relative;
+    border-radius: 60px 20px;
+    overflow: hidden;
+    aspect-ratio: 484 / 252;
+    width: 100%;
+}
+
+/* Right image - portrait, starts at the top (highest element) */
+.imageRight {
+    position: relative;
+    border-radius: 20px 60px;
+    overflow: hidden;
+    aspect-ratio: 322 / 442;
+    width: 100%;
+}
+
+.image {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .collageGrid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+    }
+
+    .imageLeft {
+        aspect-ratio: 4 / 3;
+        margin-top: 0;
+        border-radius: 16px 40px;
+    }
+
+    .centerColumn {
+        grid-column: 1 / -1;
+        order: -1;
+        margin-top: 0;
+    }
+
+    .imageCenter {
+        aspect-ratio: 16 / 9;
+        border-radius: 40px 16px;
+    }
+
+    .imageRight {
+        aspect-ratio: 4 / 3;
+        border-radius: 16px 40px;
+    }
+}
+
+@media (max-width: 640px) {
+    .collageGrid {
+        grid-template-columns: 1fr;
+        gap: var(--space-3);
+    }
+
+    .imageLeft,
+    .imageRight {
+        aspect-ratio: 16 / 9;
+        border-radius: 12px 32px;
+    }
+
+    .imageCenter {
+        border-radius: 32px 12px;
+    }
+
+    .title {
+        font-size: var(--font-size-heading-3);
+    }
+}

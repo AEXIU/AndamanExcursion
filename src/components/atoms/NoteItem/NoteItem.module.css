@@ -1,0 +1,4 @@
+.noteItemText {
+  color: var(--color-text-primary);
+  margin: 0; /* Remove default paragraph margins */
+}

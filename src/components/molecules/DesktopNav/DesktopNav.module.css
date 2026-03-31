@@ -1,0 +1,341 @@
+.navigationMenu {
+  /* flex: 1; */
+  /* display: flex; */
+  /* justify-content: flex-end; */
+  align-items: center;
+}
+
+.navigationMenuList {
+  display: flex;
+  gap: var(--space-0);
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navigationMenuItem {
+  position: relative;
+  padding: var(--space-2);
+}
+
+.navigationMenuItem:hover {
+  background-color: var(--color-bg-secondary);
+  border-radius: var(--radius-sm);
+}
+
+.navigationMenuLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: var(--font-size-body-small);
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.navigationMenuLink:hover {
+  color: var(--color-primary);
+}
+
+.navigationMenuLink:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+.active {
+  color: var(--color-primary);
+}
+
+.navigationMenuLinkUnique {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-4);
+  margin-left: var(--space-2);
+  font-weight: 400;
+  transition: all 0.2s ease;
+}
+
+.navigationMenuLinkUnique:hover {
+  background-color: var(--color-primary-hover);
+  color: var(--color-white);
+  transform: translateY(-2px);
+}
+
+.navigationMenuItem:has(.navigationMenuLinkUnique) {
+  padding: 0;
+}
+
+.navigationMenuItem:has(.navigationMenuLinkUnique):hover {
+  background-color: transparent;
+}
+
+.navigationMenuItemWithDropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+}
+
+.navigationMenuTrigger {
+  font-family: inherit;
+  font-size: var(--font-size-body-small);
+  font-weight: 600;
+  color: inherit;
+  background-color: transparent;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  cursor: pointer;
+  transition: color 0.2s ease;
+  padding: 0;
+  width: 100%;
+}
+
+.triggerLabel {
+  flex: 1;
+  text-align: left;
+}
+
+.navigationMenuTrigger:hover {
+  color: var(--color-primary);
+}
+
+.navigationMenuTrigger:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+.navigationMenuTrigger[data-state="open"] {
+  color: var(--color-primary);
+}
+
+.navigationMenuItem:has(.navigationMenuTrigger[data-state="open"]) {
+  background-color: var(--color-bg-secondary);
+  border-radius: var(--radius-sm);
+}
+
+.navigationMenuTriggerIcon {
+  transition: transform 0.2s ease;
+}
+
+.navigationMenuTrigger[data-state="open"] .navigationMenuTriggerIcon {
+  transform: rotate(180deg);
+}
+
+/* Updated styles for clickable triggers */
+.navigationMenuTriggerClickable {
+  font-family: inherit;
+  font-size: var(--font-size-body-small);
+  font-weight: 600;
+  color: inherit;
+  background-color: transparent;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  cursor: pointer;
+  transition: color 0.2s ease;
+  padding: 0;
+  width: 100%;
+}
+
+.navigationMenuTriggerClickable:hover {
+  color: var(--color-primary);
+}
+
+.navigationMenuTriggerClickable:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+.navigationMenuTriggerClickable[data-state="open"] {
+  color: var(--color-primary);
+}
+
+.navigationMenuItem:has(.navigationMenuTriggerClickable[data-state="open"]) {
+  background-color: var(--color-bg-secondary);
+  border-radius: var(--radius-sm);
+}
+
+.navigationMenuTriggerClickable .navigationMenuTriggerIcon {
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.navigationMenuTriggerClickable[data-state="open"] .navigationMenuTriggerIcon {
+  transform: rotate(180deg);
+}
+
+.navigationMenuContent {
+  position: absolute;
+  top: 200%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: fit-content;
+  min-width: max-content;
+  background-color: var(--color-white);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-elevated);
+  padding: var(--space-6);
+  z-index: 100;
+  /* Ensure content doesn't overflow viewport */
+  max-width: calc(100vw - 40px);
+  /* Adjust positioning if it would overflow */
+  margin-left: clamp(-45vw, 0px, 45vw);
+  /* Limit height and enable scrolling */
+  max-height: 70vh;
+  overflow-y: auto;
+  /* Prevent scroll from bleeding to background page */
+  overscroll-behavior: contain;
+}
+
+.navigationMenuContent::after {
+  content: "";
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 15px;
+  height: 15px;
+  background-color: var(--color-white);
+}
+
+.navigationMenuDropdown {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-6);
+  align-items: center;
+  white-space: nowrap;
+}
+
+.navigationMenuDropdownGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  min-width: 500px;
+  max-width: 700px;
+}
+
+.navigationMenuDropdown .navigationMenuLink {
+  padding: var(--space-2);
+  font-weight: 600;
+}
+
+.navigationMenuDropdown .navigationMenuLink:hover {
+  background-color: var(--color-bg-secondary);
+  border-radius: var(--radius-sm);
+  color: var(--color-primary);
+}
+
+/* FIXED: Nested Destinations Styles - Dynamic width and height */
+.nestedDestinationsDropdown {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--space-6);
+  /* Allow dynamic width based on content */
+  width: auto;
+  max-width: 50vw;
+  /* Remove fixed height constraint */
+  max-height: none;
+  overflow-y: visible;
+}
+
+.mainCategorySection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  min-width: 180px;
+}
+
+/* Match the simple styling of Activities dropdown */
+.mainCategoryLink {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-2);
+  color: var(--color-text-primary);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: var(--font-size-body-small);
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+  background-color: transparent;
+  /* Allow text to wrap if needed */
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+.mainCategoryLink:hover {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-primary);
+}
+
+.subcategoryList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding-left: var(--space-2);
+}
+
+/* Simplified subcategory styling to match the clean look */
+.subcategoryLink {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-1) var(--space-2);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  font-weight: 400;
+  font-size: var(--font-size-body-small);
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+  /* Allow text to wrap instead of clipping */
+  white-space: normal;
+  word-wrap: break-word;
+  overflow: visible;
+}
+
+.subcategoryLink:hover {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-primary);
+}
+
+/* Active state for nested items */
+.mainCategoryLink.active {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-primary);
+}
+
+.subcategoryLink.active {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+/* Responsive behavior for nested dropdown */
+@media (max-width: 1200px) {
+  .nestedDestinationsDropdown {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .nestedDestinationsDropdown {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .nestedDestinationsDropdown {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,41 @@
+<svg width="430" height="900" viewBox="0 0 430 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+<!-- Makruzz Pearl vessel outline - 430px wide to snugly fit 396px seat grid -->
+<g clip-path="url(#clip_makruzz)">
+<!-- Outer hull -->
+<path opacity="0.6" d="M429.5 236.752L429.5 846.474C429.5 875.76 405.76 899.5 376.474 899.5L53.526 899.5C24.24 899.5 0.499965 875.76 0.499966 846.474L0.49999 236.752C0.499993 159.871 46.816 88.921 118.681 50.977L189.33 15.4256C205.561 6.21489 224.439 6.21488 240.67 15.4256L311.319 50.977C383.184 88.921 429.5 159.871 429.5 236.752Z" stroke="black"/>
+<!-- Inner hull -->
+<path opacity="0.6" d="M10.5 245.722C10.5 169.403 55.219 98.8821 126.317 60.728L189.491 28.8792C205.895 19.4101 224.105 19.4101 240.509 28.8792L303.683 60.728C374.781 98.8821 419.5 169.403 419.5 245.722L419.5 837.474C419.5 866.76 395.76 890.5 366.474 890.5L63.526 890.5C34.24 890.5 10.5 866.76 10.5 837.474L10.5 245.722Z" stroke="black"/>
+<!-- Right walkway -->
+<g opacity="0.6">
+<path d="M395 754L419 754L419 233L395 233L395 754Z" fill="black" fill-opacity="0.1"/>
+<path d="M395 754L395 754.5L394.5 754.5L394.5 754L395 754ZM395 233L394.5 233L394.5 232.5L395 232.5L395 233ZM395 753.5L419 753.5L419 754.5L395 754.5L395 753.5ZM419 233.5L395 233.5L395 232.5L419 232.5L419 233.5ZM395.5 233L395.5 754L394.5 754L394.5 233L395.5 233Z" fill="#A5A5A5"/>
+</g>
+<!-- Left walkway -->
+<g opacity="0.6">
+<path d="M35 754L11 754L11 233L35 233L35 754Z" fill="black" fill-opacity="0.1"/>
+<path d="M35 754L35 754.5L35.5 754.5L35.5 754L35 754ZM35 233L35.5 233L35.5 232.5L35 232.5L35 233ZM35 753.5L11 753.5L11 754.5L35 754.5L35 753.5ZM11 233.5L35 233.5L35 232.5L11 232.5L11 233.5ZM34.5 233L34.5 754L35.5 754L35.5 233L34.5 233Z" fill="#A5A5A5"/>
+</g>
+<!-- Right green deck -->
+<g opacity="0.6">
+<path d="M371 754L395 754L395 233L391 233C379.954 233 371 241.954 371 253L371 754Z" fill="#C1F6E1"/>
+<path d="M370.5 754.5L395 754.5L395 753.5L371.5 753.5L370.5 754.5ZM395 232.5L391 232.5C379.678 232.5 370.5 241.678 370.5 253L371.5 253C371.5 242.23 380.231 233.5 391 233.5L395 233.5L395 232.5Z" fill="#A5A5A5"/>
+</g>
+<!-- Left green deck -->
+<g opacity="0.6">
+<path d="M59 754L35 754L35 233L39 233C50.046 233 59 241.954 59 253L59 754Z" fill="#C1F6E1"/>
+<path d="M59.5 754.5L35 754.5L35 753.5L58.5 753.5L59.5 754.5ZM35 232.5L39 232.5C50.322 232.5 59.5 241.678 59.5 253L58.5 253C58.5 242.23 49.77 233.5 39 233.5L35 233.5L35 232.5Z" fill="#A5A5A5"/>
+</g>
+<!-- Vertical lines -->
+<path d="M419.5 754L419.5 234" stroke="#BEBEBE"/>
+<path d="M10.5 754L10.5 234" stroke="#BEBEBE"/>
+<!-- Right Side label -->
+<text x="408" y="500" transform="rotate(-90, 408, 500)" fill="#666" font-size="12" font-weight="600" font-family="sans-serif" letter-spacing="2" text-anchor="middle">RIGHT SIDE</text>
+<!-- Left Side label -->
+<text x="22" y="500" transform="rotate(90, 22, 500)" fill="#666" font-size="12" font-weight="600" font-family="sans-serif" letter-spacing="2" text-anchor="middle">LEFT SIDE</text>
+</g>
+<defs>
+<clipPath id="clip_makruzz">
+<rect width="900" height="430" fill="white" transform="translate(430) rotate(90)"/>
+</clipPath>
+</defs>
+</svg>

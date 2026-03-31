@@ -1,0 +1,711 @@
+.unifiedSearchingForm {
+  width: 100%;
+  max-width: unset;
+  /* NOTE: filter was removed here. CSS filter creates a new stacking context on Safari
+     which traps position:fixed descendants (like the DatePicker calendar popup).
+     The visual shadow is now applied via box-shadow on .tabsContent below. */
+  position: relative;
+  z-index: 100 !important;
+  padding: var(--space-4);
+  /* Use transform instead of margin-top so we don't pull subsequent page sections up */
+  transform: translateY(calc(var(--space-2) * -14));
+}
+
+/* Compact variant */
+.compact {
+  transform: none;
+  border-radius: var(--radius-md-2);
+  padding: var(--space-4);
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid var(--color-gray-100);
+  max-width: unset;
+}
+
+.compact .tabsList {
+  width: 100%;
+  max-width: 337px;
+}
+
+.compact .tabsContent {
+  padding: var(--space-3);
+}
+
+.compact .formGrid {
+  gap: var(--space-2);
+}
+
+/* Embedded variant */
+.embedded {
+  transform: none;
+  padding: 0;
+  filter: none;
+  box-shadow: none;
+  background: transparent;
+  max-width: unset;
+}
+
+.embedded .formGrid {
+  gap: var(--space-2);
+  padding: var(--space-3);
+  background-color: var(--color-bg-primary);
+  border-radius: var(--radius-md);
+}
+
+/* Offline warning styles */
+.offlineWarning {
+  background: #fef3cd;
+  border: 1px solid #faebcc;
+  color: #8a6d3b;
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-3);
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Tabs */
+.tabsRoot {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.tabsList {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0;
+  width: 337px;
+  height: var(--size-tab-height);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  background: var(--color-bg-primary);
+  overflow: hidden;
+}
+
+/* When no tab content is shown, give tabs full rounded corners */
+.tabsListCollapsed {
+  border-radius: var(--radius-lg);
+}
+
+.tabsListCollapsed .tabsTrigger:first-child {
+  border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+}
+
+.tabsListCollapsed .tabsTrigger:last-child {
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+}
+
+.tabsTrigger {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: var(--size-tab-height);
+  font-family: var(--font-family-primary);
+  font-weight: 400;
+  font-size: var(--font-size-sm);
+  line-height: var(--space-4);
+  color: var(--color-text-secondary);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-tab-border);
+  cursor: pointer;
+  flex: 1;
+}
+
+.tabsTrigger:first-child {
+  border-radius: var(--radius-lg) 0 0 0;
+  border-left: none;
+}
+
+.tabsTrigger:last-child {
+  border-radius: 0 var(--radius-lg) 0 0;
+}
+
+.tabsTrigger:hover {
+  color: var(--color-primary);
+}
+
+.tabsTrigger[data-state="active"] {
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-weight: 500;
+  border: none;
+}
+
+.tabsContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: var(--space-4);
+  gap: var(--space-4);
+  background: var(--color-bg-primary);
+  border-radius: 0 var(--radius-md) var(--radius-md);
+  width: 100%;
+  /* Shadow moved here from .unifiedSearchingForm to avoid creating a stacking context */
+  box-shadow: -1px 1px 7px rgba(0, 0, 0, 0.1);
+}
+
+/* Hide inactive tab content */
+.tabsContent[data-state="inactive"] {
+  display: none;
+}
+
+/* Form Grid - Using CSS Grid for better control */
+.formGrid {
+  display: grid;
+  width: 100%;
+  color: var(--color-text-primary);
+}
+
+/* Main form content - Grid layout for different screen sizes */
+.formContent {
+  display: grid;
+  gap: var(--space-2);
+  width: 100%;
+  align-items: center;
+}
+
+.formContentWithoutButton {
+  display: grid;
+  gap: var(--space-2);
+  width: 100%;
+  align-items: center;
+}
+
+/* Large screens: Single row layout (6 fields) */
+@media (min-width: 1200px) {
+  .formContent {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr auto;
+    grid-template-areas: "activity location date time passengers buttons";
+  }
+
+  .formContentWithoutButton {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas: "activity location date time passengers";
+  }
+
+  .formField:nth-child(1) {
+    grid-area: activity;
+  }
+
+  .formField:nth-child(2) {
+    grid-area: location;
+  }
+
+  .formField:nth-child(3) {
+    grid-area: date;
+  }
+
+  .formField:nth-child(4) {
+    grid-area: time;
+  }
+
+  .formField:nth-child(5) {
+    grid-area: passengers;
+  }
+
+  .buttonContainer {
+    grid-area: buttons;
+  }
+}
+
+/* Medium screens: 2x3 layout */
+@media (min-width: 851px) and (max-width: 1199px) {
+  .formContent {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+      "activity location date"
+      "time passengers passengers"
+      "buttons buttons buttons";
+    align-items: end;
+  }
+
+  .formContentWithoutButton {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+      "activity location date"
+      "time passengers passengers";
+    align-items: end;
+  }
+
+  .formField:nth-child(1) {
+    grid-area: activity;
+  }
+
+  .formField:nth-child(2) {
+    grid-area: location;
+  }
+
+  .formField:nth-child(3) {
+    grid-area: date;
+  }
+
+  .formField:nth-child(4) {
+    grid-area: time;
+  }
+
+  .formField:nth-child(5) {
+    grid-area: passengers;
+  }
+
+  .buttonContainer {
+    grid-area: buttons;
+  }
+}
+
+/* Small tablets: 2 columns */
+@media (min-width: 769px) and (max-width: 850px) {
+  .formContent {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "activity location"
+      "date time"
+      "passengers passengers"
+      "buttons buttons";
+    align-items: end;
+  }
+
+  .formContentWithoutButton {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "activity location"
+      "date time"
+      "passengers passengers";
+    align-items: end;
+  }
+
+  .formField:nth-child(1) {
+    grid-area: activity;
+  }
+
+  .formField:nth-child(2) {
+    grid-area: location;
+  }
+
+  .formField:nth-child(3) {
+    grid-area: date;
+  }
+
+  .formField:nth-child(4) {
+    grid-area: time;
+  }
+
+  .formField:nth-child(5) {
+    grid-area: passengers;
+  }
+
+  .buttonContainer {
+    grid-area: buttons;
+  }
+}
+
+/* Mobile: Single column stacked layout */
+@media (max-width: 768px) {
+  .unifiedSearchingForm {
+    max-width: unset;
+    width: 100%;
+    padding: var(--space-2);
+    transform: none;
+  }
+
+  .compact {
+    padding: var(--space-2);
+  }
+
+  .embedded {
+    padding: 0;
+  }
+
+  .embedded .formGrid {
+    padding: var(--space-2);
+  }
+
+  .tabsList {
+    width: 100%;
+    height: auto;
+    flex-wrap: wrap;
+  }
+
+  .tabsTrigger {
+    flex: 1;
+    min-width: 0;
+    font-size: var(--font-size-xs);
+    padding: var(--space-2);
+    height: var(--size-tab-height-mobile);
+  }
+
+  .tabsContent {
+    padding: var(--space-2);
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+  }
+
+  .formGrid {
+    gap: var(--space-2);
+  }
+
+  .formContent {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "activity"
+      "location"
+      "date"
+      "time"
+      "passengers"
+      "buttons";
+    gap: var(--space-2);
+  }
+
+  .formContentWithoutButton {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "activity"
+      "location"
+      "date"
+      "time"
+      "passengers";
+    gap: var(--space-2);
+  }
+
+  .formField:nth-child(1) {
+    grid-area: activity;
+  }
+
+  .formField:nth-child(2) {
+    grid-area: location;
+  }
+
+  .formField:nth-child(3) {
+    grid-area: date;
+  }
+
+  .formField:nth-child(4) {
+    grid-area: time;
+  }
+
+  .formField:nth-child(5) {
+    grid-area: passengers;
+  }
+
+  .buttonContainer {
+    grid-area: buttons;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .errorMessage {
+    font-size: var(--font-size-error-mobile);
+    line-height: var(--line-height-error-mobile);
+  }
+
+  .selectWrapper,
+  .fieldContainer>.selectWrapper {
+    min-height: var(--size-form-field-min-height-mobile);
+  }
+}
+
+/* Simplified component containers */
+.formField {
+  position: relative;
+  width: 100%;
+}
+
+.buttonContainer {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+  white-space: nowrap;
+}
+
+/* Buttons */
+.searchButton {
+  white-space: nowrap;
+  min-width: fit-content;
+  width: 100%;
+}
+
+.saveButton {
+  white-space: nowrap;
+  min-width: fit-content;
+}
+
+/* Error Messages */
+.errorMessage {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-error);
+  font-weight: 400;
+  line-height: var(--line-height-error);
+  color: var(--color-alert-error);
+  margin: var(--space-1) 0 0 0;
+  animation: slideIn var(--duration-fast) var(--easing-standard);
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Form field containers */
+.selectWrapper,
+.fieldContainer>.selectWrapper {
+  min-height: var(--size-form-field-min-height);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.slotPickerInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: var(--space-2);
+  flex: 1;
+  margin-top: auto;
+}
+
+/* Error states */
+.error {
+  border-color: var(--color-error-border-subtle) !important;
+  background-color: var(--color-error-bg-subtle);
+}
+
+.error:hover,
+.error:focus-within {
+  border-color: var(--color-alert-error) !important;
+  box-shadow: 0 0 0 2px var(--color-error-focus) !important;
+}
+
+/* Small Mobile Responsive Design */
+@media (max-width: 480px) {
+  .unifiedSearchingForm {
+    padding: 0;
+  }
+
+  .tabsContent {
+    padding: var(--space-1);
+  }
+
+  .embedded .formGrid {
+    padding: var(--space-2);
+  }
+
+  .tabsTrigger {
+    font-size: var(--font-size-xs);
+    padding: var(--space-1) var(--space-2);
+    height: var(--size-tab-height-small);
+  }
+
+  .formGrid {
+    gap: var(--space-2);
+  }
+
+  .formContent {
+    gap: var(--space-2);
+  }
+
+  .formContentWithoutButton {
+    gap: var(--space-2);
+  }
+}
+
+/* Edit Mode Banner Styles */
+.editModeBanner {
+  grid-column: 1 / -1;
+  border: 1px solid var(--color-secondary);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.editModeContent {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+}
+
+.editModeIcon {
+  font-size: var(--font-size-edit-icon);
+  animation: editModeIconBounce 1.5s ease-in-out infinite;
+}
+
+.editModeText {
+  flex: 1;
+  min-width: 0;
+}
+
+.editModeTitle {
+  margin: 0 0 var(--space-1) 0;
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--color-secondary);
+  line-height: 1.2;
+}
+
+.editModeSubtitle {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-secondary);
+  line-height: 1.3;
+}
+
+.editModeSubtitle strong {
+  color: var(--color-secondary);
+  font-weight: 600;
+}
+
+.cancelEditButton {
+  flex-shrink: 0;
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-secondary);
+  color: var(--color-secondary);
+  font-weight: 600;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  transition: all var(--duration-base) ease;
+}
+
+.cancelEditButton:hover {
+  background: var(--color-secondary);
+  color: var(--color-text-inverse);
+  transform: translateY(-1px);
+  box-shadow: 0 var(--space-1) var(--space-2) var(--color-edit-button-shadow);
+}
+
+/* Animations */
+@keyframes editModeIconBounce {
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+
+  40% {
+    transform: translateY(-5px);
+  }
+
+  60% {
+    transform: translateY(-3px);
+  }
+}
+
+/* Mobile responsiveness for edit banner */
+@media (max-width: 768px) {
+  .editModeBanner {
+    margin-bottom: var(--space-2);
+    padding: var(--space-2);
+  }
+
+  .editModeContent {
+    flex-direction: column;
+    gap: var(--space-2);
+    text-align: center;
+  }
+
+  .editModeIcon {
+    font-size: var(--font-size-edit-icon-mobile);
+  }
+
+  .editModeTitle {
+    font-size: var(--font-size-base);
+  }
+
+  .editModeSubtitle {
+    font-size: var(--font-size-xs);
+  }
+
+  .cancelEditButton {
+    width: 100%;
+    justify-self: stretch;
+  }
+}
+
+/* Error and loading states */
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  background: var(--color-error-container-bg);
+  border: 1px solid var(--color-error-container-border);
+  border-radius: var(--radius-md);
+}
+
+.retryButton {
+  min-width: var(--size-retry-button-width);
+}
+
+/* Time slot filtering feedback styles */
+.filterFeedback {
+  grid-column: 1 / -1;
+  margin-bottom: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  background: var(--color-feedback-bg);
+  border: 1px solid var(--color-feedback-border);
+}
+
+.loadingFeedback {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-feedback-text);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+}
+
+.infoFeedback {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  color: var(--color-feedback-text);
+  font-size: var(--font-size-xs);
+}
+
+.infoHint {
+  font-size: var(--font-size-hint);
+  color: var(--color-feedback-hint);
+  font-style: italic;
+}
+
+.spinner {
+  width: var(--size-spinner);
+  height: var(--size-spinner);
+  border: 2px solid var(--color-spinner-track);
+  border-top: 2px solid var(--color-spinner-active);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* .timeSlotField {
+  min-width: var(--size-time-slot-field-width);
+} */

@@ -1,0 +1,207 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-section);
+  padding: 80px 0;
+}
+
+.contentContainer {
+  max-width: var(--layout-container-max-width);
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  position: relative;
+  padding: 0 var(--space-4);
+}
+
+.section {
+  align-items: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.title {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-heading-1);
+  font-weight: 600;
+  letter-spacing: 4%;
+  color: var(--color-black);
+}
+
+.featureTitle {
+  max-width: unset !important;
+  width: min(30%, 410px);
+  align-self: flex-start;
+}
+.featureTitle h2 {
+  font-size: calc(1rem * 4);
+  max-width: unset;
+}
+.highlight {
+  font-family: var(--font-family-display);
+  font-size: calc(1rem * 6);
+  font-weight: 400;
+  color: var(--color-secondary);
+  text-transform: capitalize;
+  letter-spacing: 2%;
+}
+
+.content {
+  z-index: 1;
+}
+
+.imageContainer {
+  z-index: 1;
+  max-width: 350px;
+}
+
+.imageContainer .image {
+  border-radius: 20px 60px 20px 60px !important;
+  overflow: hidden;
+}
+
+/* Explore Section Styles */
+.famousFishes {
+  padding: var(--space-16) 0;
+  background-color: var(--color-bg-light);
+}
+
+.famousFishesTitleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-12);
+}
+
+.famousFishesTitle {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-heading-2);
+  font-weight: 600;
+  color: var(--color-black);
+}
+
+.famousFishesDescription {
+  font-size: var(--font-size-body-lg);
+  color: var(--color-text-secondary);
+  text-align: right;
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+.famousFishesGrid {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-5);
+  width: 100%;
+  justify-content: center;
+  max-width: 1200px;
+}
+
+.famousFishesCard {
+  flex: none;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .contentContainer {
+    padding: 0 var(--space-6);
+  }
+
+  .famousFishesGrid {
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .famousFishesCard {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main {
+    padding: 60px 0;
+  }
+
+  .featureTitle h2 {
+    font-size: var(--font-size-heading-2);
+  }
+
+  .title {
+    font-size: var(--font-size-heading-2);
+    text-align: center;
+  }
+
+  .contentContainer {
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .description {
+    max-width: unset;
+  }
+
+  .imageContainer {
+    max-width: 100%;
+    border-radius: var(--radius-card);
+  }
+
+  .famousFishes {
+    padding: var(--space-12) 0;
+  }
+
+  .famousFishesTitleContainer {
+    margin-bottom: var(--space-8);
+  }
+
+  .famousFishesTitle {
+    font-size: var(--font-size-heading-3);
+  }
+
+  .famousFishesDescription {
+    font-size: var(--font-size-body-md);
+  }
+
+  .famousFishesGrid {
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .famousFishesCard {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main {
+    padding: 40px 0;
+  }
+
+  .title {
+    font-size: var(--font-size-heading-3);
+  }
+
+  .highlight {
+    font-size: calc(1rem * 3);
+  }
+
+  .famousFishes {
+    padding: var(--space-10) 0;
+  }
+
+  .famousFishesTitleContainer {
+    margin-bottom: var(--space-6);
+  }
+
+  .famousFishesTitle {
+    font-size: var(--font-size-heading-4);
+  }
+
+  .famousFishesCard {
+    width: 100%;
+    max-width: 300px;
+  }
+}

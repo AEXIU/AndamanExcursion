@@ -1,0 +1,46 @@
+/* Grid.module.css */
+.grid {
+  display: grid;
+  gap: var(--grid-gap, var(--space-6));
+  width: 100%;
+  grid-template-columns: repeat(var(--grid-columns-desktop, 3), 1fr);
+}
+
+/* If minItemWidth is provided, use auto-fit instead of fixed columns */
+.grid[style*="--grid-min-item-width"] {
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(var(--grid-min-item-width), 1fr)
+  );
+}
+
+/* Tablet breakpoint */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(var(--grid-columns-tablet, 2), 1fr);
+  }
+
+  .grid[style*="--grid-min-item-width"] {
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(var(--grid-min-item-width), 1fr)
+    );
+  }
+}
+
+/* Mobile breakpoint */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(var(--grid-columns-mobile, 1), 1fr);
+  }
+
+  .grid[style*="--grid-min-item-width"] {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+}
+
+/* Ensure grid items stretch to full height */
+/* .grid > * {
+  height: 100%;
+  min-height: 0;
+} */

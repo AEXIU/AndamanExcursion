@@ -1,0 +1,40 @@
+.overviewContainer {
+  width: 100%;
+}
+
+.description {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-lg);
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+.seeMore {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-base);
+  color: var(--color-primary);
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.sectionTitle {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-xl);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-4);
+}
+
+.highlightsSection {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .description {
+    font-size: var(--font-size-base);
+  }
+
+  .sectionTitle {
+    font-size: var(--font-size-xl);
+  }
+}

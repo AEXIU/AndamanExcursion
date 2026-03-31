@@ -1,0 +1,424 @@
+.classCard {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-4);
+  gap: var(--space-4);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  outline: none;
+}
+
+.activeClass {
+  border-color: var(--color-primary);
+  background-color: var(--color-bg-secondary);
+  /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); */
+  transform: translateY(-2px);
+}
+
+.inactiveClass:hover {
+  border-color: var(--color-gray-300);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transform: translateY(-1px);
+}
+
+.inactiveClass:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Header Section */
+.classHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.classInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  flex: 1;
+}
+
+.typeIconContainer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.typeIcon {
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.className {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  color: var(--color-black);
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* Seats Alert */
+.seatsAlert {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  /* padding: var(--space-1) var(--space-2); */
+  /* background-color: var(--color-alert-error-light); */
+  /* border: 1px solid var(--color-alert-error); */
+  /* border-radius: var(--radius-full); */
+  font-size: var(--font-size-xs);
+  color: var(--color-alert-error);
+  font-weight: 500;
+  width: fit-content;
+}
+
+.alertIcon {
+  flex-shrink: 0;
+}
+
+.alertText {
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+/* Price Section */
+.classPriceInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-1);
+  flex-shrink: 0;
+  height: 100%;
+}
+
+.pricePerAdult {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.originalPrice {
+  font-family: var(--font-family-primary);
+  font-weight: 400;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-disabled);
+  text-decoration: line-through;
+  margin: 0;
+  margin-right: var(--space-1);
+}
+
+.discountedPrice {
+  font-family: var(--font-family-primary);
+  font-weight: 600;
+  font-size: var(--font-size-base);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.pricePerAdult > span:not(.originalPrice):not(.discountedPrice) {
+  font-family: var(--font-family-primary);
+  font-weight: 500;
+  font-size: var(--font-size-base);
+  color: var(--color-text-primary);
+}
+
+.totalPrice {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.originalTotalPrice {
+  font-family: var(--font-family-primary);
+  font-weight: 400;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-disabled);
+  text-decoration: line-through;
+  margin: 0;
+  margin-right: var(--space-1);
+}
+
+.discountedTotalPrice {
+  font-family: var(--font-family-primary);
+  font-weight: 600;
+  font-size: var(--font-size-base);
+  color: var(--color-secondary);
+  margin: 0;
+}
+
+.totalPrice > span:not(.originalTotalPrice):not(.discountedTotalPrice) {
+  font-family: var(--font-family-primary);
+  font-weight: 600;
+  font-size: var(--font-size-base);
+  color: var(--color-secondary);
+}
+
+/* Content Container */
+.contentContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+  gap: var(--space-6);
+}
+
+.description {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  margin: 0;
+  flex: 1;
+}
+
+/* Gallery Styles */
+.galleryContainer {
+  margin-top: var(--space-3);
+}
+
+.galleryImages {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.galleryImage {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background-color: var(--color-border-secondary);
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.galleryImage:hover {
+  transform: scale(1.05);
+}
+
+.galleryImage img {
+  transition: transform 0.2s ease;
+}
+
+.moreImages {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: var(--radius-md);
+  background-color: var(--color-primary-light);
+  border: 1px solid var(--color-primary);
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  color: var(--color-primary);
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* Add Activity Button */
+.addActivityButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  font-family: var(--font-family-primary);
+  font-weight: 500;
+  font-size: var(--font-size-sm);
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.addActivityButton:hover {
+  background-color: var(--color-primary-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+}
+
+.addActivityButton:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.addActivityButton:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .classCard {
+    padding: var(--space-4);
+    gap: var(--space-3);
+  }
+
+  .classHeader {
+    flex-direction: column;
+    gap: var(--space-3);
+    align-items: stretch;
+  }
+
+  .classInfo {
+    gap: var(--space-2);
+  }
+
+  .className {
+    font-size: var(--font-size-base);
+  }
+
+  .classPriceInfo {
+    align-items: flex-start;
+    padding: var(--space-3);
+    background-color: var(--color-background-light);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border-secondary);
+  }
+
+  .contentContainer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-4);
+  }
+
+  .galleryImages {
+    justify-content: flex-start;
+  }
+
+  .addActivityButton {
+    align-self: stretch;
+    min-height: 48px;
+    font-size: var(--font-size-base);
+    font-weight: 600;
+  }
+
+  .seatsAlert {
+    padding: var(--space-2);
+    font-size: var(--font-size-xs);
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  .classCard {
+    padding: var(--space-3);
+    gap: var(--space-2);
+  }
+
+  .className {
+    font-size: var(--font-size-base);
+  }
+
+  .classPriceInfo {
+    padding: var(--space-2);
+  }
+
+  .discountedPrice,
+  .pricePerAdult > span:not(.originalPrice):not(.discountedPrice) {
+    font-size: var(--font-size-base);
+  }
+
+  .discountedTotalPrice,
+  .totalPrice > span:not(.originalTotalPrice):not(.discountedTotalPrice) {
+    font-size: var(--font-size-sm);
+  }
+
+  .description {
+    font-size: var(--font-size-sm);
+  }
+
+  .galleryImage,
+  .moreImages {
+    width: 50px;
+    height: 50px;
+  }
+
+  .addActivityButton {
+    min-height: 44px;
+    font-size: var(--font-size-sm);
+    padding: var(--space-2) var(--space-3);
+  }
+}
+
+/* Touch-friendly interactions */
+@media (hover: none) and (pointer: coarse) {
+  .inactiveClass:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .inactiveClass:active {
+    transform: scale(0.98);
+  }
+
+  .addActivityButton {
+    min-height: 48px;
+  }
+
+  .addActivityButton:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .galleryImage:hover {
+    transform: none;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .classCard,
+  .addActivityButton,
+  .galleryImage,
+  .galleryImage img {
+    transition: none;
+  }
+
+  .activeClass,
+  .inactiveClass:hover,
+  .addActivityButton:hover,
+  .galleryImage:hover {
+    transform: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .classCard {
+    border: 2px solid var(--color-border-primary);
+  }
+
+  .activeClass {
+    border: 2px solid var(--color-primary);
+  }
+
+  .seatsAlert {
+    border: 2px solid var(--color-alert-error);
+  }
+
+  .addActivityButton {
+    border: 1px solid var(--color-primary-dark);
+  }
+
+  .moreImages {
+    border: 2px solid var(--color-primary);
+  }
+}

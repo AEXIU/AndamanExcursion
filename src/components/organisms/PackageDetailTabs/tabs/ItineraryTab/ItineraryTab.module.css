@@ -1,0 +1,45 @@
+.itineraryContainer {
+  width: 100%;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  width: 100%;
+  padding-left: var(--space-4);
+  gap: var(--space-10);
+}
+
+.day {
+  position: relative;
+}
+
+.day:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  /* top: 16px;
+  left: 22.4px; */
+  top: 1.2rem;
+  left: 0.35rem;
+  width: 1px;
+  height: 120%;
+  border-left: 1px dashed var(--color-secondary);
+}
+
+@media (max-width: 768px) {
+  .timeline {
+    padding-left: 0;
+  }
+
+  .day:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 1.8rem;
+    left: 0.35rem;
+    width: 1px;
+    height: 110%;
+    border-left: 1px dashed var(--color-secondary);
+  }
+}

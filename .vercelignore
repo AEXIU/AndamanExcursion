@@ -1,0 +1,29 @@
+# Exclude large media files from serverless functions
+public/media/*.mp4
+public/media/*.mov
+public/media/*.avi
+
+# Exclude large images (keep smaller ones)
+public/media/*-768x576.png
+public/media/*-1024x*.png
+public/media/*-1200x1600.webp
+
+# Keep essential files but exclude oversized ones
+public/media/andaman_excursion_video.mp4
+public/media/andaman-promo-1.mp4
+public/media/placeholder-*.png
+public/media/heroImage-*.png
+public/media/image-*.png
+public/media/story-*.png
+public/media/ferryBanner-*.png
+public/media/fishing-*.png
+public/media/activities-hero-*.png
+public/media/poster-*.png
+public/media/jollyBuoyLargeCard-*.png
+public/media/fishingBanner-*.png
+public/media/boatBanner-*.png
+public/media/seaWalking-*.png
+public/media/volcano-*.png
+public/media/diver-*.png
+public/media/heroBanner-*.png
+public/media/marriage-*.png

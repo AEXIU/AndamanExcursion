@@ -1,0 +1,329 @@
+/* Footer.module.css */
+
+.footer {
+  position: relative;
+  font-family: var(--font-family-primary);
+  contain: layout style;
+  width: 100%;
+  /* Fill any subpixel SVG edge gaps with the footer color instead of white page background */
+  background-color: var(--color-primary);
+}
+
+.footer::after {
+  content: "";
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("/graphics/wave.svg");
+  background-size: 100% auto;
+  background-position: center;
+  pointer-events: none;
+  z-index: 999;
+  /* Higher than container's z-index: 10 */
+}
+
+/* Wave decoration */
+.waveContainer {
+  width: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+  display: flex;
+  line-height: 0;
+  height: 78px;
+}
+
+.wavePlusBoat {
+  width: 100%;
+  min-width: 100%;
+  height: 78px;
+  display: block;
+}
+
+/* Main container */
+.container {
+  position: relative;
+  z-index: 10;
+  padding: var(--space-10) var(--space-20);
+  background-color: var(--color-primary);
+}
+
+
+
+.wrapper {
+  max-width: var(--layout-container-max-width);
+  margin: var(--space-0) auto;
+}
+
+/* Main content layout */
+.mainContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: calc(var(--space-20) * 2.7);
+  margin-bottom: var(--space-10);
+}
+
+/* Contact section */
+.contactSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-10);
+  width: 385px;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.contactTitle {
+  color: var(--color-white);
+  font-weight: 500;
+  font-size: var(--font-size-body-small);
+  line-height: 20px;
+  margin: var(--space-0);
+}
+
+.contactDetails {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.address,
+.contactItem {
+  color: var(--color-white);
+  font-weight: 500;
+  font-size: var(--font-size-body-small);
+  line-height: 20px;
+  margin: var(--space-0);
+}
+
+.address {
+  line-height: 20px;
+}
+
+/* Navigation section */
+.navigationSection {
+  display: flex;
+  gap: var(--space-12);
+}
+
+.navColumn {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  width: 142px;
+}
+
+.navTitle {
+  color: var(--color-white);
+  font-weight: 500;
+  font-size: var(--font-size-body-small);
+  line-height: 20px;
+  margin: var(--space-0);
+}
+
+.navLinks {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.navLink {
+  color: var(--color-white);
+  font-weight: 500;
+  font-size: var(--font-size-body-small);
+  line-height: 20px;
+  text-decoration: none;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.navLink:hover {
+  opacity: 1;
+}
+
+/* Bottom section */
+.bottomSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-4) var(--space-0);
+  border-top: 1px solid var(--color-border-primary);
+  gap: var(--space-8);
+}
+
+.copyright {
+  color: var(--color-white);
+  font-weight: 500;
+  font-size: var(--font-size-body-small);
+  line-height: 20px;
+}
+
+.socialLinks {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.socialLink {
+  width: var(--space-12);
+  height: var(--space-12);
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  background-color: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+/* .socialLink:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+} */
+
+.socialIcon {
+  width: var(--space-6);
+  height: var(--space-6);
+  color: var(--color-white);
+}
+
+.customSocialIcon {
+  width: 24px;
+  height: 24px;
+  background-color: white;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.customIconInner {
+  width: 16px;
+  height: 16px;
+  background-color: #3e8cff;
+}
+
+/* Responsive Design */
+
+/* Large tablets and small desktops */
+@media (max-width: 1024px) {
+  .container {
+    padding: 40px 60px;
+  }
+
+  .mainContent {
+    gap: 100px;
+  }
+
+  .boatContainer {
+    right: 100px;
+  }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+  .footer {
+    margin-top: var(--space-10);
+  }
+
+  .container {
+    padding: 40px 20px;
+  }
+
+  .mainContent {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .contactSection {
+    width: 100%;
+  }
+
+  .navigationSection {
+    gap: 32px;
+    width: 100%;
+  }
+
+  .navColumn {
+    width: 100%;
+    gap: var(--space-4);
+  }
+
+  .bottomSection {
+    flex-direction: column;
+    gap: 24px;
+    text-align: center;
+  }
+
+  .socialLinks {
+    justify-content: center;
+  }
+
+  .boatContainer {
+    right: 20px;
+    bottom: 10px;
+  }
+
+  .waveSvg {
+    left: -200px;
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+  .container {
+    padding: 30px 16px;
+  }
+
+  .navigationSection {
+    gap: 24px;
+  }
+
+  .contactSection {
+    gap: 30px;
+  }
+
+  .logoContainer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .boatContainer {
+    display: none;
+    /* Hide boat on very small screens */
+  }
+
+  .socialLinks {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 320px) {
+  .container {
+    padding: 20px 12px;
+  }
+
+  .logoIcon {
+    width: 40px;
+    height: 45px;
+  }
+
+  .logoLine {
+    font-size: 16px;
+  }
+}

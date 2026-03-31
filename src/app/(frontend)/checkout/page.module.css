@@ -1,0 +1,152 @@
+.checkoutPage {
+  min-height: 100vh;
+  padding-block: var(--space-16);
+}
+
+.emptyCart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  text-align: center;
+}
+
+.emptyCart h1 {
+  font-size: var(--font-size-heading-3);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-4);
+}
+
+.emptyCart p {
+  font-size: var(--font-size-body-base);
+  color: var(--color-text-secondary);
+}
+
+/* Loading State Styles */
+.loadingContainer {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loadingContent {
+  text-align: center;
+}
+
+.spinner {
+  width: var(--space-12); /* 48px */
+  height: var(--space-12); /* 48px */
+  border: 2px solid var(--color-bg-tertiary);
+  border-bottom: 2px solid var(--color-primary);
+  border-radius: var(--radius-full);
+  display: inline-block;
+  animation: spin 1s linear infinite;
+  margin: 0 auto var(--space-4) auto; /* 0 auto 16px auto */
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loadingTitle {
+  font-size: var(--font-size-xl); /* 20px */
+  font-weight: 600;
+  margin-bottom: var(--space-2); /* 8px */
+  color: var(--color-text-primary);
+}
+
+.loadingDescription {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-base); /* 16px */
+}
+
+/* Error State Styles */
+.errorContainer {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.errorContent {
+  text-align: center;
+  max-width: 28rem; /* 448px */
+}
+
+.errorMessage {
+  color: var(--color-alert-error);
+  margin-bottom: var(--space-6); /* 24px */
+}
+
+.errorTitle {
+  font-size: var(--font-size-2xl); /* 24px */
+  font-weight: 600;
+  margin-bottom: var(--space-2); /* 8px */
+}
+
+.errorDescription {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-base); /* 16px */
+}
+
+.errorActions {
+  display: flex;
+  gap: var(--space-4); /* 16px */
+  justify-content: center;
+}
+
+/* Button Styles */
+.backButton,
+.homeButton {
+  padding: var(--space-2) var(--space-6); /* 8px 24px */
+  border-radius: var(--radius-button); /* 8px */
+  font-size: var(--font-size-button); /* 15px */
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: background-color var(--duration-fast) var(--easing-standard);
+  font-family: var(--font-family-primary);
+}
+
+.backButton {
+  background-color: var(--color-gray-600);
+  color: var(--color-text-inverse);
+}
+
+.backButton:hover {
+  background-color: var(--color-gray-700);
+}
+
+.backButton:focus-visible {
+  outline: 2px solid var(--color-focus-outline);
+  outline-offset: 2px;
+  box-shadow: var(--shadow-focus);
+}
+
+.homeButton {
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+}
+
+.homeButton:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.homeButton:focus-visible {
+  outline: 2px solid var(--color-focus-outline);
+  outline-offset: 2px;
+  box-shadow: var(--shadow-focus);
+}
+
+/* Suspense Fallback */
+.suspenseFallback {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-base);
+}

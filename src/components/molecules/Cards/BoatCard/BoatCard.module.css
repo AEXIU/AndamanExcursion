@@ -1,0 +1,478 @@
+.card {
+  position: relative;
+  margin-bottom: var(--space-6);
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  transition: box-shadow 0.3s ease, background-color 0.3s ease,
+    transform 0.2s ease;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-white);
+  min-height: 200px;
+  cursor: pointer;
+  outline: none;
+}
+
+.card:hover {
+  background-color: var(--color-bg-quaternary);
+  /* transform: translateY(-2px); */
+  /* box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); */
+}
+
+.card:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.card:active {
+  transform: translateY(0);
+}
+
+.contentWrapper {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  gap: 0;
+}
+
+/* Image Section */
+.imageWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  /* margin: var(--space-4); */
+  width: 320px;
+  position: relative;
+  overflow: hidden;
+}
+
+.boatImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px 20px 20px 60px !important;
+  background-color: var(--color-border-focus);
+
+  transition: transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card:hover .boatImage {
+  transform: scale(1.05);
+}
+
+/* Content Section */
+.textContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-6) var(--space-6) var(--space-6) var(--space-3);
+  gap: var(--space-4);
+  min-width: 0; /* Prevent flex item from overflowing */
+}
+
+/* TOP ROW: Title and Pricing */
+.topRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-6);
+}
+
+.titleSection {
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  font-family: var(--font-family-primary);
+  font-weight: 600;
+  font-size: var(--font-size-2xl);
+  line-height: 1.2;
+  color: var(--color-black);
+  margin: 0 0 var(--space-2) 0;
+}
+
+.routeInfo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  flex-wrap: wrap;
+}
+
+.routeArrow {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* Boat Metadata */
+.boatMetadata {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.metadataItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--font-size-xs);
+  color: var(--color-primary);
+  padding: var(--space-1) var(--space-2);
+  background-color: var(--color-blue-50);
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+}
+
+.metadataIcon {
+  flex-shrink: 0;
+}
+
+/* Pricing Section */
+.pricingSection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-1);
+  flex-shrink: 0;
+}
+
+.mainPriceRow {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+}
+
+.timingAndPricingContainer {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: var(--space-6);
+}
+
+.currentPrice {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--color-secondary);
+}
+
+.perPerson {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  font-weight: 400;
+}
+
+.totalPriceInfo {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  margin-top: var(--space-1);
+}
+
+.totalPrice {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.totalLabel {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  font-weight: 400;
+}
+
+/* Description */
+.description {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-base);
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* Time Slots Section */
+.timingSection {
+  flex: 1;
+  min-width: 0;
+}
+
+.timingTitle {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0 0 var(--space-3) 0;
+}
+
+.timeSlots {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.timeSlot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-white);
+  transition: all 0.2s ease;
+  min-width: 140px;
+  flex-shrink: 0;
+}
+
+.timeSlot:hover {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary-light);
+}
+
+.timeSlotSelected {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary-light);
+}
+
+.timeText {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.addButton {
+  width: fit-content;
+  flex-shrink: 0;
+}
+
+/* Pricing Details Section */
+.pricingDetails {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  background-color: var(--color-bg-secondary);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  min-width: 200px;
+  flex-shrink: 0;
+}
+
+.priceItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  gap: var(--space-2);
+}
+
+.priceItem:last-child {
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-2);
+  margin-top: var(--space-2);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-base);
+}
+
+/* Responsive Design - Mobile First Approach */
+
+/* Large tablets and small desktops */
+@media (max-width: 1024px) {
+  .contentWrapper {
+    flex-direction: column;
+  }
+
+  .imageWrapper {
+    width: 100%;
+    height: 180px;
+    /* margin: var(--space-4) var(--space-4) 0 var(--space-4); */
+    border-radius: var(--radius-lg);
+  }
+
+  .textContent {
+    padding: var(--space-4);
+  }
+
+  .timingAndPricingContainer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+  }
+
+  .pricingDetails {
+    width: 100%;
+    min-width: auto;
+  }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+  .card {
+    margin-bottom: var(--space-4);
+  }
+
+  .imageWrapper {
+    height: 160px;
+    /* margin: var(--space-3) var(--space-3) 0 var(--space-3); */
+  }
+
+  .textContent {
+    padding: var(--space-3);
+    gap: var(--space-3);
+  }
+
+  .topRow {
+    flex-direction: column;
+    gap: var(--space-3);
+    align-items: flex-start;
+  }
+
+  .pricingSection {
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .title {
+    font-size: var(--font-size-xl);
+  }
+
+  .routeInfo {
+    font-size: var(--font-size-sm);
+  }
+
+  .boatMetadata {
+    gap: var(--space-2);
+  }
+
+  .currentPrice {
+    font-size: var(--font-size-xl);
+  }
+
+  .timeSlots {
+    gap: var(--space-2);
+  }
+
+  .timeSlot {
+    min-width: 130px;
+    padding: var(--space-2) var(--space-3);
+  }
+
+  .pricingDetails {
+    padding: var(--space-3);
+  }
+}
+
+/* Large phones */
+@media (max-width: 480px) {
+  .imageWrapper {
+    height: 140px;
+    /* margin: var(--space-2) var(--space-2) 0 var(--space-2); */
+  }
+
+  .textContent {
+    padding: var(--space-2);
+    gap: var(--space-3);
+  }
+
+  .title {
+    font-size: var(--font-size-lg);
+  }
+
+  .currentPrice {
+    font-size: var(--font-size-lg);
+  }
+
+  .boatMetadata {
+    gap: var(--space-1);
+  }
+
+  .metadataItem {
+    font-size: var(--font-size-2xs);
+    padding: var(--space-1);
+  }
+
+  .timeSlots {
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .timeSlot {
+    width: 100%;
+    min-width: auto;
+    justify-content: space-between;
+  }
+
+  .pricingDetails {
+    padding: var(--space-2);
+  }
+
+  .priceItem {
+    font-size: var(--font-size-xs);
+  }
+
+  .priceItem:last-child {
+    font-size: var(--font-size-sm);
+  }
+}
+
+/* Small phones */
+@media (max-width: 360px) {
+  .imageWrapper {
+    height: 120px;
+    /* margin: var(--space-1) var(--space-1) 0 var(--space-1); */
+  }
+
+  .textContent {
+    padding: var(--space-1);
+    gap: var(--space-2);
+  }
+
+  .title {
+    font-size: var(--font-size-base);
+  }
+
+  .routeInfo {
+    font-size: var(--font-size-xs);
+  }
+
+  .boatMetadata {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-1);
+  }
+
+  .metadataItem {
+    font-size: var(--font-size-3xs);
+  }
+
+  .currentPrice {
+    font-size: var(--font-size-base);
+  }
+
+  .totalPrice {
+    font-size: var(--font-size-base);
+  }
+
+  .timingTitle {
+    font-size: var(--font-size-sm);
+  }
+
+  .timeText {
+    font-size: var(--font-size-xs);
+  }
+}

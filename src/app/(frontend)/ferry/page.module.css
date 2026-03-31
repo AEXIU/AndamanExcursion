@@ -1,0 +1,30 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-section);
+  padding-top: var(--space-14);
+}
+
+.sectionTitle {
+  font-family: var(--font-family-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: var(--font-size-heading-2);
+  line-height: 1.2;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.highlight {
+  font-family: var(--font-family-display);
+  color: var(--color-primary);
+}
+
+.bookingCta {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-6);
+  width: 100%;
+}

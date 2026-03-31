@@ -1,0 +1,45 @@
+.teamSection {
+  width: 100%;
+}
+
+.teamContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-10);
+  width: 100%;
+}
+
+.teamHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-8);
+  width: 100%;
+}
+
+@media (min-width: 769px) {
+  .teamGrid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .teamContainer {
+    gap: var(--space-4);
+  }
+
+  .teamGrid {
+    gap: var(--space-4);
+    grid-template-columns: 1fr;
+  }
+
+  .teamHeader {
+    align-items: flex-start;
+  }
+}

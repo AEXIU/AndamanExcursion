@@ -1,0 +1,606 @@
+.ferryContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    min-height: 900px;
+}
+
+.ferryOutlineImage {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    object-fit: contain;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.seatLayoutContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.seatLayout {
+    width: fit-content;
+    display: grid;
+    grid-template-areas:
+        ". . . . . . . . . . . . . . . . . . . . . . ."
+        ". . . . . . . . . . . . . . . . . . . . . . ."
+        ". . . . . . . . . . . . . . . . . . . . . . ."
+        ". . . . . . . . . . front front . . . . . . . . . . ."
+        ". . . . . . . . . . . . . . . . . . . . . . ."
+        ". . . group1 group1 group1 . group2 group2 group2 group2 . group3 group3 group3 group3 . group4 group4 group4 . . ."
+        ". . . group1 group1 group1 . group2 group2 group2 group2 . group3 group3 group3 group3 . group4 group4 group4 . . ."
+        ". . . group1 group1 group1 . group2 group2 group2 group2 . group3 group3 group3 group3 . group4 group4 group4 . . ."
+        ". . . group1 group1 group1 . group2 group2 group2 group2 . group3 group3 group3 group3 . group4 group4 group4 . . ."
+        ". . . group1 group1 group1 . group2 group2 group2 group2 . group3 group3 group3 group3 . group4 group4 group4 . . ."
+        ". . . group1 group1 group1 . group2 group2 group2 group2 . group3 group3 group3 group3 . group4 group4 group4 . . ."
+        ". . . group1 group1 group1 . group2 group2 group2 group2 . group3 group3 group3 group3 . group4 group4 group4 . . ."
+        ". . . . . . . group2 group2 group2 group2 . group3 group3 group3 group3 . . . . . . ."
+        ". . . . . . . . . . . . . . . . . . . . . . ."
+        ". . . . . . . shipStairs shipStairs shipStairs shipStairs shipStairs shipStairs shipStairs shipStairs shipStairs . . . . . . ."
+        ". . . . . . . shipStairs shipStairs shipStairs shipStairs shipStairs shipStairs shipStairs shipStairs shipStairs . . . . . . ."
+        ". . . . . . . shipStairs shipStairs shipStairs shipStairs shipStairs shipStairs shipStairs shipStairs shipStairs . . . . . . ."
+        ". . . . . . . . . . . . . . . . . . . . . . ."
+        ". . . . . . . group6 group6 group6 group6 . group7 group7 group7 group7 . . . . . . ."
+        ". . . group5 group5 group5 . group6 group6 group6 group6 . group7 group7 group7 group7 . group8 group8 group8 . . ."
+        ". . . group5 group5 group5 . group6 group6 group6 group6 . group7 group7 group7 group7 . group8 group8 group8 . . ."
+        ". . . group5 group5 group5 . group6 group6 group6 group6 . group7 group7 group7 group7 . group8 group8 group8 . . ."
+        ". . . group5 group5 group5 . group6 group6 group6 group6 . group7 group7 group7 group7 . group8 group8 group8 . . ."
+        ". . . group5 group5 group5 . group6 group6 group6 group6 . group7 group7 group7 group7 . group8 group8 group8 . . ."
+        ". . . group5 group5 group5 . group6 group6 group6 group6 . group7 group7 group7 group7 . group8 group8 group8 . . ."
+        ". . . group5 group5 group5 . group6 group6 group6 group6 . group7 group7 group7 group7 . group8 group8 group8 . . ."
+        ". . . group5 group5 group5 . group6 group6 group6 group6 . group7 group7 group7 group7 . group8 group8 group8 . . ."
+        ". . . group5 group5 group5 . group6 group6 group6 group6 . group7 group7 group7 group7 . group8 group8 group8 . . ."
+        ". . . group5 group5 group5 . group6 group6 group6 group6 . group7 group7 group7 group7 . group8 group8 group8 . . ."
+        ". . . group5 group5 group5 . . . . . . . . . . . group8 group8 group8 . . ."
+        ". . . group9 group9 group9 . . . . . . . . . . . group10 group10 group10 . . ."
+        ". . . group9 group9 group9 . . . . . . . . . . . group10 group10 group10 . . ."
+        ". . . . . . . . . . . . . . . . . . . . . . ."
+        ". . . . . . . . . . . . . . . . . . . . . . .";
+
+    grid-template-columns: repeat(23, 18px);
+    grid-template-rows: repeat(34, 18px);
+    gap: 0px;
+}
+
+.seatGroup {
+    display: grid;
+    gap: 0px;
+}
+
+/* Upper Deck Groups */
+.group1 {
+    grid-area: group1;
+    grid-template-columns: repeat(3, 18px);
+    grid-template-rows: repeat(7, 18px);
+}
+
+.group2 {
+    grid-area: group2;
+    grid-template-columns: repeat(4, 18px);
+    grid-template-rows: repeat(8, 18px);
+}
+
+.group3 {
+    grid-area: group3;
+    grid-template-columns: repeat(4, 18px);
+    grid-template-rows: repeat(8, 18px);
+}
+
+.group4 {
+    grid-area: group4;
+    grid-template-columns: repeat(3, 18px);
+    grid-template-rows: repeat(7, 18px);
+}
+
+/* Lower Deck Groups */
+.group5 {
+    grid-area: group5;
+    grid-template-columns: repeat(3, 18px);
+    grid-template-rows: repeat(11, 18px);
+}
+
+.group6 {
+    grid-area: group6;
+    grid-template-columns: repeat(4, 18px);
+    grid-template-rows: repeat(11, 18px);
+}
+
+.group7 {
+    grid-area: group7;
+    grid-template-columns: repeat(4, 18px);
+    grid-template-rows: repeat(11, 18px);
+}
+
+.group8 {
+    grid-area: group8;
+    grid-template-columns: repeat(3, 18px);
+    grid-template-rows: repeat(11, 18px);
+}
+
+/* Bottom rows - P21-P22 */
+.group9 {
+    grid-area: group9;
+    grid-template-columns: repeat(3, 18px);
+    grid-template-rows: repeat(2, 18px);
+}
+
+.group10 {
+    grid-area: group10;
+    grid-template-columns: repeat(3, 18px);
+    grid-template-rows: repeat(2, 18px);
+}
+
+/* Stairs between decks */
+.shipStairsContainer {
+    grid-area: shipStairs;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.shipStairs {
+    width: 100%;
+    height: auto;
+    opacity: 0.6;
+    object-fit: contain;
+}
+
+/* Front label */
+.frontContainer {
+    grid-area: front;
+    color: var(--color-text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.6;
+}
+
+/* Seat styles */
+.seatInteractive,
+.seatDisabled {
+    width: 16px;
+    height: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: #000;
+    font-size: 8px;
+    font-weight: 600;
+    position: relative;
+    align-self: center;
+    justify-self: center;
+}
+
+.seatDisabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+    filter: grayscale(100%);
+}
+
+.emptySeat {
+    width: 16px;
+    height: 16px;
+    background-color: transparent;
+    pointer-events: none;
+}
+
+.seatImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    user-select: none;
+    pointer-events: none;
+}
+
+.seatNumber {
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(5px, 1vw, 7px);
+    font-weight: 600;
+    color: #333;
+    pointer-events: none;
+    text-shadow: 0 0 2px rgba(255, 255, 255, 0.8);
+    white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+    .seatLayoutContainer {
+        transform: scale(0.9);
+    }
+}
+
+@media (max-width: 360px) {
+    .seatLayoutContainer {
+        transform: scale(0.75);
+    }
+}
+
+@media (max-width: 320px) {
+    .seatLayoutContainer {
+        transform: scale(0.6);
+    }
+}
+
+/* ============================================================
+   Regular Makruzz Premium Layout
+   Outer grid: 23 columns × 29 rows @ 18px (matches boat SVG width perfectly)
+   ─ Col layout: 3pad | 3(outer-L) | 1gap | 3(inner-L) | 3gap(center) | 3(inner-R) | 1gap | 3(outer-R) | 3pad
+        which means: Cols 4-6 (ABC), 8-10 (EFG), 14-16 (HIJ), 18-20 (LMN)
+   ─ Row layout:
+       row 1          → front label
+       row 3          → rgA / rgC start (inner groups, staggered 1 row early)
+       rows 3-15      → rgA, rgC (13 data rows)
+       rows 4-18      → rgB, rgD (15 data rows, 1 row below inner)
+       row 19-20      → gap (section divider)
+       rows 21-25     → rgE (ABCD left), rgF (KLMN right) — lower section
+============================================================ */
+
+.regularSeatLayout {
+    width: fit-content;
+    display: grid;
+    grid-template-columns: repeat(23, 18px);
+    /* 23 matches Pearl for perfect center */
+    grid-template-rows: repeat(29, 18px);
+    gap: 0px;
+    margin-top: 60px;
+    /* Adjust to drop into the visual center of the hull */
+}
+
+/* ── Inner-left: EFG (groupA) — cols 8-10, rows 3-15 ── */
+.regularGroupA {
+    grid-column: 8 / span 3;
+    grid-row: 3 / span 13;
+    display: grid;
+    grid-template-columns: repeat(3, 18px);
+    grid-template-rows: repeat(13, 18px);
+}
+
+/* ── Outer-left: ABC (groupB) — cols 4-6, rows 4-18 ── */
+.regularGroupB {
+    grid-column: 4 / span 3;
+    grid-row: 4 / span 15;
+    display: grid;
+    grid-template-columns: repeat(3, 18px);
+    grid-template-rows: repeat(15, 18px);
+}
+
+/* ── Inner-right: HIJ (groupC) — cols 14-16, rows 3-15 ── */
+.regularGroupC {
+    grid-column: 14 / span 3;
+    grid-row: 3 / span 13;
+    display: grid;
+    grid-template-columns: repeat(3, 18px);
+    grid-template-rows: repeat(13, 18px);
+}
+
+/* ── Outer-right: LMN (groupD) — cols 18-20, rows 4-18 ── */
+.regularGroupD {
+    grid-column: 18 / span 3;
+    grid-row: 4 / span 15;
+    display: grid;
+    grid-template-columns: repeat(3, 18px);
+    grid-template-rows: repeat(15, 18px);
+}
+
+/* ── Section gap ── */
+.regularSectionGap {
+    grid-column: 1 / span 23;
+    grid-row: 19 / span 2;
+}
+
+/* ── Lower-left: ABCD (groupE) — cols 4-7, rows 21-25 ── */
+.regularGroupE {
+    grid-column: 4 / span 4;
+    grid-row: 21 / span 5;
+    display: grid;
+    grid-template-columns: repeat(4, 18px);
+    grid-template-rows: repeat(5, 18px);
+}
+
+/* ── Lower-right: KLMN (groupF) — cols 17-20, rows 21-25 ── */
+.regularGroupF {
+    grid-column: 17 / span 4;
+    grid-row: 21 / span 5;
+    display: grid;
+    grid-template-columns: repeat(4, 18px);
+    grid-template-rows: repeat(5, 18px);
+}
+
+/* ── Front label ── */
+.regularFrontContainer {
+    grid-column: 10 / span 5;
+    grid-row: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-primary);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.6;
+}
+
+/* ============================================================
+   Regular Makruzz Deluxe & Royal Layout
+   Outer grid: 14 columns × 15 rows @ 18px 
+   ─ Col layout: Left(3) | Gap(2) | Mid(4) | Gap(2) | Right(3) = 14 columns
+   Rows: 
+     1       : front label
+     2       : gap
+     3-10    : Deluxe seats
+     11      : deluxeRoyalSpacer
+     12-15   : Royal seats
+============================================================ */
+.deluxeSeatLayout {
+    width: fit-content;
+    display: grid;
+    grid-template-columns: repeat(14, 18px);
+    grid-template-rows: repeat(15, 18px);
+    /* Expanded for Royal */
+    gap: 0px;
+    margin-top: 50px;
+    /* Center in hull vertically */
+}
+
+/* ─── Deluxe Section ─── */
+/* Group A: Left, 3 cols * 8 rows */
+.deluxeGroupA {
+    grid-column: 1 / span 3;
+    grid-row: 3 / span 8;
+    display: grid;
+    grid-template-columns: repeat(3, 18px);
+    grid-template-rows: repeat(8, 18px);
+}
+
+/* Group B: Mid, 4 cols * 8 rows (visually padded with nulls internally) */
+.deluxeGroupB {
+    grid-column: 6 / span 4;
+    grid-row: 3 / span 8;
+    display: grid;
+    grid-template-columns: repeat(4, 18px);
+    grid-template-rows: repeat(8, 18px);
+}
+
+/* Group C: Right, 3 cols * 8 rows */
+.deluxeGroupC {
+    grid-column: 12 / span 3;
+    grid-row: 3 / span 8;
+    display: grid;
+    grid-template-columns: repeat(3, 18px);
+    grid-template-rows: repeat(8, 18px);
+}
+
+/* ─── Gap between Deluxe & Royal ─── */
+.deluxeRoyalGap {
+    grid-column: 1 / span 14;
+    grid-row: 11 / span 2;
+    /* 2 row gap as per screenshot */
+}
+
+/* ─── Royal Section ─── */
+/* Group D: Left Royal 2x3. Aligned under the left half of the middle block (Group B) */
+.royalGroupD {
+    grid-column: 6 / span 2;
+    grid-row: 13 / span 3;
+    display: grid;
+    grid-template-columns: repeat(2, 18px);
+    grid-template-rows: repeat(3, 18px);
+}
+
+/* Group E: Right Royal 2x3. Includes a central gap spacing column */
+.royalGroupE {
+    grid-column: 9 / span 2;
+    grid-row: 13 / span 3;
+    display: grid;
+    grid-template-columns: repeat(2, 18px);
+    grid-template-rows: repeat(3, 18px);
+}
+
+.deluxeFrontContainer {
+    grid-column: 4 / span 8;
+    grid-row: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-primary);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.6;
+}
+
+/* ============================================================
+   Makruzz Gold Premium Layout
+   Outer grid: 16 columns × 28 rows @ 18px 
+   ─ Col layout: Left(3) | Gap(1) | Mid(8) | Gap(1) | Right(3) = 16 columns
+============================================================ */
+.goldSeatLayout {
+    width: fit-content;
+    display: grid;
+    grid-template-columns: repeat(16, 18px);
+    grid-template-rows: repeat(28, 18px);
+    gap: 0px;
+    margin-top: 50px;
+    /* Center in hull vertically */
+}
+
+/* ─── Upper Section ─── */
+/* Group A: Left Top */
+.goldGroupA {
+    grid-column: 1 / span 3;
+    grid-row: 6 / span 7;
+    display: grid;
+    grid-template-columns: repeat(3, 18px);
+    grid-template-rows: repeat(7, 18px);
+}
+
+/* Group B: Top Middle */
+.goldGroupB {
+    grid-column: 5 / span 8;
+    grid-row: 3 / span 11;
+    display: grid;
+    grid-template-columns: repeat(8, 18px);
+    grid-template-rows: repeat(11, 18px);
+}
+
+/* Group C: Right Top */
+.goldGroupC {
+    grid-column: 14 / span 3;
+    grid-row: 6 / span 7;
+    display: grid;
+    grid-template-columns: repeat(3, 18px);
+    grid-template-rows: repeat(7, 18px);
+}
+
+/* ─── Gap between Upper & Lower ─── */
+.goldSectionGap {
+    grid-column: 1 / span 16;
+    grid-row: 14;
+}
+
+/* ─── Lower Section ─── */
+/* Group D: Left Bottom */
+.goldGroupD {
+    grid-column: 1 / span 3;
+    grid-row: 15 / span 12;
+    display: grid;
+    grid-template-columns: repeat(3, 18px);
+    grid-template-rows: repeat(12, 18px);
+}
+
+/* Group E: Middle Bottom */
+.goldGroupE {
+    grid-column: 5 / span 8;
+    grid-row: 19 / span 9;
+    display: grid;
+    grid-template-columns: repeat(8, 18px);
+    grid-template-rows: repeat(9, 18px);
+}
+
+/* Group F: Right Bottom */
+.goldGroupF {
+    grid-column: 14 / span 3;
+    grid-row: 15 / span 12;
+    display: grid;
+    grid-template-columns: repeat(3, 18px);
+    grid-template-rows: repeat(12, 18px);
+}
+
+.goldFrontContainer {
+    grid-column: 5 / span 8;
+    grid-row: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-primary);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.6;
+}
+
+/* ============================================================
+   Makruzz Gold Deluxe & Royal Layout
+   Outer grid: 12 columns × 15 rows @ 18px
+   ─ Col layout: Left(2) | Gap(2) | Mid(3) | Gap(3) | Right(2)
+   Rows:
+     1      : front label
+     2      : gap
+     3-11   : Deluxe top part
+     12     : gap
+     13-14  : Lower part (Royal and extended Deluxe Right)
+============================================================ */
+.goldDeluxeSeatLayout {
+    width: fit-content;
+    display: grid;
+    grid-template-columns: repeat(12, 18px);
+    grid-template-rows: repeat(14, 18px);
+    gap: 0px;
+    margin-top: 50px;
+}
+
+/* Group A: Left Deluxe (9 rows, 2 columns) */
+.goldDeluxeGroupA {
+    grid-column: 1 / span 2;
+    grid-row: 3 / span 9;
+    display: grid;
+    grid-template-columns: repeat(2, 18px);
+    grid-template-rows: repeat(9, 18px);
+}
+
+/* Group B: Mid Deluxe (9 rows, 3 columns) */
+.goldDeluxeGroupB {
+    grid-column: 5 / span 3;
+    grid-row: 3 / span 9;
+    display: grid;
+    grid-template-columns: repeat(3, 18px);
+    grid-template-rows: repeat(9, 18px);
+}
+
+/* Group C: Right Deluxe (12 rows, 2 columns) */
+.goldDeluxeGroupC {
+    grid-column: 11 / span 2;
+    grid-row: 3 / span 12;
+    display: grid;
+    grid-template-columns: repeat(2, 18px);
+    grid-template-rows: repeat(12, 18px);
+}
+
+/* ─── Gap between Upper & Lower (Left/Mid) ─── */
+.goldDeluxeSectionGap {
+    grid-column: 1 / span 12;
+    grid-row: 12;
+}
+
+/* Group D: Royal Left (2 rows, 2 cols aligned under Group A/gap) */
+.goldDeluxeGroupD {
+    grid-column: 1 / span 2;
+    grid-row: 13 / span 2;
+    display: grid;
+    grid-template-columns: repeat(2, 18px);
+    grid-template-rows: repeat(2, 18px);
+}
+
+/* Group E: Royal Mid (2 rows, 2 cols aligned under left side of Group B) */
+.goldDeluxeGroupE {
+    grid-column: 4 / span 2;
+    grid-row: 13 / span 2;
+    display: grid;
+    grid-template-columns: repeat(2, 18px);
+    grid-template-rows: repeat(2, 18px);
+}
+
+.goldDeluxeFrontContainer {
+    grid-column: 4 / span 6;
+    grid-row: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-primary);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.6;
+}

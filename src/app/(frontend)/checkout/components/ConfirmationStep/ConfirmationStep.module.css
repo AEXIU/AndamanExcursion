@@ -1,0 +1,456 @@
+.errorState {
+  text-align: center;
+  padding: var(--space-16);
+  color: var(--color-text-secondary);
+}
+
+/* Success Header */
+.successHeader {
+  text-align: center;
+  margin-bottom: var(--space-8);
+}
+
+.successIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--space-20);
+  height: var(--space-20);
+  background-color: var(--color-alert-success-light);
+  border-radius: var(--radius-full);
+  margin-bottom: var(--space-4);
+  color: var(--color-alert-success);
+}
+
+.title {
+  margin-bottom: var(--space-4);
+}
+
+.successMessage {
+  font-size: var(--font-size-body-base);
+  color: var(--color-text-secondary);
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Booking Details Card */
+.bookingDetailsCard {
+  background-color: var(--color-bg-secondary);
+  border: 1px solid var(--color-border-secondary);
+  border-radius: var(--radius-sm);
+  padding: var(--space-6);
+  /* margin-bottom: var(--space-6); */
+}
+
+.bookingHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-border-secondary);
+  /* margin-bottom: var(--space-4); */
+}
+
+.bookingTitle {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--color-secondary);
+  margin: 0;
+}
+
+.bookingId {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.bookingIdLabel {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+.bookingIdValue {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--color-secondary);
+  font-family: monospace;
+}
+
+/* Service Info */
+.serviceInfo {
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+}
+
+.serviceImage {
+  flex-shrink: 0;
+  width: 120px;
+  height: var(--space-20);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.serviceDetails {
+  flex: 1;
+}
+
+.serviceName {
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0 0 var(--space-4) 0;
+}
+
+.tripDetailsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+}
+
+.tripDetail {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.detailLabel {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.detailValue {
+  font-size: var(--font-size-base);
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+/* Guest Information */
+.guestInfoCard {
+  background-color: var(--color-bg-primary);
+  border: 1px solid var(--color-border-secondary);
+  border-radius: var(--radius-card);
+  padding: var(--space-6);
+  margin-bottom: var(--space-6);
+  /* box-shadow: var(--shadow-card); */
+}
+
+.description {
+  width: 100%;
+  max-width: unset;
+}
+
+.guestInfoHeader {
+  margin-bottom: var(--space-4);
+}
+
+.confirmationStep {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.sectionTitleOrange {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--color-secondary);
+  margin: 0;
+}
+
+.guestCards {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.guestCard {
+  background-color: var(--color-bg-secondary);
+  border: 1px solid var(--color-border-secondary);
+  border-radius: var(--radius-sm);
+  padding: var(--space-4);
+}
+
+.guestHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: var(--space-3);
+}
+
+.guestName {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.guestMeta {
+  text-align: right;
+}
+
+.ageGender {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.guestDetailsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+}
+
+.guestDetail {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+/* Actions */
+.actionsCard {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+  padding: var(--space-4);
+}
+
+.downloadButton {
+  min-width: 180px;
+}
+
+.newBookingButton {
+  min-width: 180px;
+}
+
+/* Instructions */
+.instructionsCard {
+  background-color: var(--color-bg-primary);
+  border: 1px solid var(--color-border-secondary);
+  border-radius: var(--radius-card);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-card);
+}
+
+.instructionsTitle {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0 0 var(--space-4) 0;
+}
+
+.instructionsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+.instructionCategory {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.categoryTitle {
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--color-primary);
+  margin: 0;
+  padding-bottom: var(--space-2);
+  border-bottom: 2px solid var(--color-primary);
+}
+
+/* Provider Error Details */
+.providerErrorDetails {
+  margin-top: var(--space-4);
+  padding: var(--space-4);
+  background-color: var(--color-alert-warning-light);
+  border: 1px solid var(--color-orange-100);
+  border-radius: var(--radius-sm);
+  /* max-width: 500px; */
+}
+
+.errorBadge {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-size-sm);
+  color: var(--color-secondary);
+  font-weight: 500;
+}
+
+.actionNote,
+.timeoutNote {
+  margin-top: var(--space-2);
+  margin-bottom: 0;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-primary);
+}
+
+.instructionsList {
+  list-style: disc;
+  padding-left: var(--space-4);
+  margin: 0;
+}
+
+.instructionsList li {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-2);
+  line-height: 1.5;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .tripDetailsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .instructionsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .bookingDetailsCard,
+  .guestInfoCard,
+  .instructionsCard {
+    padding: var(--space-4);
+    margin-bottom: 0;
+  }
+
+  .actionsCard {
+    margin-bottom: 0;
+    padding: 0;
+  }
+
+  .serviceInfo {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .serviceImage {
+    width: 100%;
+    height: 120px;
+  }
+
+  .tripDetailsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3);
+  }
+
+  .bookingHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+    margin-bottom: 0;
+  }
+
+  .guestHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+
+  .guestMeta {
+    text-align: left;
+  }
+
+  .guestDetailsGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+  }
+
+  .actionsCard {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .downloadButton {
+    width: 100%;
+    min-width: auto;
+  }
+
+  .instructionsGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+}
+
+/* Multiple Activities Styles */
+.bookingDetailsSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  border: 1px solid var(--color-border-secondary);
+  border-radius: var(--radius-card);
+}
+
+.activityNumber {
+  font-size: var(--font-size-2xs);
+  color: var(--color-primary);
+  font-weight: 600;
+  margin-left: var(--space-2);
+  background: var(--color-primary-light);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-base);
+}
+
+.totalPriceCard {
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border-secondary);
+  border-radius: var(--radius-base);
+  padding: var(--space-4);
+  /* margin-top: var(--space-4); */
+}
+
+.totalPriceRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.totalLabel {
+  font-weight: 600;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-lg);
+}
+
+.totalValue {
+  font-weight: 700;
+  color: var(--color-secondary);
+  font-size: var(--font-size-2xl);
+}
+
+@media (max-width: 480px) {
+  .tripDetailsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .successIcon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .successMessage {
+    font-size: var(--font-size-sm);
+  }
+
+  .bookingDetailsSection {
+    gap: var(--space-3);
+  }
+
+  .totalValue {
+    font-size: var(--font-size-xl);
+  }
+}

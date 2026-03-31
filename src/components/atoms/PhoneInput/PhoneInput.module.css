@@ -1,0 +1,307 @@
+/* PhoneInput.module.css */
+
+/* Field container to match other components structure */
+.fieldContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.phoneInputWrapper {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: var(--space-3);
+  gap: var(--space-1);
+  min-width: var(--size-form-field-min-width);
+  min-height: var(--size-form-field-min-height);
+  height: auto; /* Allow height to expand for error messages */
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  width: 100%;
+  position: relative;
+  transition: all var(--duration-fast) var(--easing-standard);
+}
+
+.phoneInputWrapper:hover {
+  border-color: var(--color-primary);
+}
+
+.phoneInputWrapper:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px var(--color-focus-blue);
+}
+
+/* Error state matching other components */
+.error {
+  border-color: var(--color-error-border-subtle) !important;
+  background-color: var(--color-error-bg-subtle);
+}
+
+.error:hover,
+.error:focus,
+.error:focus-within {
+  border-color: var(--color-alert-error) !important;
+  box-shadow: 0 0 0 2px var(--color-error-focus) !important;
+}
+
+.label {
+  font-family: var(--font-family-primary);
+  font-style: normal;
+  font-weight: 400;
+  font-size: var(--font-size-xs);
+  line-height: var(--space-5);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: color var(--duration-fast) var(--easing-standard);
+  margin-bottom: 0;
+  display: block;
+  width: 100%;
+}
+
+.label:hover {
+  color: var(--color-primary);
+}
+
+.required {
+  color: var(--color-alert-error);
+  margin-left: var(--space-1);
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  gap: var(--space-2);
+}
+
+.countryCodeTrigger {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-family: var(--font-family-primary);
+  font-style: normal;
+  font-weight: 500;
+  font-size: var(--font-size-base);
+  line-height: 25px;
+  color: var(--color-text-primary);
+  border-right: 1px solid var(--color-border);
+  transition: all var(--duration-fast) var(--easing-standard);
+  white-space: nowrap;
+  min-width: 60px;
+  margin-right: var(--space-2);
+  padding-right: var(--space-2);
+}
+
+.countryCodeTrigger:hover {
+  color: var(--color-primary);
+}
+
+.countryCodeTrigger:focus {
+  color: var(--color-primary);
+}
+
+.countryCodeTrigger:disabled {
+  color: var(--color-text-disabled);
+  cursor: not-allowed;
+}
+
+.chevronDown {
+  width: 14px;
+  height: 14px;
+  color: var(--color-primary);
+  transition: transform var(--duration-fast) var(--easing-standard);
+}
+
+.countryCodeTrigger[data-state="open"] .chevronDown {
+  transform: rotate(180deg);
+}
+
+.countryCodeContent {
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border-secondary);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-elevated);
+  z-index: 20000;
+  max-height: 200px;
+  overflow: hidden;
+  animation: slideDown var(--duration-fast) var(--easing-standard);
+}
+
+.countryCodeViewport {
+  padding: var(--space-1);
+}
+
+.countryCodeItem {
+  display: flex;
+  align-items: center;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--easing-standard);
+  outline: none;
+}
+
+.countryCodeItem:hover,
+.countryCodeItem[data-highlighted] {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-primary);
+}
+
+.countryCodeItem[data-state="checked"] {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.countryCodeOption {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: 100%;
+}
+
+.flag {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.code {
+  font-family: var(--font-family-primary);
+  font-weight: 500;
+  font-size: var(--font-size-base);
+  line-height: 20px;
+  color: var(--color-text-primary);
+}
+
+.countryName {
+  font-family: var(--font-family-primary);
+  font-weight: 400;
+  font-size: var(--font-size-xs);
+  line-height: 18px;
+  color: var(--color-text-secondary);
+}
+
+.countryCodeItem[data-state="checked"] .countryName,
+.countryCodeItem[data-state="checked"] .code {
+  color: var(--color-white);
+}
+
+.phoneInput {
+  flex: 1;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--font-family-primary);
+  font-style: normal;
+  font-weight: 500;
+  font-size: var(--font-size-base);
+  line-height: 25px;
+  color: var(--color-text-primary);
+  box-sizing: border-box;
+}
+
+.phoneInput::placeholder {
+  color: var(--color-text-secondary);
+  font-weight: 400;
+  font-size: var(--font-size-xs);
+  opacity: 1;
+}
+
+.phoneInput:disabled {
+  color: var(--color-text-disabled);
+  cursor: not-allowed;
+}
+
+.phoneInput:disabled::placeholder {
+  color: var(--color-gray-500);
+}
+
+/* Error message styling matching other components */
+.errorMessage {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-error);
+  font-weight: 400;
+  line-height: var(--line-height-error);
+  color: var(--color-alert-error);
+  margin: var(--space-1) 0 0 0;
+  animation: slideIn var(--duration-fast) var(--easing-standard);
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .phoneInputWrapper {
+    padding: var(--space-2);
+    min-height: var(--size-form-field-min-height-mobile);
+  }
+
+  .phoneInput {
+    font-size: var(--font-size-sm);
+    line-height: 20px;
+  }
+
+  .countryCodeTrigger {
+    font-size: var(--font-size-sm);
+    line-height: 20px;
+    min-width: 50px;
+    margin-right: var(--space-1);
+    padding-right: var(--space-1);
+  }
+
+  .label {
+    font-size: var(--font-size-xs);
+    line-height: var(--space-4);
+    margin-bottom: 0;
+  }
+
+  .errorMessage {
+    font-size: var(--font-size-error-mobile);
+    line-height: var(--line-height-error-mobile);
+  }
+
+  .code {
+    font-size: var(--font-size-xs);
+    line-height: 18px;
+  }
+
+  .countryName {
+    font-size: 12px;
+    line-height: 16px;
+  }
+}

@@ -1,0 +1,250 @@
+.triviaSection {
+  padding: var(--space-10) var(--space-container-inline);
+  background: var(--color-bg-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: fit-content;
+}
+
+.contentContainer {
+  max-width: var(--layout-container-max-width);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.triviaTitle {
+  font-family: var(--font-family-primary);
+  font-style: normal;
+  font-weight: 400;
+  /* Responsive title size */
+  font-size: clamp(var(--font-size-xl), 2.5vw, var(--font-size-2xl));
+  line-height: 1.2;
+  text-align: center;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.triviaContent {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.triviaText {
+  font-family: var(--font-family-primary);
+  font-style: normal;
+  font-weight: 500;
+  /* Responsive text size that scales smoothly */
+  font-size: clamp(var(--font-size-2xl), 4vw, var(--font-size-4xl));
+  line-height: 1.4;
+  text-align: center;
+  color: var(--color-black);
+  margin: 0;
+  max-width: 100%;
+  /* Enhanced text wrapping */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-wrap: balance;
+  /* Better text distribution */
+}
+
+.highlight {
+  position: relative;
+  color: var(--color-secondary);
+  font-family: var(--font-family-display);
+  display: inline;
+  /* Enhanced wrapping behavior */
+  word-break: keep-all;
+  /* Prefer word boundaries */
+  overflow-wrap: break-word;
+  /* Break within words if needed */
+  /* Smooth transitions */
+  transition: color 0.2s ease;
+}
+
+.underlineWrapper {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  transform-origin: left bottom;
+  /* Enhanced rendering performance */
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  /* Smooth underline transitions */
+  transition: transform 0.2s ease;
+  /* Better SVG rendering */
+  overflow: visible;
+  /* Allow SVG to render properly */
+}
+
+.underlineImage {
+  height: clamp(0.1875rem, 1.5vw, 0.375rem);
+  object-fit: cover;
+  object-position: center;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  width: 100%;
+}
+
+.shortUnderline {
+  /* height: 4px; */
+  object-fit: contain;
+}
+
+
+
+/* Tablet styles */
+@media (max-width: 1200px) {
+  .triviaSection {
+    padding: var(--space-10) var(--space-8);
+  }
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .triviaSection {
+    padding: var(--space-8) var(--space-4);
+  }
+
+  .contentContainer {
+    gap: var(--space-4);
+  }
+
+  .triviaText {
+    /* Ensure minimum readable size on mobile */
+    font-size: clamp(var(--font-size-2xl), 5vw, var(--font-size-4xl));
+    line-height: 1.3;
+    /* Better mobile text spacing */
+    letter-spacing: -0.01em;
+  }
+
+  .highlight {
+    /* Better mobile handling for highlights */
+    display: inline;
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .underlineWrapper {
+    /* Remove scaling - let responsive offset handle spacing */
+    transform: translateZ(0);
+    /* GPU acceleration only */
+  }
+
+  /* More subtle underlines on mobile */
+  .underlineWrapper img {
+    height: clamp(0.125rem,
+        1vw,
+        0.25rem) !important;
+    /* Even smaller on mobile */
+    opacity: 0.8;
+    /* Slightly transparent for less attention */
+  }
+}
+
+/* Small mobile styles */
+@media (max-width: 480px) {
+  .triviaTitle {
+    font-size: var(--font-size-xs);
+  }
+
+  .triviaSection {
+    padding: var(--space-6) var(--space-4);
+  }
+
+  .triviaText {
+    /* Smaller but still readable on very small screens */
+    font-size: var(--font-size-xl);
+    line-height: 1.25;
+  }
+
+  .highlight {
+    /* More aggressive wrapping for very small screens */
+    word-break: break-word;
+    overflow-wrap: anywhere;
+  }
+
+  .underlineWrapper {
+    /* Remove scaling that was causing cramped appearance */
+    transform: translateZ(0);
+  }
+
+  /* Even more subtle underlines on small mobile */
+  .underlineWrapper img {
+    height: 0.125rem !important;
+    /* Fixed small height */
+    opacity: 0.7;
+    /* More transparent */
+  }
+}
+
+/* Very small screens (< 360px) */
+@media (max-width: 360px) {
+  .triviaText {
+    font-size: var(--font-size-xl);
+  }
+
+  .highlight {
+    /* Allow breaking anywhere on extremely constrained screens */
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+
+  .underlineWrapper {
+    /* Remove aggressive scaling */
+    transform: translateZ(0);
+  }
+
+  /* Minimal underlines on very small screens */
+  .underlineWrapper img {
+    height: 0.0625rem !important;
+    /* Very thin line */
+    opacity: 0.9;
+    /* Quite transparent */
+  }
+}
+
+/* Improved accessibility and performance */
+@media (prefers-reduced-motion: reduce) {
+
+  .highlight,
+  .underlineWrapper {
+    transition: none;
+  }
+}
+
+/* High DPI display adjustments */
+@media (-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi),
+(min-resolution: 2dppx) {
+  .underlineWrapper {
+    /* Sharper underlines on high-DPI displays */
+    image-rendering: crisp-edges;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .underlineWrapper img {
+    /* Better rendering on retina displays */
+    image-rendering: -webkit-optimize-contrast;
+  }
+}
+
+/* Safari/iOS: push underline SVG down for proper gap from text.
+   JS sets offset=0 on Safari (placing underline AT the text bottom).
+   This transform then adds 6px of visual gap below the text.
+   @supports (-webkit-touch-callout: none) targets Safari on macOS and iOS only. */
+@supports (-webkit-touch-callout: none) {
+  .underlineWrapper {
+    transform: translateY(6px);
+  }
+}

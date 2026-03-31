@@ -1,0 +1,216 @@
+.searchSummary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: var(--space-4);
+  background-color: var(--color-white);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-gray-200);
+}
+
+.searchInfo {
+  display: flex;
+  color: var(--color-gray-800);
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.searchSummary h2 {
+  font-size: var(--font-size-lg);
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.resultsHeader {
+  display: flex;
+  flex-direction: column;
+  gap: var(-space-4);
+}
+
+.resultsHeader h2,
+.resultsHeader p {
+  color: var(--color-text-primary);
+}
+
+.resultCount {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-gray-700);
+  font-size: var(--font-size-sm);
+}
+
+.otherOptionsHeader {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-top: var(--space-6);
+  padding: var(--space-4);
+  border-top: 1px solid var(--color-gray-200);
+}
+
+.otherOptionsHeader h2 {
+  font-size: var(--font-size-xl);
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.loadingContainer,
+.noResultsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-6);
+  padding: var(--space-8);
+  min-height: 200px;
+  width: 100%;
+  background-color: var(--color-white);
+  border-radius: var(--radius-md);
+  text-align: center;
+  border: 2px dashed var(--color-gray-200);
+}
+
+.loadingContainer p,
+.noResultsContainer p {
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--space-6);
+  color: var(--color-text-secondary);
+}
+
+.resultsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.timeFilters {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  width: 100%;
+  background-color: var(--color-white);
+  border-radius: var(--radius-md-2);
+  margin-bottom: var(--space-6);
+}
+
+.filterLabel {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-gray-800);
+  margin-bottom: var(--space-1);
+}
+
+.chipContainer {
+  display: flex;
+  gap: var(--space-3);
+  align-items: center;
+  flex-shrink: 0; /* Prevent chips from shrinking */
+}
+
+.clickableChip {
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: var(--radius-md);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--color-gray-100);
+  flex-shrink: 0; /* Prevent chips from shrinking */
+}
+
+.clickableChip:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.clickableChip:active {
+  transform: translateY(0);
+}
+
+/* Selected state styles */
+.clickableChip.selected .timeFilterChip {
+  background-color: var(--color-blue-50);
+  color: var(--color-primary);
+}
+
+.clickableChip.selected .chipText {
+  color: var(--color-white);
+  font-weight: var(--font-weight-medium);
+}
+
+.clickableChip.selected .iconWrapper {
+  color: var(--color-white);
+}
+
+/* Hover effects for non-selected chips */
+.clickableChip:not(.selected):hover .chipContainer {
+  background: var(--color-gray-50);
+  border-color: var(--color-gray-300);
+}
+
+.clickableChip:not(.selected):hover .chipText {
+  color: var(--color-gray-900);
+}
+
+/* Enhanced chip styles */
+.chipText {
+  font-weight: var(--font-weight-medium);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.iconWrapper {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Time filter chip styles */
+.timeFilterChip {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  background-color: var(--color-white);
+  border-radius: var(--radius-md);
+  transition: all 0.2s ease;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .timeFilters {
+    padding: var(--space-4);
+    margin-bottom: var(--space-4);
+  }
+
+  .chipContainer {
+    gap: var(--space-2);
+    overflow-x: auto;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    padding-bottom: var(--space-2);
+  }
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .chipContainer::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filterLabel {
+    font-size: var(--font-size-xs);
+  }
+
+  .searchSummary {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+  }
+
+  .searchInfo {
+    width: 100%;
+  }
+
+  .searchSummary h2 {
+    font-size: var(--font-size-base);
+  }
+}

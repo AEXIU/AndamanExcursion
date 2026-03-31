@@ -1,0 +1,43 @@
+/* Container matching checkout page error styles */
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+}
+
+.content {
+  text-align: center;
+  max-width: 28rem; /* 448px */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6); /* 24px */
+  padding: var(--space-10);
+  border: 2px dashed var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.title {
+  font-size: var(--font-size-2xl); /* 24px */
+  font-weight: 600;
+  margin-bottom: var(--space-4); /* 16px */
+  color: var(--color-text-primary);
+}
+
+.icon {
+  width: 198px;
+  height: 219px;
+  margin-bottom: var(--space-4); /* 16px */
+}
+
+.description {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-base); /* 16px */
+  margin-bottom: var(--space-2); /* 8px */
+}
+
+.button {
+  margin-top: var(--space-4);
+}

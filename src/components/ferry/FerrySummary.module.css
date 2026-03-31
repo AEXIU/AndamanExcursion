@@ -1,0 +1,270 @@
+/* ===== COMBINED FERRY SUMMARY ===== */
+.summarySticky {
+  position: sticky;
+  top: var(--space-4);
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* Ferry Section */
+
+.backButton {
+  margin-bottom: var(--space-3);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-size-sm);
+}
+
+/* Header - Using your original styles */
+.header {
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-card);
+  padding: var(--space-4);
+  border: 1px solid var(--color-border-secondary);
+}
+
+.headerContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.ferryInfo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.ferryDetails {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  align-items: center;
+  text-align: center;
+}
+
+.ferryDetails h3 {
+  margin: 0;
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.ferryDetails p {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+}
+
+.scheduleInfo {
+  text-align: right;
+}
+
+.timeInfo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin-bottom: var(--space-1);
+  color: var(--color-text-primary);
+  font-weight: 600;
+  justify-content: center;
+  font-size: var(--font-size-3xl);
+}
+
+.departureTime {
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.locationInfo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.duration {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.travelDate {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+/* Booking Section */
+.bookingSection {
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: var(--space-4);
+}
+
+.sectionTitle {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  margin: 0 0 var(--space-3) 0;
+  color: var(--color-text-primary);
+  text-align: center;
+}
+
+.summaryContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--font-size-sm);
+  padding: var(--space-1) 0;
+}
+
+.row span:first-child {
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+.row span:last-child {
+  color: var(--color-text-primary);
+  font-weight: 600;
+  text-align: right;
+}
+
+.divider {
+  height: 1px;
+  background: var(--color-border);
+  margin: var(--space-2) 0;
+}
+
+.priceBreakdown {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.priceBreakdown .row span:last-child {
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  padding: var(--space-2) 0;
+  margin-top: var(--space-1);
+  border-top: 2px solid var(--color-primary);
+  color: var(--color-primary);
+}
+
+.checkoutBtn {
+  width: 100%;
+  margin-top: var(--space-4);
+  font-size: var(--font-size-sm);
+  padding: var(--space-3);
+}
+
+.prompt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  background: var(--color-alert-warning-light);
+  border: 1px solid var(--color-alert-warning);
+  border-radius: var(--radius-sm);
+  margin-top: var(--space-3);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.prompt svg {
+  color: var(--color-alert-warning);
+}
+
+/* Trust Section */
+.trustSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  background: var(--color-alert-success-light);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-alert-success);
+}
+
+.trustItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+.trustItem svg {
+  color: var(--color-alert-success);
+  flex-shrink: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .summarySticky {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .bookingSection {
+    padding: var(--space-3);
+  }
+
+  .ferryTitle {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+
+  .ferryTitle h2 {
+    font-size: var(--font-size-lg);
+  }
+
+  .row {
+    font-size: var(--font-size-xs);
+  }
+
+  .total {
+    font-size: var(--font-size-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .summarySticky {
+    gap: var(--space-3);
+  }
+
+  .bookingSection,
+  .trustSection {
+    padding: var(--space-3);
+  }
+}

@@ -1,0 +1,83 @@
+.section {
+  font-family: var(--font-family-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  gap: 12px;
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: var(--space-8);
+}
+
+.sectionTitle {
+  font-size: var(--font-size-heading-4); /* 24px */
+  font-weight: 500;
+  line-height: 1.25;
+  color: #000000;
+  margin: 0;
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  gap: 24px;
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0;
+  gap: 24px;
+  width: 100%;
+}
+
+.gridItem {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0;
+  background: #ffffff;
+  border-radius: 8px;
+  position: relative;
+}
+
+.fullNameInput {
+  width: calc(75% - 12px);
+}
+
+.ageInput {
+  width: calc(25% - 12px);
+}
+
+.phoneInput {
+  width: calc(45% - 12px);
+}
+
+.emailInput {
+  width: calc(55% - 12px);
+}
+
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .fullNameInput,
+  .ageInput,
+  .phoneInput,
+  .emailInput {
+    width: 100%;
+  }
+
+  .sectionTitle {
+    font-size: var(--font-size-xl); /* 20px */
+  }
+}

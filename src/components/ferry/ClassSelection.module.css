@@ -1,0 +1,165 @@
+/* ===== CLASS SELECTION MODULE - SINGLE ROW CLEAN VERSION ===== */
+
+.sectionTitleContainer {
+  margin-bottom: var(--space-4); /* 16px */
+}
+
+.sectionTitle {
+  font-size: var(--font-size-heading-4) !important; /* 24px */
+  font-weight: 600 !important;
+  color: var(--color-text-primary);
+}
+
+.highlight {
+  color: var(--color-primary);
+}
+
+.classGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Fixed 3 columns */
+  gap: var(--space-4); /* 16px */
+  max-width: 100%;
+}
+
+.classCard {
+  border: 1px solid var(--color-border-secondary);
+  border-radius: var(--radius-base); /* 12px */
+  padding: var(--space-4); /* 16px */
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--easing-standard);
+  background: var(--color-bg-primary);
+  position: relative;
+  min-height: 140px; /* Consistent height */
+  display: flex;
+  flex-direction: column;
+}
+
+.classCard:hover {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-card);
+}
+
+.classCard.selected {
+  border-color: var(--color-primary);
+  background: var(--color-primary-light);
+}
+
+.classCardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-4); /* Increased space for better separation */
+}
+
+.classInfo {
+  flex: 1;
+}
+
+.className {
+  font-size: var(--font-size-lg); /* 18px */
+  font-weight: 600;
+  margin: 0 0 var(--space-2) 0; /* Increased bottom margin */
+  color: var(--color-text-primary);
+  line-height: 1.2;
+}
+
+.seatsInfo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1); /* 4px */
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-hint); /* 12px - same as amenities */
+}
+
+.seatsInfo svg {
+  color: var(--color-primary);
+}
+
+.classPricing {
+  text-align: right;
+}
+
+.classPrice {
+  font-size: var(--font-size-xl); /* 20px */
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 2px;
+  line-height: 1.1;
+}
+
+.priceLabel {
+  font-size: var(--font-size-hint); /* 12px */
+  color: var(--color-text-secondary);
+  line-height: 1;
+}
+
+/* Amenities pushed to bottom with proper spacing */
+.amenitiesContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2); /* 8px */
+  margin-top: auto; /* Push to bottom */
+}
+
+.amenityItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1); /* 4px */
+  font-size: var(--font-size-hint); /* 12px */
+  color: var(--color-text-secondary);
+  line-height: 1;
+}
+
+.moreAmenities {
+  font-size: var(--font-size-hint); /* 12px */
+  color: var(--color-text-secondary);
+  font-style: italic;
+  line-height: 1;
+}
+
+/* Responsive design */
+@media (max-width: 992px) {
+  .classGrid {
+    grid-template-columns: 1fr; /* Stack on tablets and smaller */
+    gap: var(--space-3); /* 12px */
+  }
+
+  .classCard {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .classGrid {
+    gap: var(--space-2); /* 8px */
+  }
+
+  .classCard {
+    padding: var(--space-3); /* 12px */
+  }
+
+  .classCardHeader {
+    /* flex-direction: column; */
+    gap: var(--space-2); /* 8px */
+  }
+
+  .classPricing {
+    text-align: left;
+  }
+
+  .className {
+    font-size: var(--font-size-base); /* 16px */
+  }
+
+  .classPrice {
+    font-size: var(--font-size-lg); /* 18px */
+  }
+}
+
+/* Special handling for exactly 3 items on larger screens */
+@media (min-width: 993px) {
+  .classGrid {
+    max-width: 900px; /* Reasonable max width for 3 columns */
+    margin: 0 auto; /* Center the grid */
+  }
+}

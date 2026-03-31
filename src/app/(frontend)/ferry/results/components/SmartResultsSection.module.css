@@ -1,0 +1,73 @@
+/* Smart Results Section Styles */
+
+.smartSection {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e2e8f0;
+  margin-bottom: 24px;
+}
+
+.smartSectionTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0 0 16px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 20px;
+  background: var(--color-primary-light, #eff6ff);
+  border-left: 4px solid var(--color-primary, #3b82f6);
+  border-bottom: 1px solid #e2e8f0;
+  border-radius: 8px 8px 0 0;
+  margin: -20px -20px 16px -20px;
+  line-height: 1.4;
+}
+
+/* Alternative title styling for better visual hierarchy */
+.smartSectionTitleAlt {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-xl, 18px);
+  font-weight: 600;
+  color: var(--color-text-primary, #111827);
+  margin: 0;
+  padding: var(--space-5, 16px) var(--space-6, 20px);
+  background: var(--color-primary-light, #eff6ff);
+  border-left: 4px solid var(--color-primary, #3b82f6);
+  border-bottom: 1px solid var(--color-border-secondary, #e2e8f0);
+  line-height: 1.4;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .smartSection {
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+  }
+
+  .smartSectionTitle {
+    font-size: 16px;
+    margin: -16px -16px 16px -16px;
+    padding: 12px 16px;
+  }
+
+  .smartSectionTitleAlt {
+    font-size: var(--font-size-lg, 16px);
+    padding: var(--space-4, 12px) var(--space-5, 16px);
+  }
+}
+
+@media (max-width: 480px) {
+  .smartSectionTitle {
+    font-size: 15px;
+    padding: 10px 14px;
+  }
+
+  .smartSectionTitleAlt {
+    font-size: var(--font-size-base, 14px);
+    padding: var(--space-3, 10px) var(--space-4, 14px);
+  }
+}

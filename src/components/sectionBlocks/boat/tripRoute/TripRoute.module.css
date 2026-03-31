@@ -1,0 +1,122 @@
+.section {
+    padding: var(--space-section) 0;
+    position: relative;
+}
+
+.content {
+    max-width: var(--max-width-container);
+    margin: 0 auto;
+    padding: 0 var(--space-4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-6);
+}
+
+.titleWrapper {
+    text-align: center;
+}
+
+/*
+ * Figma: font-size 40px, line-height 50px, font-weight 400,
+ * text-align center, color #021516
+ */
+.title {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-heading-2);
+    font-weight: 400;
+    color: var(--color-text-primary);
+    line-height: 1.25;
+    margin: 0;
+}
+
+.specialWord {
+    font-family: var(--font-family-display);
+    color: var(--color-primary);
+}
+
+.description {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    text-align: center;
+    max-width: 600px;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/*
+ * Figma: map group is 1137.65×589.41px inside a 1200px container.
+ * Should be nearly full-width, not a small centered thumbnail.
+ */
+.mapContainer {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.mapImage {
+    width: 100%;
+    height: auto;
+}
+
+/* Route point labels overlaid on the map */
+.routePoints {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+}
+
+.routePoint {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    pointer-events: auto;
+}
+
+.routePointDot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    flex-shrink: 0;
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.2);
+}
+
+.routePointLabel {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    white-space: nowrap;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 2px 8px;
+    border-radius: var(--radius-sm);
+    backdrop-filter: blur(4px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .title {
+        font-size: var(--font-size-heading-3);
+    }
+
+    .mapContainer {
+        max-width: 100%;
+    }
+
+    .routePointLabel {
+        font-size: var(--font-size-xs);
+    }
+}
+
+@media (max-width: 480px) {
+    .mapContainer {
+        max-width: 100%;
+    }
+}

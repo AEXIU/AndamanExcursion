@@ -1,0 +1,18 @@
+.storySectionContainer {
+  padding: var(--space-10);
+}
+
+.sectionContainer {
+  max-width: var(--layout-container-max-width);
+}
+
+.image {
+  border-radius: 20px 60px 20px 60px;
+  aspect-ratio: 8/3;
+}
+
+@media (max-width: 768px) {
+  .storySectionContainer {
+    padding: var(--space-6) var(--space-4);
+  }
+}

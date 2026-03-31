@@ -1,0 +1,49 @@
+.description {
+  width: 440px;
+  font-family: var(--font-family-primary);
+  font-style: normal;
+  font-weight: 400;
+  font-size: var(--font-size-xl);
+  line-height: 25px;
+  color: var(--color-text-primary);
+}
+
+.left {
+  text-align: left;
+}
+
+.center {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+}
+
+/* Tablet Responsive Design */
+@media (max-width: 1024px) {
+  .description {
+    width: 340px;
+    font-size: var(--font-size-lg);
+    line-height: 24px;
+  }
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+  .description {
+    width: 100%;
+    max-width: 374px;
+    font-size: var(--font-size-base);
+    line-height: 22px;
+    text-align: left;
+  }
+}
+
+/* Small Mobile Responsive Design */
+@media (max-width: 480px) {
+  .description {
+    font-size: var(--font-size-sm);
+    line-height: 20px;
+  }
+}

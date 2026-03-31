@@ -1,0 +1,105 @@
+/* Page-specific background styles */
+.pageBackground {
+  min-height: 100vh;
+  width: 100%;
+  margin-top: 80px;
+  position: relative; /* Ensure proper stacking context */
+}
+
+/* Individual page backgrounds */
+.page-home {
+  background-image: url("/pageBackgrounds/path_home.svg");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: 100% auto;
+  /* background-attachment: fixed; */ /* Optional: keeps background fixed during scroll */
+}
+
+.page-plan-your-trip {
+  background-image: url("/pageBackgrounds/path_plan-your-trip.svg");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: 100% auto;
+}
+
+.page-packages {
+  background-image: url("/pageBackgrounds/path_packages.svg");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: 100% auto;
+}
+
+.page-contact {
+  background-image: url("/pageBackgrounds/path_contact.svg");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: 100% auto;
+}
+
+.page-specials,
+.page-fishing,
+.page-live-volcanos,
+.page-destinations {
+  background-image: url("/pageBackgrounds/path_specials.svg");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: 100% auto;
+}
+
+/* 
+.page-about {
+  background-image: url("/images/decorative-path-about.svg");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: 100% auto;
+}
+
+
+
+
+
+.page-default {
+  background-image: url("/images/decorative-path-default.svg");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: 100% auto;
+} */
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .page-home,
+  .page-about,
+  .page-packages,
+  .page-contact,
+  .page-default {
+    background-size: 150% auto;
+    background-position: center top;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-home,
+  .page-about,
+  .page-packages,
+  .page-contact,
+  .page-default {
+    background-size: 200% auto;
+    background-position: center top;
+  }
+}
+
+/* If you want the background to cover the entire page height */
+.full-height-background {
+  background-size: 100% 100%; /* Stretches to full width AND height */
+}
+
+/* If you want the background to maintain aspect ratio but cover full height */
+.cover-background {
+  background-size: cover;
+  background-position: center center;
+}
+
+/* Animation for smooth transitions between page backgrounds */
+.page-background {
+  transition: background-image 0.3s ease-in-out;
+}

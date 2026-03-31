@@ -1,0 +1,192 @@
+.ferryContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  min-height: 850px;
+}
+
+.seatLayoutContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.seatLayout {
+  top: 0;
+  left: 0;
+  width: fit-content;
+  height: 100%;
+  display: grid;
+  grid-template-areas:
+    ". . . . . . . . . . . . . . . . . . . ." /* 1 */
+    ". . . . . . . . . . . . . . . . . . . ." /* 2 */
+    ". . . . . . . . . . . . . . . . . . . ." /* 3 */
+    ". . . . . . . . . . . . . . . . . . . ." /* 4 */
+    ". . . . . . . . . front front . . . . . . . . ." /* 6 */
+    ". . . . . . . . . . . . . . . . . . . ." /* 5 */
+    ". . . . . . . . . . . . . . . . . . . ." /* 7 */
+    ". . . . . . . shipWheelHouse shipWheelHouse shipWheelHouse shipWheelHouse shipWheelHouse shipWheelHouse . . . . . . ." /* 7 */
+    ". . . . . . . shipWheelHouse shipWheelHouse shipWheelHouse shipWheelHouse shipWheelHouse shipWheelHouse . . . . . . ." /* 7 */
+    ". . . . . . . shipWheelHouse shipWheelHouse shipWheelHouse shipWheelHouse shipWheelHouse shipWheelHouse . . . . . . ." /* 7 */
+    ". . . . . . . shipWheelHouse shipWheelHouse shipWheelHouse shipWheelHouse shipWheelHouse shipWheelHouse . . . . . . ." /* 7 */
+    ". . . . . . . . . . . . . . . . . . . ." /* 7 */
+    ". . . . . . . . . . . . . . . . . . . ." /* 39 */
+    ". . . . . . . . . . . . . . . . . . . ." /* 7 */
+    ". . . . . . . . . . . . . . . . . . . ." /* 7 */
+    ". . . . . . . . . . . . . . . . . . . ." /* 8 */
+    ". . . . . . . . . . . . . . . . . . . ." /* 38 */
+    ". . . . . . . . . . . . . . . . . . . ." /* 39 */
+    ". . . . . . . . . . . . . . . . . . . ." /* 7 */
+    ". . . . . . . . . . . . . . . . . . . ." /* 7 */
+    ". . . . . group1 group1 group1 group1 . . group2 group2 group2 group2 . . . . ." /* 7 */
+    ". . . . . group1 group1 group1 group1 . . group2 group2 group2 group2 . . . . ." /* 7 */
+    ". . . . . group1 group1 group1 group1 . . group2 group2 group2 group2 . . . . ." /* 7 */
+    ". . . . . . group3 group3 group3 . . group4 group4 group4 . . . . . ." /* 7 */
+    ". . . . . . . . . . . . . . . . . . . ." /* 7 */
+    ". . . . . . . . . . . . . . . . . . . ." /* 8 */
+    ". . . . . . . . . . . . . . . . . . . ." /* 38 */
+    ". . . . . . . . . . . . . . . . . . . ." /* 39 */
+    ". . . . . . . . . . . . . . . . . . . ." /* 42 */
+    ". . . . . . . . . . . . . . . . . . . ." /* 43 */
+    ". . . . . . . . . . . . . . . . . . . ." /* 44 */
+    ". . . . . . . . . . . . . . . . . . . ." /* 45 */
+    ". . . . . . . . . . . . . . . . . . . ." /* 42 */
+    ". . . . . . . . . . . . . . . . . . . ." /* 43 */
+    ". . . . . . . . . . . . . . . . . . . ." /* 44 */
+    ". . . . . . . . . . . . . . . . . . . ." /* 45 */
+    ". . . . . . . . . cafe cafe . . . . . . . . ." /* 42 */
+    ". . . . . . . . . cafe cafe . . . . . . . . ." /* 42 */
+    ". . . . . . . . . . . . . . . . . . . ." /* 45 */
+    ". . . . . . . shipRescueBoat shipRescueBoat shipRescueBoat shipRescueBoat shipRescueBoat shipRescueBoat . . . . . . ." /* 40 */
+    ". . . . . . . shipRescueBoat shipRescueBoat shipRescueBoat shipRescueBoat shipRescueBoat shipRescueBoat . . . . . . ." /* 41 */
+    ". . . . . . . . . . . . . . . . . . . ."; /* 46 */
+
+  grid-template-columns: repeat(20, 20px);
+  grid-template-rows: repeat(auto-fill, 20px);
+  gap: 0px;
+}
+
+.seatGroup {
+  display: grid;
+  gap: 0px;
+}
+
+.group1 {
+  grid-area: group1;
+  grid-template-columns: repeat(4, 20px);
+  grid-template-rows: repeat(3, 20px);
+}
+
+.group2 {
+  grid-area: group2;
+  grid-template-columns: repeat(4, 20px);
+  grid-template-rows: repeat(3, 20px);
+}
+
+.group3 {
+  grid-area: group3;
+  grid-template-columns: repeat(3, 20px);
+  grid-template-rows: repeat(5, 20px);
+}
+
+.group4 {
+  grid-area: group4;
+  grid-template-columns: repeat(3, 20px);
+  grid-template-rows: repeat(5, 20px);
+}
+
+.shipRescueBoatContainer {
+  grid-area: shipRescueBoat;
+}
+
+.shipWheelHouseContainer {
+  grid-area: shipWheelHouse;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.frontContainer {
+  grid-area: front;
+  color: var(--color-text-primary);
+}
+
+.cafeContainer {
+  grid-area: cafe;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.seatInteractive,
+.seatDisabled {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: #000;
+  font-size: 8px;
+  font-weight: 600;
+  position: relative;
+  align-self: center;
+  justify-self: center;
+}
+
+.seatDisabled {
+  cursor: not-allowed;
+}
+
+.emptySeat {
+  width: 16px;
+  height: 16px;
+  background-color: transparent;
+  pointer-events: none;
+}
+
+.seatImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  user-select: none;
+  pointer-events: none;
+}
+
+.seatNumber {
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: clamp(6px, 1.2vw, 8px);
+  font-weight: 600;
+  color: #333;
+  pointer-events: none;
+  text-shadow: 0 0 2px rgba(255, 255, 255, 0.8);
+}
+
+@media (max-width: 480px) {
+  .seatLayoutContainer {
+    transform: scale(0.9);
+  }
+}
+
+@media (max-width: 360px) {
+  .seatLayoutContainer {
+    transform: scale(0.75);
+  }
+}
+
+@media (max-width: 320px) {
+  .seatLayoutContainer {
+    transform: scale(0.6);
+  }
+}

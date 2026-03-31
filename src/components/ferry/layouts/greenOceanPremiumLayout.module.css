@@ -1,0 +1,252 @@
+.ferryContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  min-height: 850px;
+}
+
+.seatLayoutContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.seatLayout {
+  top: 0;
+  left: 0;
+  width: fit-content;
+  height: 100%;
+  display: grid;
+  grid-template-areas:
+    " . . . . . . . . . . . . . . . . . ." /* 1 */
+    " . . . . . . . . . . . . . . . . . ." /* 2 */
+    " . . . . . . . . . . . . . . . . . ." /* 3 */
+    " . . . . . . . . . . . . . . . . . ." /* 3 */
+    " . . . . . . . . . . . . . . . . . ." /* 3 */
+    " . . . . . . . . . . . . . . . . . ." /* 38 */
+    " . . . . . . . . front front . . . . . . . ." /* 4 */
+    " . . . . . . . . . . . . . . . . . ." /* 39 */
+    " . . . . . . . . . . . . . . . . . ." /* 37 */
+    " . . . . . . . . . . . . . . . . . ." /* 38 */
+    " . . . . . . . . . . . . . . . . . ." /* 3 */
+    " . . . . . . . . . . . . . . . . . ." /* 3 */
+    " . . . . . . . . . . . . . . . . . ." /* 6 */
+    " . . . . . . . . . . . . . . . . . ." /* 7 */
+    " . . . . . . . group2 group2 group2 group2 . group5 group5 . . . ." /* 8 */
+    " . . . . group1 group1 . group2 group2 group2 group2 . group5 group5 . . . ." /* 9 */
+    " . . . . group1 group1 . group2 group2 group2 group2 . group5 group5 . . . ." /* 9 */
+    " . . . . group1 group1 . group2 group2 group2 group2 . group5 group5 . . . ." /* 9 */
+    " . . . . group1 group1 . group2 group2 group2 group2 . group5 group5 . . . ." /* 9 */
+    " . . . . group1 group1 . group2 group2 group2 group2 . group5 group5 . . . ." /* 9 */
+    " . . . . group1 group1 . group2 group2 group2 group2 . group5 group5 . . . ." /* 9 */
+    " . . . . group1 group1 . . . . . . group5 group5 . . . ." /* 9 */
+    " . . . . group1 group1 . group3 shipStairsDown shipStairsDown group4 . group5 group5 . . . ." /* 9 */
+    " . . . . . . . group3 shipStairsDown shipStairsDown group4 . group5 group5 . . . ." /* 9 */
+    " . . . . . . . . shipStairsDown shipStairsDown . . . . . . . ." /* 10 */
+    " . . . . . . . group8 group8 group8 group8 . . . . . . ." /* 11 */
+    " . . . . . . . group9 group9 group9 group9 . . . . . . ." /* 11 */
+    " . . . . . . . group10 . . . . . . . . . ." /* 12 */
+    " . . . . group6 group6 group6 group11 group11 group11 group11 group12 group12 group12 . . . ." /* 13 */
+    " . . . . group6 group6 group6 . . . . group12 group12 group12 . . . ." /* 14 */
+    " . . . . group7 group7 . . . . . group12 group12 group12 . . . ." /* 15 */
+    " . . . . group7 group7 . . . . . group12 group12 group12 . . . ." /* 16 */
+    " . . . . . . . . . . . . . . . . . ." /* 17 */
+    " . . . . . . . . . . . . . . . . . ." /* 18 */
+    " . . . . . . . . . . . . . . . . . ." /* 32 */
+    " . . . . . . . . . . . . . . . . . ." /* 33 */
+    " . . . . . . . . . . . . . . . . . ." /* 36 */
+    " . . . . . . . . . . . . . . . . . ." /* 37 */
+    " . . . . . . shipRescueBoat shipRescueBoat shipRescueBoat shipRescueBoat shipRescueBoat shipRescueBoat . . . . . ."
+    " . . . . . . shipRescueBoat shipRescueBoat shipRescueBoat shipRescueBoat shipRescueBoat shipRescueBoat . . . . . ."
+    " . . . . . . . . . . . . . . . . . ." /* 39 */
+    " . . . . . . . . . . . . . . . . . ."; /* 40 */
+
+  grid-template-columns: repeat(18, 20px);
+  grid-template-rows: repeat(40, 20px);
+  gap: 0px;
+}
+
+.seatGroup {
+  display: grid;
+  gap: 0px;
+}
+
+/* Premium Layout Groups - All 12 Groups */
+
+/* Group 1: Left side - 2x8 grid (P1-P16) */
+.group1 {
+  grid-area: group1;
+  grid-template-columns: repeat(2, 20px);
+  grid-template-rows: repeat(8, 20px);
+}
+
+/* Group 2: Upper center - 4x7 grid (P17-P44) */
+.group2 {
+  grid-area: group2;
+  grid-template-columns: repeat(4, 20px);
+  grid-template-rows: repeat(7, 20px);
+}
+
+/* Group 3: Small upper right - 1x2 grid (P45-P46) */
+.group3 {
+  grid-area: group3;
+  grid-template-columns: repeat(1, 20px);
+  grid-template-rows: repeat(2, 20px);
+}
+
+/* Group 4: Small upper right - 1x2 grid (P47-P48) */
+.group4 {
+  grid-area: group4;
+  grid-template-columns: repeat(1, 20px);
+  grid-template-rows: repeat(2, 20px);
+}
+
+/* Group 5: Right side - 2x10 grid (P49-P68) */
+.group5 {
+  grid-area: group5;
+  grid-template-columns: repeat(2, 20px);
+  grid-template-rows: repeat(10, 20px);
+}
+
+/* Group 6: Bottom Left - 3x2 grid (P69-P74) */
+.group6 {
+  grid-area: group6;
+  grid-template-columns: repeat(3, 20px);
+  grid-template-rows: repeat(2, 20px);
+}
+
+/* Group 7: Bottom Left - 2x2 grid (P75-P79, missing P77) */
+.group7 {
+  grid-area: group7;
+  grid-template-columns: repeat(2, 20px);
+  grid-template-rows: repeat(2, 20px);
+}
+
+/* Group 8: Middle pair - 1x4 grid (P83, null, null, P86) */
+.group8 {
+  grid-area: group8;
+  grid-template-columns: repeat(4, 20px);
+  grid-template-rows: repeat(1, 20px);
+}
+
+/* Group 9: Center middle - 4x1 grid (P87-P90) */
+.group9 {
+  grid-area: group9;
+  grid-template-columns: repeat(4, 20px);
+  grid-template-rows: repeat(1, 20px);
+}
+
+/* Group 10: Single seat - 1x1 grid (P91) */
+.group10 {
+  grid-area: group10;
+  grid-template-columns: repeat(1, 20px);
+  grid-template-rows: repeat(1, 20px);
+}
+
+/* Group 11: Bottom right - 4x1 grid (P92-P95) */
+.group11 {
+  grid-area: group11;
+  grid-template-columns: repeat(4, 20px);
+  grid-template-rows: repeat(1, 20px);
+}
+
+/* Group 12: Bottom left - 3x4 grid (P96-P106 + null) */
+.group12 {
+  grid-area: group12;
+  grid-template-columns: repeat(3, 20px);
+  grid-template-rows: repeat(4, 20px);
+}
+
+/* Utility areas */
+.shipRescueBoatContainer {
+  grid-area: shipRescueBoat;
+}
+
+.shipStairsDownContainer {
+  grid-area: shipStairsDown;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.frontContainer {
+  grid-area: front;
+  color: var(--color-text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Seat styling */
+.seatInteractive,
+.seatDisabled {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: #000;
+  font-size: 8px;
+  font-weight: 600;
+  position: relative;
+  align-self: center;
+  justify-self: center;
+}
+
+.seatDisabled {
+  cursor: not-allowed;
+}
+
+.emptySeat {
+  width: 16px;
+  height: 16px;
+  background-color: transparent;
+  pointer-events: none;
+}
+
+.seatImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  user-select: none;
+  pointer-events: none;
+}
+
+.seatNumber {
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: clamp(6px, 1.2vw, 8px);
+  font-weight: 600;
+  color: #333;
+  pointer-events: none;
+  text-shadow: 0 0 2px rgba(255, 255, 255, 0.8);
+}
+
+@media (max-width: 480px) {
+  .seatLayoutContainer {
+    transform: scale(0.9);
+  }
+}
+
+@media (max-width: 360px) {
+  .seatLayoutContainer {
+    transform: scale(0.75);
+  }
+}
+
+@media (max-width: 320px) {
+  .seatLayoutContainer {
+    transform: scale(0.6);
+  }
+}

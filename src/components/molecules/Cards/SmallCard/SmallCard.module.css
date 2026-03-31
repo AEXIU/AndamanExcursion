@@ -1,0 +1,211 @@
+.cardContainer {
+  position: relative;
+  width: 100%;
+  max-width: 375px;
+  height: 424px;
+  border-radius: var(--radius-md) var(--radius-2xl);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.cardContainerWithDescription {
+  height: 360px;
+  max-width: unset;
+}
+
+.cardContainer:hover {
+  transform: translateY(-5px);
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* ImageContainer will handle the image positioning and styling */
+.cardImage {
+  position: absolute !important;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  /* Override ImageContainer's border-radius to match card */
+  border-radius: 0 !important;
+}
+
+.imageOverlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+  z-index: 2;
+}
+
+.contentContainer {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  height: 100%;
+  padding: var(--space-10);
+}
+
+.contentContainerWithDescription {
+  justify-content: flex-end;
+}
+
+.contentContainer:has(.durationBadge) {
+  justify-content: space-between;
+}
+
+.contentContainer:has(.ratingBadge) {
+  justify-content: flex-end;
+}
+
+.durationBadge {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-2);
+  gap: var(--space-2);
+  width: fit-content;
+  height: 36px;
+  background: var(--color-white);
+  border-radius: var(--radius-sm);
+}
+
+.durationText {
+  font-family: var(--font-family-primary);
+  font-style: normal;
+  font-weight: 500;
+  font-size: var(--font-size-base);
+  line-height: 20px;
+  color: var(--color-text-primary);
+}
+
+.ratingBadge,
+.favouriteBadge {
+  margin-bottom: var(--space-3);
+  background: #ffffff20;
+  backdrop-filter: blur(4px);
+}
+
+.ratingBadge span,
+.favouriteBadge span {
+  white-space: nowrap;
+  color: var(--color-white) !important;
+}
+
+.favouriteBadge span {
+  font-size: 12px;
+}
+
+.cardInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-1);
+  width: 100%;
+}
+
+.cardTitle {
+  font-family: var(--font-family-display);
+  font-style: normal;
+  font-weight: 400;
+  font-size: var(--font-size-3xl);
+  line-height: 39px;
+  color: var(--color-white);
+  width: 100%;
+  margin: 0;
+}
+
+.cardPrice {
+  font-family: var(--font-family-primary);
+  font-style: normal;
+  font-weight: 500;
+  font-size: var(--font-size-base);
+  line-height: 20px;
+  color: var(--color-white);
+  width: 100%;
+  margin: 0;
+}
+
+.cardDescription {
+  font-family: var(--font-family-primary);
+  font-style: normal;
+  font-weight: 400;
+  font-size: var(--font-size-base);
+  line-height: 20px;
+}
+
+.arrowButton {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  right: var(--space-10);
+  bottom: var(--space-10);
+  background: var(--color-white);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+  border: none;
+  z-index: 4;
+  opacity: 0;
+}
+
+.arrowButtonWithDescription {
+  bottom: unset;
+  top: var(--space-10);
+}
+
+.cardContainer:hover .arrowButton {
+  opacity: 1;
+}
+
+.arrowButton:hover {
+  transform: scale(1.1);
+}
+
+.cardLink {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+@media (max-width: 1200px) {
+  .cardContainer {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .cardContainer {
+    height: 380px;
+    max-width: 100%;
+  }
+
+  .contentContainer {
+    padding: var(--space-6) var(--space-4);
+  }
+
+  .arrowButton {
+    opacity: 1;
+  }
+}

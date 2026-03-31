@@ -1,0 +1,124 @@
+.dayContainer {
+  display: flex;
+  position: relative;
+  padding-bottom: var(--space-10);
+}
+
+.dayNumberTextDot {
+  content: "";
+  display: block;
+  width: 12px;
+  height: 12px;
+  background-color: var(--color-secondary);
+  margin-right: var(--space-2);
+  /* margin-bottom: var(--space-2); */
+  /* position: absolute; */
+  border-radius: 100%;
+  flex-shrink: 0;
+}
+
+.timelineMarker {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: var(--space-6);
+}
+
+.dot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 12px;
+  height: 12px;
+  background-color: var(--color-secondary);
+  border-radius: 50%;
+  color: var(--color-white);
+  font-family: var(--font-family-primary);
+  font-weight: 600;
+  font-size: var(--font-size-base);
+  z-index: 2;
+  margin-top: 1em;
+}
+
+.line {
+  position: absolute;
+  top: 1em;
+  width: 1px;
+  border: 1px dashed var(--color-secondary);
+  /* dotted */
+
+  height: 150%;
+  /* background-color: var(--color-border-secondary); */
+  z-index: 1;
+}
+
+.content {
+  flex: 1;
+  padding-top: var(--space-2);
+}
+
+.dayNumber {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: 400;
+  color: var(--color-text-secondary);
+}
+
+.title {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-xl);
+  font-weight: 400;
+  color: var(--color-secondary);
+}
+
+.dayNumberTextSeparator {
+  font-size: var(--font-size-xl);
+  font-weight: 400;
+  color: var(--color-text-secondary);
+}
+
+.dayNumberText {
+  font-size: var(--font-size-xl);
+  font-weight: 500;
+  color: var(--color-text-primary);
+  text-wrap: nowrap;
+  white-space: nowrap;
+}
+
+.description {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-4);
+  margin-left: var(--space-6);
+  line-height: 1.5;
+}
+
+.activities {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.activity {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .dayContainer {
+    padding-bottom: var(--space-8);
+  }
+
+  .timelineMarker {
+    margin-right: var(--space-4);
+  }
+
+  .title {
+    font-size: var(--font-size-lg);
+  }
+}

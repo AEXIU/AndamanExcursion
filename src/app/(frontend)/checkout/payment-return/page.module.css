@@ -1,0 +1,126 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-12);
+}
+
+.card {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: var(--space-12);
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+  border: 2px dashed var(--color-gray-200);
+}
+
+.iconSpinning {
+  color: var(--color-primary);
+  animation: spin 1s linear infinite;
+  margin: 0 auto var(--space-6);
+  font-size: var(--font-size-4xl);
+}
+
+.iconSuccess {
+  color: var(--color-alert-success);
+  margin: 0 auto var(--space-6);
+  font-size: var(--font-size-4xl);
+}
+
+.iconError {
+  color: var(--color-alert-error);
+  margin: 0 auto var(--space-6);
+  font-size: var(--font-size-4xl);
+}
+
+.iconPending {
+  color: var(--color-alert-warning);
+  margin: 0 auto var(--space-6);
+  font-size: var(--font-size-4xl);
+}
+
+.title {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  margin-bottom: var(--space-6);
+  color: var(--color-text-primary);
+  line-height: 1.25;
+}
+
+.message {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-3);
+  line-height: 1.6;
+}
+
+.subMessage {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.button {
+  margin-top: var(--space-6);
+  padding: var(--space-3) var(--space-6);
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-button);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--easing-standard);
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+.button:disabled {
+  background: var(--color-button-disabled);
+  color: var(--color-button-disabled-text);
+  cursor: not-allowed;
+  transform: none;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: var(--space-6);
+  }
+
+  .card {
+    padding: var(--space-6) var(--space-3);
+  }
+
+  .title {
+    font-size: var(--font-size-xl);
+  }
+
+  .message {
+    font-size: var(--font-size-sm);
+  }
+
+  .iconSpinning,
+  .iconSuccess,
+  .iconError,
+  .iconPending {
+    font-size: var(--font-size-3xl);
+  }
+}

@@ -1,0 +1,53 @@
+.experience {
+  position: relative;
+  background-color: var(--color-bg-tertiary);
+  padding: var(--space-14) var(--space-6);
+}
+
+.experienceContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-14);
+  z-index: 1;
+}
+
+.featureCard {
+  border: 1px solid var(--color-bg-tertiary);
+}
+
+.dottedWave {
+  z-index: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .experience {
+    padding: var(--space-10) var(--space-6);
+  }
+}
+
+@media (max-width: 768px) {
+  .experience {
+    padding: var(--space-8) var(--space-4);
+  }
+
+  .experienceContainer {
+    gap: var(--space-8);
+  }
+
+  .description {
+    max-width: unset;
+  }
+
+  /* Feature Cards Responsive */
+  .experienceContainer [class*="Row"] {
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+}
+
+@media (max-width: 480px) {
+  .experience {
+    padding: var(--space-6) var(--space-3);
+  }
+}

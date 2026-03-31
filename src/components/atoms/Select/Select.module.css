@@ -1,0 +1,234 @@
+/* Select.module.css */
+
+/* Field container to match LocationSelect structure */
+.fieldContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.selectWrapper {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: var(--space-3);
+  gap: var(--space-1);
+  min-width: var(--size-form-field-min-width);
+  min-height: var(--size-form-field-min-height);
+  height: auto; /* Allow height to expand for error messages */
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  width: 100%;
+  position: relative;
+  transition: all var(--duration-fast) var(--easing-standard);
+}
+
+.selectWrapper:hover {
+  border-color: var(--color-primary);
+}
+
+.selectWrapper:hover .selectIcon {
+  color: var(--color-primary);
+}
+
+.selectWrapper:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px var(--color-focus-blue);
+}
+
+/* Error state matching LocationSelect component */
+.error {
+  border-color: var(--color-error-border-subtle) !important;
+  background-color: var(--color-error-bg-subtle);
+}
+
+.error:hover,
+.error:focus,
+.error:focus-within {
+  border-color: var(--color-alert-error) !important;
+  box-shadow: 0 0 0 2px var(--color-error-focus) !important;
+}
+
+.selectWrapper > span:last-of-type {
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  font-family: var(--font-family-primary);
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  margin-right: 1em;
+}
+
+.selectLabel {
+  font-family: var(--font-family-primary);
+  font-style: normal;
+  font-weight: 400;
+  font-size: var(--font-size-xs);
+  line-height: var(--space-5);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: color var(--duration-fast) var(--easing-standard);
+  margin-bottom: 0;
+  display: block;
+  width: 100%;
+}
+
+.selectLabel:hover {
+  color: var(--color-primary);
+}
+
+/* Required asterisk styling matching Input component */
+.required {
+  color: var(--color-alert-error);
+  margin-left: var(--space-1);
+}
+
+.selectValue {
+  color: var(--color-text-primary);
+  font-family: var(--font-family-primary);
+  font-weight: 500;
+  font-size: var(--font-size-base);
+  line-height: 25px;
+}
+
+/* Chevron icon styling - positioned at the value line level */
+.selectIcon {
+  position: absolute;
+  right: var(--space-3);
+  top: 38px; /* Align with the value text line */
+  pointer-events: none;
+  transition: transform var(--duration-base) var(--easing-standard),
+    color var(--duration-base) var(--easing-standard);
+  color: var(--color-text-primary);
+}
+
+/* Text primary color for default state */
+.textPrimary {
+  color: var(--color-text-primary);
+}
+
+/* Primary color for selected state */
+.primary {
+  color: var(--color-primary);
+}
+
+/* Rotate icon when select is open */
+.selectWrapper[data-state="open"] .selectIcon {
+  transform: rotate(180deg);
+  color: var(--color-primary);
+}
+
+/* Dropdown styling */
+.selectContent {
+  overflow: hidden;
+  background: var(--color-bg-primary);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-elevated);
+  min-width: var(--min-width, 180px);
+  animation: slideDownAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 20000;
+  max-height: 200px;
+  border: 1px solid var(--color-border-secondary);
+}
+
+.selectItem {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-sm);
+  line-height: var(--space-5);
+  color: var(--color-text-primary);
+  padding: var(--space-4) var(--space-6);
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+  position: relative;
+}
+
+.selectItem[data-highlighted] {
+  background: var(--color-bg-secondary);
+  color: var(--color-primary);
+}
+
+.selectItem[data-state="checked"] {
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+}
+
+/* Error message styling matching LocationSelect component */
+.errorMessage {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-error);
+  font-weight: 400;
+  line-height: var(--line-height-error);
+  color: var(--color-alert-error);
+  margin: var(--space-1) 0 0 0;
+  animation: slideIn var(--duration-fast) var(--easing-standard);
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Disabled state styles */
+.selectWrapper.disabled {
+  opacity: 0.6;
+}
+
+.selectWrapper.disabled .selectValue {
+  color: var(--color-text-disabled);
+}
+
+@keyframes slideDownAndFade {
+  from {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .selectWrapper {
+    padding: var(--space-2);
+    min-height: var(--size-form-field-min-height-mobile);
+  }
+  
+  .selectContent {
+    max-height: 150px;
+  }
+  
+  .selectLabel {
+    font-size: var(--font-size-xs);
+    line-height: var(--space-4);
+  }
+  
+  .selectValue {
+    font-size: var(--font-size-sm);
+    line-height: var(--space-5);
+  }
+  
+  .errorMessage {
+    font-size: var(--font-size-error-mobile);
+    line-height: var(--line-height-error-mobile);
+  }
+  
+  .selectIcon {
+    right: var(--space-2);
+  }
+}

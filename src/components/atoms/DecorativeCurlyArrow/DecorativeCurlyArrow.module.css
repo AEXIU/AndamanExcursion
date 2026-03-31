@@ -1,0 +1,90 @@
+/* Base arrow styles */
+.curlyArrow {
+  position: absolute;
+  object-fit: contain;
+  object-position: center;
+  pointer-events: none;
+  user-select: none;
+  transition: opacity 0.3s ease;
+}
+
+
+.curlyArrow--blue {
+  filter: hue-rotate(180deg);
+}
+
+.curlyArrow--purple {
+  filter: hue-rotate(270deg);
+}
+
+/* Animation variants */
+.curlyArrow--bounce {
+  animation: bounce 2s infinite;
+}
+
+.curlyArrow--float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.curlyArrow--pulse {
+  animation: pulse 2s infinite;
+}
+
+/* Responsive visibility */
+.curlyArrow--hideMobile {
+  @media (max-width: 767px) {
+    display: none;
+  }
+}
+
+.curlyArrow--hideTablet {
+  @media (max-width: 1023px) {
+    display: none;
+  }
+}
+
+/* Animations */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1023px) {
+  .curlyArrow {
+    /* Slightly smaller on tablets */
+    transform: scale(0.8);
+  }
+}
+
+@media (max-width: 767px) {
+  .curlyArrow {
+    /* Even smaller on mobile */
+    transform: scale(0.6);
+  }
+}

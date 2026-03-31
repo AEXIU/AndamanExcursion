@@ -1,0 +1,209 @@
+/* Field container to match input structure */
+.fieldContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.selectWrapper {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: var(--space-3);
+  gap: var(--space-1);
+  min-width: var(--size-form-field-min-width);
+  min-height: var(--size-form-field-min-height);
+  height: auto; /* Allow height to expand for error messages */
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  width: 100%;
+  position: relative;
+  transition: all var(--duration-fast) var(--easing-standard);
+}
+
+.selectWrapper:hover {
+  border-color: var(--color-primary);
+}
+
+.selectWrapper:hover .dateNavButton {
+  color: var(--color-primary);
+}
+
+.selectWrapper:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px var(--color-focus-blue);
+}
+
+/* Error state matching Input component */
+.error {
+  border-color: var(--color-error-border-subtle) !important;
+  background-color: var(--color-error-bg-subtle);
+}
+
+.error:hover,
+.error:focus,
+.error:focus-within {
+  border-color: var(--color-alert-error) !important;
+  box-shadow: 0 0 0 2px var(--color-error-focus) !important;
+}
+
+/* Updated label styling to work with proper HTML label element */
+.selectLabel {
+  font-family: var(--font-family-primary);
+  font-style: normal;
+  font-weight: 400;
+  font-size: var(--font-size-xs);
+  line-height: var(--space-5);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: color var(--duration-fast) var(--easing-standard);
+  margin-bottom: 0;
+  display: block;
+  width: 100%;
+  /* Ensure label doesn't interfere with click events on the wrapper */
+  pointer-events: auto;
+}
+
+/* Hover effect when hovering the wrapper or the label directly */
+.selectWrapper:hover .selectLabel,
+.selectLabel:hover {
+  color: var(--color-primary);
+}
+
+/* Required asterisk styling matching Input component */
+.required {
+  color: var(--color-alert-error);
+  margin-left: var(--space-1);
+}
+
+.datePickerInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: var(--space-1);
+  flex: 1; /* Take remaining space */
+  margin-top: auto; /* Push to bottom of available space */
+  position: relative;
+}
+
+.dateNavButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-primary);
+  padding: 0;
+  margin: 0;
+  width: var(--space-5);
+  height: var(--space-5);
+  border-radius: var(--radius-xs);
+  transition: all var(--duration-fast) var(--easing-standard);
+  /* Prevent label click from triggering button */
+  pointer-events: auto;
+}
+
+.dateNavButton:hover:not(:disabled) {
+  color: var(--color-primary);
+  background: var(--color-bg-secondary);
+}
+
+.dateNavButton:disabled {
+  color: var(--color-text-disabled);
+  cursor: not-allowed;
+}
+
+.datePicker {
+  border: none;
+  background: transparent;
+  font-family: var(--font-family-primary);
+  font-weight: 500;
+  font-size: var(--font-size-base);
+  color: var(--color-text-primary);
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  line-height: 0.6;
+  /* Ensure the input receives click events properly */
+  pointer-events: auto;
+}
+
+.datePicker:focus {
+  outline: none;
+}
+
+/* Error message styling matching Input component */
+.errorMessage {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-error);
+  font-weight: 400;
+  line-height: var(--line-height-error);
+  color: var(--color-alert-error);
+  margin: var(--space-1) 0 0 0;
+  animation: slideIn var(--duration-fast) var(--easing-standard);
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Add styles for the date picker to ensure it doesn't shift layout */
+.react-datepicker-wrapper {
+  width: 100%;
+}
+
+.react-datepicker__input-container {
+  width: 100%;
+}
+
+/* Add a stable container for the datepicker */
+.datePickerContainer {
+  position: relative;
+  width: 100%;
+  min-height: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .selectWrapper {
+    width: 100%;
+    padding: var(--space-2);
+  }
+
+  .selectLabel {
+    font-size: var(--font-size-xs);
+    line-height: var(--space-4);
+  }
+
+  .datePicker {
+    font-size: var(--font-size-sm);
+    line-height: var(--space-5);
+  }
+
+  .errorMessage {
+    font-size: var(--font-size-error-mobile);
+    line-height: var(--line-height-error-mobile);
+  }
+
+  .selectWrapper,
+  .fieldContainer > .selectWrapper {
+    min-height: var(--size-form-field-min-height-mobile);
+  }
+}

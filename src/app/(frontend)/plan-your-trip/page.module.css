@@ -1,0 +1,7 @@
+.container {
+  margin-top: 80px;
+  gap: var(--space-section);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

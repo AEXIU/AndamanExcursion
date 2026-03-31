@@ -1,0 +1,101 @@
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.fullHeight {
+  height: 100%;
+}
+
+/* Justify content options */
+.justify-start {
+  justify-content: flex-start;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+.justify-evenly {
+  justify-content: space-evenly;
+}
+
+/* Align items options */
+.align-start {
+  align-items: flex-start;
+}
+
+.align-end {
+  align-items: flex-end;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.align-baseline {
+  align-items: baseline;
+}
+
+.align-stretch {
+  align-items: stretch;
+}
+
+/* Responsive behavior */
+.responsive {
+  @media (max-width: 768px) {
+    gap: var(--responsive-gap, var(--space-4)) !important;
+    align-items: var(--responsive-align, flex-start);
+  }
+}
+
+/* Responsive alignment overrides */
+.responsive-align-start {
+  @media (max-width: 768px) {
+    align-items: flex-start;
+  }
+}
+
+.responsive-align-end {
+  @media (max-width: 768px) {
+    align-items: flex-end;
+  }
+}
+
+.responsive-align-center {
+  @media (max-width: 768px) {
+    align-items: center;
+  }
+}
+
+.responsive-align-baseline {
+  @media (max-width: 768px) {
+    align-items: baseline;
+  }
+}
+
+.responsive-align-stretch {
+  @media (max-width: 768px) {
+    align-items: stretch;
+  }
+}

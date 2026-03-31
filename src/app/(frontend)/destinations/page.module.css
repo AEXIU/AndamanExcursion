@@ -1,0 +1,18 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-section);
+  padding: 80px 0;
+}
+@media (max-width: 768px) {
+  .main {
+    padding: 60px 0;
+    gap: var(--space-12);
+  }
+}
+
+@media (max-width: 480px) {
+  .main {
+    padding: 40px 0;
+  }
+}

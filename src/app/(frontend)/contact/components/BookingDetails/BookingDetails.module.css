@@ -1,0 +1,436 @@
+/* BookingDetails.module.css */
+.section {
+  font-family: var(--font-family-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  gap: 12px;
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: var(--space-8);
+}
+
+.sectionTitle {
+  font-size: var(--font-size-heading-4); /* 24px */
+  font-weight: 500;
+  line-height: 1.25;
+  color: #000000;
+  margin: 0;
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  gap: 24px;
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0;
+  gap: 24px;
+  width: 100%;
+}
+
+.gridItem {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 12px;
+  gap: 8px;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.gridItem:hover {
+  border-color: var(--color-primary);
+}
+
+.gridItem:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px var(--color-focus-blue);
+}
+
+.gridItem.package {
+  width: calc(50% - 12px);
+  flex-grow: 1;
+}
+
+.gridItem.duration {
+  width: calc(30% - 12px);
+}
+
+/* .gridItem.amount {
+  width: calc(20% - 12px);
+} */
+
+.gridItem.date {
+  width: calc(50% - 12px);
+  padding: 0; /* DateSelect component handles its own padding */
+  border: none; /* DateSelect component handles its own border */
+}
+
+.gridItem.counter {
+  width: calc(25% - 12px);
+  padding: 12px 24px;
+}
+
+.label {
+  font-size: var(--font-size-xs); /* 14px */
+  font-weight: 400;
+  line-height: 1.4;
+  color: #6f6f6f;
+  margin: 0;
+}
+
+.valueContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0;
+  gap: 4px;
+  width: 100%;
+}
+
+.value {
+  font-size: var(--font-size-base); /* 16px */
+  font-weight: 500;
+  line-height: 1.25;
+  color: #000000;
+  margin: 0;
+}
+
+.amountText {
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.gridItem:hover .amountText {
+  color: var(--color-primary);
+}
+
+/* Select dropdown styling */
+.selectTrigger {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+  min-height: 24px;
+  transition: all 0.2s ease;
+}
+
+.selectTrigger [data-select-value] {
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--color-text-primary);
+  text-align: left;
+}
+
+.selectValue {
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--color-text-primary);
+  text-align: left;
+}
+
+.selectTrigger:hover .selectValue {
+  color: var(--color-primary);
+}
+
+.selectTrigger:hover .selectIcon {
+  color: var(--color-primary);
+}
+
+.selectIcon {
+  color: var(--color-text-secondary);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.selectTrigger[data-state="open"] .selectIcon {
+  transform: rotate(180deg);
+  color: var(--color-primary);
+}
+
+.selectContent {
+  overflow: hidden;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  min-width: 180px;
+  max-height: 200px; /* Limit height */
+  animation: slideDownAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 20000;
+  border: 1px solid #e0e0e0;
+}
+
+/* Scrollable viewport for select dropdowns */
+.selectViewport {
+  max-height: 200px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #cccccc transparent;
+}
+
+/* Custom scrollbar for webkit browsers */
+.selectViewport::-webkit-scrollbar {
+  width: 6px;
+}
+
+.selectViewport::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.selectViewport::-webkit-scrollbar-thumb {
+  background-color: #cccccc;
+  border-radius: 3px;
+}
+
+.selectViewport::-webkit-scrollbar-thumb:hover {
+  background-color: #999999;
+}
+
+.selectItem {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-base); /* 16px */
+  line-height: 1.25;
+  color: #000000;
+  padding: 12px 16px;
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+  position: relative;
+}
+
+.selectItem[data-highlighted] {
+  background: #f0f7ff;
+  color: #3e8cff;
+}
+
+.selectItem[data-state="checked"] {
+  background: #3e8cff;
+  color: #ffffff;
+}
+
+@keyframes slideDownAndFade {
+  from {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dateSelect {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-size: var(--font-size-base); /* 16px */
+  font-weight: 500;
+  line-height: 1.25;
+  color: #000000;
+  padding: 0;
+  outline: none;
+}
+
+.arrow {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrow::after {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-right: 1.5px solid #505050;
+  border-bottom: 1.5px solid #505050;
+  transform: rotate(45deg);
+}
+
+.passengerCounter {
+  width: 100%;
+}
+
+.passengerControls {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  width: 100%;
+}
+
+.passengerButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 21px;
+  color: var(--color-primary);
+  cursor: pointer;
+  font-size: var(--font-size-xl); /* 20px */
+  line-height: 1;
+  background: none;
+  border: none;
+  padding: 0;
+  font-weight: 500;
+  user-select: none;
+}
+
+.passengerButton:hover {
+  color: var(--color-primary);
+}
+
+.passengerButton:disabled {
+  background-color: var(--color-gray-200);
+  color: var(--color-gray-500);
+  cursor: not-allowed;
+}
+
+.passengerValue {
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--color-text-primary);
+  min-width: 24px;
+  text-align: center;
+}
+
+/* Error styling */
+.errorMessage {
+  font-size: var(--font-size-xs); /* 14px */
+  color: var(--color-alert-error);
+  margin-top: 4px;
+}
+
+.gridItem.error {
+  border-color: var(--color-alert-error);
+}
+
+.gridItem.error .label {
+  color: var(--color-alert-error);
+}
+
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .gridItem.package,
+  .gridItem.duration,
+  .gridItem.amount,
+  .gridItem.date,
+  .gridItem.counter {
+    width: 100%;
+  }
+
+  .sectionTitle {
+    font-size: var(--font-size-xl); /* 20px */
+  }
+}
+
+/* ContactForm.module.css */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+  max-width: 800px;
+}
+
+.sections {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.separator {
+  height: 1px;
+  background: var(--color-border-primary);
+  width: 100%;
+  margin: 16px 0;
+}
+
+.submitSection {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.recaptcha {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background: #f9f9f9;
+}
+
+.recaptchaPlaceholder {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.recaptchaCheckbox {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--color-border-primary);
+  border-radius: 4px;
+  background: white;
+}
+
+.recaptchaText {
+  font-size: var(--font-size-sm); /* 15px */
+  color: var(--color-text-secondary);
+}
+
+.recaptchaLogo {
+  width: 40px;
+  height: 20px;
+  background: var(--color-primary);
+  border-radius: 4px;
+  margin-left: auto;
+}
+
+.successMessage {
+  padding: 16px;
+  background: var(--color-alert-success);
+  border: 1px solid var(--color-alert-success);
+  border-radius: 8px;
+  color: var(--color-alert-success);
+  font-size: var(--font-size-sm); /* 15px */
+}

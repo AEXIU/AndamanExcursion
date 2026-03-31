@@ -1,0 +1,122 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-section);
+  padding: 80px 0;
+}
+.contentContainer {
+  max-width: var(--layout-container-max-width);
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  position: relative;
+  padding: 0 var(--space-4);
+}
+.section {
+  align-items: center;
+  align-items: center;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.title {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-heading-1);
+  font-weight: 600;
+  letter-spacing: 4%;
+  color: var(--color-black);
+}
+.featureTitle {
+  max-width: unset !important;
+  width: min(30%, 410px);
+  align-self: flex-start;
+}
+.featureTitle h2 {
+  font-size: calc(1rem * 4);
+  max-width: unset;
+}
+.highlight {
+  font-family: var(--font-family-display);
+  font-size: clamp(3rem, 5vw + 1rem, 6rem);
+  line-height: 0.9;
+  font-weight: 400;
+  color: var(--color-secondary);
+  text-transform: capitalize;
+  letter-spacing: 2%;
+}
+.content {
+  z-index: 1;
+}
+.imageContainer {
+  z-index: 1;
+  max-width: 350px;
+}
+.imageContainer .image {
+  border-radius: 20px 60px 20px 60px !important;
+  overflow: hidden;
+}
+.experience {
+  position: relative;
+}
+.experienceContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  z-index: 1;
+}
+.featureCard {
+  border: 1px solid var(--color-bg-tertiary);
+}
+
+@media (max-width: 1024px) {
+  .experience {
+    padding: var(--space-10) var(--space-6);
+  }
+}
+@media (max-width: 768px) {
+  .main {
+    padding: 60px 0;
+  }
+  .featureTitle h2 {
+    font-size: var(--font-size-heading-2);
+  }
+  .title {
+    font-size: var(--font-size-heading-2);
+    text-align: center;
+  }
+  .contentContainer {
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+  .experience {
+    padding: var(--space-8) var(--space-4);
+  }
+  .experienceContainer {
+    gap: var(--space-8);
+  }
+  .description {
+    max-width: unset;
+  }
+
+  .imageContainer {
+    max-width: 100%;
+    border-radius: var(--radius-card);
+  }
+}
+@media (max-width: 480px) {
+  .main {
+    padding: 40px 0;
+  }
+  .title {
+    font-size: var(--font-size-heading-3);
+  }
+  .experience {
+    padding: var(--space-6) var(--space-3);
+  }
+}
+
+@media (max-width: 768px) {
+  .experienceContainer [class*="Row"] {
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+}

@@ -1,0 +1,107 @@
+.card {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-4);
+  gap: var(--space-4);
+  width: var(--size-testimonial-card-width);
+  min-width: var(--size-testimonial-card-width);
+  /* height: var(--size-testimonial-card-height); */
+  background: var(--color-white);
+  border: 1px solid var(--color-testimonial-border);
+  border-radius: var(--radius-md);
+  transition: transform 0.3s ease;
+  overflow: hidden;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 0;
+  gap: var(--space-6);
+  width: 100%;
+  height: 100%;
+}
+
+.testimonialText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+  width: 100%;
+}
+
+.quoteIconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.text {
+  font-family: var(--font-family-primary);
+  font-weight: 400;
+  font-size: var(--font-size-xs);
+  line-height: 18px;
+  color: var(--color-testimonial-text);
+  width: 100%;
+  margin: 0;
+}
+
+.authorSection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-2);
+  width: 100%;
+}
+
+.divider {
+  width: 100%;
+  height: 0;
+  border-top: 1px solid var(--color-testimonial-divider);
+}
+
+.authorInfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+  width: 100%;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 32px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.authorName {
+  font-family: var(--font-family-primary);
+  font-weight: 400;
+  font-size: var(--font-size-base);
+  line-height: 20px;
+  color: var(--color-black);
+}
+
+/* Card rotation variants */
+.rotateNegative {
+  transform: rotate(calc(-1 * var(--testimonial-rotation)));
+}
+
+.rotatePositive {
+  transform: rotate(var(--testimonial-rotation));
+}
+
+.avatarImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}

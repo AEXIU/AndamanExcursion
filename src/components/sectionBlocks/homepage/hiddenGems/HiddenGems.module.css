@@ -1,0 +1,211 @@
+.hiddenGemsSection {
+  justify-content: center;
+  align-items: center;
+  background-image: url("/graphics/waveLight.svg");
+  background-size: 100% auto;
+  background-position: center;
+  padding: var(--space-10);
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch; /* Changed from flex-start to stretch */
+  gap: var(--space-6);
+  max-width: var(--layout-container-max-width);
+  width: 100%;
+}
+
+.contentColumn {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  align-items: flex-start;
+  position: relative;
+  flex: 1; /* Allow content to define the height */
+  justify-content: center;
+}
+
+.sectionTitle {
+  max-width: 400px;
+}
+
+/* Grid Layout for >= 1200px */
+.imagesGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: var(--space-6);
+  height: 100%; /* Match the content column height */
+  min-height: 350px; /* Minimum height for proper proportions */
+  width: 100%;
+  max-width: 700px;
+  flex-shrink: 0;
+}
+
+.gridImage1 {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  height: 100%;
+  min-height: 350px; /* Adjust to match minimum grid height */
+  background-color: #f3f4f6; /* Light gray placeholder */
+  border-radius: 20px 60px 20px 60px !important;
+}
+
+.gridImage2 {
+  grid-column: 2;
+  grid-row: 1;
+  height: 100%;
+  min-height: calc(
+    (100% - var(--space-6)) / 2
+  ); /* Dynamic height based on grid */
+  background-color: #f3f4f6; /* Light gray placeholder */
+  border-radius: var(--radius-md) !important;
+}
+
+.gridImage3 {
+  grid-column: 2;
+  grid-row: 2;
+  height: 100%;
+  min-height: calc(
+    (100% - var(--space-6)) / 2
+  ); /* Dynamic height based on grid */
+  background-color: #f3f4f6; /* Light gray placeholder */
+  border-radius: var(--radius-md) !important;
+}
+
+/* Slider Styles for < 1200px */
+.sliderContainer {
+  width: 100%;
+  max-width: 600px;
+}
+
+.slider {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  touch-action: pan-y; /* Allow vertical scrolling but handle horizontal */
+  user-select: none; /* Prevent text selection during drag */
+}
+
+.slider:active {
+  cursor: grabbing;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  pointer-events: none;
+}
+
+.activeSlide {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.sliderImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-lg) !important;
+  background-color: #f3f4f6; /* Placeholder background */
+}
+
+.sliderControls {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: var(--space-6);
+}
+
+.indicators {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  background: #d9d9d9;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.activeIndicator {
+  background: var(--color-primary);
+  transform: scale(1.2);
+}
+
+/* Remove navigation buttons styles since we're not using them */
+.navigationButtons {
+  display: none;
+}
+
+.navButton {
+  display: none;
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+  .container {
+    flex-direction: column;
+    gap: var(--space-10);
+    align-items: flex-start;
+  }
+
+  .contentColumn {
+    max-width: 600px;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
+  .hiddenGemsSection {
+    padding: var(--space-6);
+  }
+
+  .container {
+    gap: var(--space-8);
+  }
+
+  .contentColumn {
+    gap: var(--space-6);
+  }
+
+  .slider {
+    height: 300px;
+  }
+
+  .sliderControls {
+    margin-top: var(--space-4);
+  }
+}
+
+@media (max-width: 480px) {
+  .hiddenGemsSection {
+    padding: var(--space-4);
+  }
+
+  .container {
+    gap: var(--space-6);
+  }
+
+  .contentColumn {
+    gap: var(--space-4);
+  }
+
+  .slider {
+    height: 250px;
+  }
+
+  .sliderControls {
+    gap: var(--space-4);
+  }
+}

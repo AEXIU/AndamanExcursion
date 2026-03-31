@@ -1,0 +1,147 @@
+.contentContainer {
+  max-width: var(--layout-container-max-width);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-6);
+  position: relative;
+  background-color: var(--color-bg-primary);
+  width: 100%;
+}
+
+.featureTitle {
+  max-width: unset !important;
+  align-self: flex-start;
+  flex-shrink: 0;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  gap: var(--space-2);
+}
+
+.featureTitle h2 {
+  font-size: calc(1rem * 4);
+  max-width: unset;
+}
+
+.highlight {
+  align-self: flex-start;
+}
+
+.content {
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+  align-self: center;
+  flex-shrink: 0;
+}
+
+.imageContainer {
+  z-index: 1;
+  max-width: 350px;
+  width: 100%;
+  flex-shrink: 1;
+}
+
+.imageContainer .image {
+  border-radius: var(--radius-md-2) var(--radius-3xl) var(--radius-md-2)
+    var(--radius-3xl) !important; /* 20px 60px 20px 60px converted to tokens */
+  overflow: hidden;
+}
+
+.waveContainer {
+  position: relative;
+  padding: var(--space-14);
+}
+
+.waveContainer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("/graphics/waveLight.svg");
+  background-size: 100% auto;
+  background-position: center;
+  pointer-events: none;
+}
+
+.description {
+  margin-bottom: var(--space-2);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .waveContainer {
+    padding: var(--space-10);
+  }
+
+  .contentContainer {
+    gap: var(--space-5);
+  }
+}
+
+@media (max-width: 768px) {
+  .waveContainer {
+    padding: var(--space-4) !important;
+  }
+  .featureTitle h2 {
+    font-size: var(--font-size-heading-4);
+  }
+
+  .title {
+    font-size: var(--font-size-heading-4);
+    text-align: center;
+  }
+
+  .highlight {
+    font-size: var(--font-size-heading-4); /* Replaced calc(1rem * 4) */
+  }
+
+  .contentContainer {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-6);
+  }
+
+  .waveContainer {
+    padding: var(--space-8);
+  }
+
+  .imageContainer {
+    max-width: 100%;
+    order: 1;
+  }
+
+  .featureTitle {
+    order: 0;
+    align-self: center;
+  }
+
+  .content {
+    order: 2;
+    align-items: center;
+    text-align: center;
+    gap: var(--space-4);
+  }
+}
+
+@media (max-width: 480px) {
+  .contentContainer {
+    gap: var(--space-4);
+  }
+
+  .content {
+    gap: var(--space-3);
+  }
+
+  .featureTitle h2 {
+    font-size: var(--font-size-heading-4);
+  }
+}

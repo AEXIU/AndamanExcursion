@@ -1,0 +1,222 @@
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+/* Fixed size styling - overrides responsive behavior */
+.fixedSize {
+  width: auto !important; /* Will be set via inline styles */
+  height: auto !important; /* Will be set via inline styles */
+  flex-shrink: 0; /* Prevent flex containers from shrinking fixed size images */
+  position: relative;
+}
+
+/* Loading state */
+.loading {
+  background-color: var(--gray-100, #f3f4f6);
+}
+
+.loadingOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--gray-50, #f9fafb);
+  z-index: 1;
+}
+
+.loadingSpinner {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--gray-200, #e5e7eb);
+  border-top: 2px solid var(--gray-400, #9ca3af);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Smaller spinner for fixed size containers */
+.fixedSize .loadingSpinner {
+  width: 16px;
+  height: 16px;
+  border-width: 1px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Error state */
+.error {
+  background-color: var(--gray-100, #f3f4f6);
+}
+
+.errorFallback {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--gray-50, #f9fafb);
+  border: 1px solid var(--gray-200, #e5e7eb);
+  border-radius: var(--radius-md);
+  min-height: 120px;
+}
+
+/* Smaller error fallback for fixed size containers */
+.fixedSize .errorFallback {
+  min-height: auto;
+  border-radius: var(--radius-sm);
+  padding: 8px;
+}
+
+.errorIcon {
+  font-size: 2rem;
+  margin-bottom: var(--space-2);
+  opacity: 0.9;
+}
+
+.fixedSize .errorIcon {
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+
+.errorText {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  text-align: center;
+}
+
+.fixedSize .errorText {
+  font-size: var(--font-size-xs);
+  display: none; /* Hide text in very small fixed containers */
+}
+
+.fallback {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--gray-50, #f9fafb);
+  color: var(--gray-500, #6b7280);
+}
+
+.fallbackContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+  padding: 16px;
+}
+
+.fixedSize .fallbackContent {
+  gap: 4px;
+  padding: 8px;
+}
+
+.fallbackIcon {
+  opacity: 0.5;
+  color: var(--gray-400, #9ca3af);
+}
+
+.fallbackText {
+  font-size: 14px;
+  color: var(--gray-500, #6b7280);
+  max-width: 200px;
+  word-wrap: break-word;
+}
+
+.fixedSize .fallbackText {
+  font-size: 10px;
+  max-width: 100px;
+}
+
+/* Aspect ratios - only apply when not using fixed size */
+.auto:not(.fixedSize) {
+  /* No specific aspect ratio */
+  min-height: 200px;
+}
+
+.square:not(.fixedSize) {
+  aspect-ratio: 1 / 1;
+}
+
+.video:not(.fixedSize) {
+  aspect-ratio: 16 / 9;
+}
+
+.portrait:not(.fixedSize) {
+  aspect-ratio: 3 / 4;
+}
+
+.landscape:not(.fixedSize) {
+  aspect-ratio: 4 / 3;
+}
+
+.banner:not(.fixedSize) {
+  aspect-ratio: 21 / 9;
+}
+
+/* Object fit styles */
+.cover {
+  object-fit: cover;
+}
+
+.contain {
+  object-fit: contain;
+}
+
+.fill {
+  object-fit: fill;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .container {
+    border-radius: var(--radius-sm);
+  }
+
+  .banner:not(.fixedSize) {
+    aspect-ratio: 16 / 9; /* Adjust banner aspect ratio for mobile */
+  }
+
+  .fallbackText {
+    font-size: 12px;
+  }
+
+  .fallbackIcon {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .loadingSpinner {
+    animation: none;
+  }
+}

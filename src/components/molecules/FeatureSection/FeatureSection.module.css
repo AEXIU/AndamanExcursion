@@ -1,0 +1,95 @@
+/* Wave container with background effect */
+.waveContainer {
+  position: relative;
+  padding: 80px var(--space-4) !important;
+}
+
+.waveContainer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("/graphics/waveLight.svg");
+  background-size: 100% auto;
+  background-position: center;
+  pointer-events: none;
+}
+
+/* Main content container - CSS Grid layout */
+.contentContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Equal columns */
+  gap: var(--space-8);
+  align-items: center;
+  max-width: var(--layout-container-max-width);
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Text content section */
+.textContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  align-items: flex-start;
+  background-color: var(--color-bg-primary);
+  position: relative; /* For decorative arrow positioning */
+}
+
+/* Description text styling */
+.description {
+  width: unset;
+}
+
+/* Image container with rounded corners */
+.imageContainer {
+  z-index: 1;
+  border-radius: 20px 60px 20px 60px;
+  overflow: hidden;
+}
+
+.image {
+  /* Additional image styles if needed */
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .waveContainer {
+    padding: var(--space-10);
+  }
+}
+
+@media (max-width: 768px) {
+  .waveContainer {
+    padding: 60px var(--space-8);
+  }
+
+  .contentContainer {
+    grid-template-columns: 1fr; /* Single column on mobile */
+    gap: var(--space-6);
+    align-items: flex-start;
+  }
+
+  .textContent {
+    align-items: flex-start;
+    gap: var(--space-4);
+  }
+
+  .description {
+    width: 100%;
+    max-width: unset;
+  }
+
+  .imageContainer {
+    width: 100%;
+    min-height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .waveContainer {
+    padding: 40px var(--space-6);
+  }
+}

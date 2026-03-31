@@ -1,0 +1,142 @@
+.button {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 0 var(--space-6);
+  height: var(--size-form-field-height);
+  border-radius: 12px;
+  font-family: var(--font-family-primary);
+  font-weight: 500;
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  white-space: nowrap;
+  border: none;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+/* Button variants */
+.primary {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.primary:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.secondary {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border-primary);
+}
+
+.secondary:hover {
+  background-color: var(--color-blue-50);
+}
+
+.outline {
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+
+.outline:hover {
+  background-color: var(--color-primary-light);
+}
+
+/* Button sizes */
+.small {
+  padding: var(--space-1) var(--space-2);
+  height: 32px;
+  font-size: var(--font-size-xs);
+}
+
+.medium {
+  padding: var(--space-2) var(--space-4);
+  height: 40px;
+  font-size: var(--font-size-button);
+}
+
+.large {
+  padding: var(--space-2) var(--space-6);
+  height: 48px;
+  font-size: var(--font-size-base);
+}
+
+/* Disabled state */
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.disabled:hover {
+  background-color: var(--color-primary);
+}
+
+.button:active {
+  transform: translateY(1px);
+}
+
+/* Tablet Responsive Design */
+@media (max-width: 1024px) {
+  .button {
+    margin-left: 0;
+  }
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+  .button {
+    width: 100%;
+    margin-left: 0;
+    padding: var(--space-2) var(--space-2);
+    font-size: var(--font-size-sm);
+    height: 40px;
+  }
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  margin-left: var(--space-2);
+}
+
+/* Loading state */
+.loading {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid transparent;
+  border-top: 2px solid currentColor;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.button.loading {
+  pointer-events: none;
+}
+
+.button.loading .loading {
+  color: inherit;
+}

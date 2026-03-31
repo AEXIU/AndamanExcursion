@@ -1,0 +1,230 @@
+.stepIndicator {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Top row with circles and separators */
+.circleRow {
+  display: grid;
+  grid-template-columns: 42px 1fr 42px 1fr 42px 1fr;
+  align-items: center;
+  width: 100%;
+  margin-bottom: var(--space-4);
+}
+
+/* Step circles */
+.stepCircle {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: var(--font-size-base);
+  background-color: var(--color-white);
+  border: 2px solid var(--color-gray-600);
+  color: var(--color-gray-700);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  justify-self: center;
+}
+
+.stepCircle:hover.accessible {
+  transform: scale(1.05);
+  box-shadow: 0 0 0 2px rgba(255, 138, 52, 0.2);
+}
+
+.stepCircle.active {
+  background-color: var(--color-secondary);
+  border: none;
+  color: var(--color-white);
+}
+
+.stepCircle.completed {
+  background-color: var(--color-secondary);
+  border: none;
+  color: var(--color-white);
+}
+
+.stepCircle:not(.accessible) {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Separators */
+.separator {
+  height: 2px;
+  background-color: var(--color-gray-600);
+  width: 100%;
+  transition: background-color 0.2s ease;
+}
+
+.lastSeparator {
+  visibility: hidden;
+}
+
+.completedSeparator {
+  background-color: var(--color-secondary);
+}
+
+/* Bottom row with content */
+.contentRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  width: 100%;
+}
+
+.stepContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-2);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--color-gray-700);
+}
+
+.stepContent:hover.accessibleContent {
+  background-color: var(--color-bg-secondary);
+}
+
+.stepContent.activeContent {
+  color: var(--color-primary);
+}
+
+.stepContent.completedContent {
+  color: var(--color-secondary);
+}
+
+.stepContent:not(.accessibleContent) {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.stepTitle {
+  font-family: var(--font-family-primary);
+  font-style: normal;
+  font-weight: 500;
+  font-size: var(--font-size-base);
+  line-height: 1.25;
+  color: inherit;
+}
+
+.stepDescription {
+  font-family: var(--font-family-primary);
+  font-style: normal;
+  font-weight: 400;
+  font-size: var(--font-size-body-large);
+  line-height: 1.25;
+  color: inherit;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .circleRow {
+    grid-template-columns: 36px 1fr 36px 1fr 36px 1fr;
+    margin-bottom: var(--space-3);
+  }
+
+  .stepCircle {
+    width: 36px;
+    height: 36px;
+    font-size: var(--font-size-sm);
+  }
+
+  .contentRow {
+    gap: var(--space-2);
+  }
+
+  .stepTitle,
+  .stepDescription {
+    font-size: var(--font-size-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .stepIndicator {
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .circleRow {
+    display: none; /* Hide the horizontal layout */
+  }
+
+  .contentRow {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .stepContent {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    padding: var(--space-3);
+    border: 1px solid var(--color-border-secondary);
+    border-radius: var(--radius-sm);
+    position: relative;
+  }
+
+  .stepContent::before {
+    content: "";
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: var(--color-white);
+    border: 2px solid var(--color-gray-600);
+    color: var(--color-gray-700);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: var(--font-size-sm);
+    margin-right: var(--space-3);
+    flex-shrink: 0;
+  }
+
+  .stepContent.activeContent {
+    border-color: var(--color-primary);
+    background-color: var(--color-bg-secondary);
+  }
+
+  .stepContent.activeContent::before {
+    background-color: var(--color-primary);
+    border: none;
+    color: var(--color-white);
+  }
+
+  .stepContent.completedContent::before {
+    background-color: var(--color-primary);
+    border: none;
+    color: var(--color-white);
+  }
+
+  /* Add step numbers using CSS counter or data attributes */
+  .stepContent:nth-child(1)::before {
+    content: "1";
+  }
+  .stepContent:nth-child(2)::before {
+    content: "2";
+  }
+  .stepContent:nth-child(3)::before {
+    content: "3";
+  }
+  .stepContent.completedContent:nth-child(1)::before,
+  .stepContent.completedContent:nth-child(2)::before,
+  .stepContent.completedContent:nth-child(3)::before {
+    content: "✓";
+  }
+
+  .stepTitle,
+  .stepDescription {
+    font-size: var(--font-size-sm);
+  }
+}

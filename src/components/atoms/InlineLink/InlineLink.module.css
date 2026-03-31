@@ -1,0 +1,95 @@
+.inlineLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-family-primary);
+  font-weight: 500;
+  font-size: var(--font-size-base);
+  line-height: 1.5;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.content {
+  position: relative;
+}
+
+.content::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  transition: width 0.3s ease;
+}
+
+.inlineLink:hover .content::after {
+  width: 100%;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease-in-out;
+}
+
+.inlineLink:hover .icon {
+  transform: translateX(3px);
+}
+
+/* Color variants */
+.color-primary {
+  color: var(--color-primary);
+}
+
+.color-primary .icon {
+  color: var(--color-primary);
+}
+
+.color-primary .content::after {
+  background-color: var(--color-primary);
+}
+
+.color-secondary {
+  color: var(--color-secondary);
+}
+
+.color-secondary .icon {
+  color: var(--color-secondary);
+}
+
+.color-secondary .content::after {
+  background-color: var(--color-secondary);
+}
+
+.color-white {
+  color: var(--color-white);
+}
+
+.color-white .icon {
+  color: var(--color-white);
+}
+
+.color-white .content::after {
+  background-color: var(--color-white);
+}
+
+@media (max-width: 768px) {
+  .inlineLink {
+    font-size: var(--font-size-xs);
+  }
+
+  .content {
+    font-size: var(--font-size-xs);
+    text-decoration: underline; /* Add underline on mobile */
+    line-height: 1.5;
+  }
+
+  /* Hide the pseudo-element underline on mobile since we're using text-decoration */
+  .content::after {
+    display: none;
+  }
+}

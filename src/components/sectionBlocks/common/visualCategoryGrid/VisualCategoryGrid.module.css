@@ -1,0 +1,340 @@
+/* Clean & Smooth VisualCategoryGrid.module.css */
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-section);
+  padding: 80px 0;
+}
+
+.contentContainer {
+  max-width: var(--layout-container-max-width);
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  position: relative;
+  padding: 0 var(--space-4);
+}
+
+.section {
+  align-items: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.title {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-heading-1);
+  font-weight: 600;
+  letter-spacing: 4%;
+  color: var(--color-black);
+}
+
+.featureTitle {
+  max-width: unset !important;
+  width: min(30%, 410px);
+  align-self: flex-start;
+}
+.featureTitle h2 {
+  font-size: calc(1rem * 4);
+  max-width: unset;
+}
+.highlight {
+  font-family: var(--font-family-display);
+  font-size: calc(1rem * 6);
+  font-weight: 400;
+  color: var(--color-secondary);
+  text-transform: capitalize;
+  letter-spacing: 2%;
+}
+
+.content {
+  z-index: 1;
+}
+
+.imageContainer {
+  z-index: 1;
+  max-width: 350px;
+}
+
+.imageContainer .image {
+  border-radius: 20px 60px 20px 60px !important;
+  overflow: hidden;
+}
+
+.experience {
+  position: relative;
+}
+
+.experienceContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-14);
+  z-index: 1;
+}
+.featureCard {
+  border: 1px solid var(--color-bg-tertiary);
+}
+
+/* Explore Section Styles */
+.famousFishes {
+  padding: var(--space-16) 0;
+  background-color: var(--color-bg-light);
+}
+
+.famousFishesTitleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-12);
+}
+
+.famousFishesTitle {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-heading-2);
+  font-weight: 600;
+  color: var(--color-black);
+}
+
+.famousFishesDescription {
+  font-size: var(--font-size-body-lg);
+  color: var(--color-text-secondary);
+  text-align: right;
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+/* CLEAN SMOOTH GRID - CSS Grid with intelligent wrapping */
+.famousFishesGrid {
+  display: grid;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: var(--space-5);
+  /* Smooth but stable transitions */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Default fallback: auto-fit with reasonable minimum size */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+/* JavaScript-controlled grid layouts based on item count */
+.famousFishesGrid.itemCount1 {
+  grid-template-columns: 1fr;
+}
+.famousFishesGrid.itemCount2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+.famousFishesGrid.itemCount3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+.famousFishesGrid.itemCount4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+.famousFishesGrid.itemCount5 {
+  grid-template-columns: repeat(4, 1fr);
+}
+.famousFishesGrid.itemCountMore {
+  /* For 6+ items, allow wrapping with optimal sizing */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.famousFishesCard {
+  position: relative;
+  min-width: 0; /* Allows grid items to shrink below content size */
+  /* Smooth transitions without layout disruption */
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    filter 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, filter;
+  transform: scale(1);
+}
+
+/* Expanded card gets larger scale and higher z-index */
+.famousFishesCard.expanded {
+  transform: scale(1.05);
+  z-index: 10;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.15));
+}
+
+/* Subtle effects for non-expanded cards when one is active */
+.famousFishesGrid.hasExpanded .famousFishesCard:not(.expanded) {
+  transform: scale(0.95);
+  filter: brightness(0.9);
+  z-index: 1;
+}
+
+/* Responsive Design - Clean breakpoints */
+@media (max-width: 1024px) {
+  .contentContainer {
+    padding: 0 var(--space-6);
+  }
+
+  .experience {
+    padding: var(--space-10) var(--space-6);
+  }
+
+  .famousFishesGrid {
+    max-width: 900px;
+    gap: var(--space-4);
+    /* Adjust grid for medium screens */
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+
+  .famousFishesGrid.itemCount1,
+  .famousFishesGrid.itemCount2,
+  .famousFishesGrid.itemCount3 {
+    grid-template-columns: repeat(var(--item-count, 3), 1fr);
+  }
+  .famousFishesGrid.itemCount4,
+  .famousFishesGrid.itemCount5,
+  .famousFishesGrid.itemCountMore {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  .famousFishesCard.expanded {
+    transform: scale(1.03);
+  }
+
+  .famousFishesGrid.hasExpanded .famousFishesCard:not(.expanded) {
+    transform: scale(0.97);
+  }
+}
+
+@media (max-width: 768px) {
+  .main {
+    padding: 60px 0;
+  }
+
+  .featureTitle h2 {
+    font-size: var(--font-size-heading-2);
+  }
+
+  .title {
+    font-size: var(--font-size-heading-2);
+    text-align: center;
+  }
+
+  .contentContainer {
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .experience {
+    padding: var(--space-8) var(--space-4);
+  }
+
+  .experienceContainer {
+    gap: var(--space-8);
+  }
+
+  .description {
+    max-width: unset;
+  }
+
+  .imageContainer {
+    max-width: 100%;
+    border-radius: var(--radius-card);
+  }
+
+  .famousFishes {
+    padding: var(--space-12) 0;
+  }
+
+  .famousFishesTitleContainer {
+    margin-bottom: var(--space-8);
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .famousFishesDescription {
+    text-align: left;
+    max-width: 100%;
+  }
+
+  .famousFishesTitle {
+    font-size: var(--font-size-heading-3);
+  }
+
+  .famousFishesDescription {
+    font-size: var(--font-size-body-md);
+  }
+
+  /* Mobile: 2 columns for better space utilization */
+  .famousFishesGrid,
+  .famousFishesGrid.itemCount1,
+  .famousFishesGrid.itemCount2,
+  .famousFishesGrid.itemCount3,
+  .famousFishesGrid.itemCount4,
+  .famousFishesGrid.itemCount5,
+  .famousFishesGrid.itemCountMore {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+    max-width: none;
+  }
+
+  /* Single column only for single item */
+  .famousFishesGrid.itemCount1 {
+    grid-template-columns: 1fr;
+  }
+
+  .famousFishesCard,
+  .famousFishesCard.expanded,
+  .famousFishesGrid.hasExpanded .famousFishesCard:not(.expanded) {
+    min-width: auto;
+    transform: none;
+    filter: none;
+    will-change: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .main {
+    padding: 40px 0;
+  }
+
+  .title {
+    font-size: var(--font-size-heading-3);
+  }
+
+  .highlight {
+    font-size: calc(1rem * 3);
+  }
+
+  .experience {
+    padding: var(--space-6) var(--space-3);
+  }
+
+  .famousFishes {
+    padding: var(--space-10) 0;
+  }
+
+  .famousFishesTitleContainer {
+    margin-bottom: var(--space-6);
+  }
+
+  .famousFishesTitle {
+    font-size: var(--font-size-heading-4);
+  }
+
+  /* Small mobile: single column layout */
+  .famousFishesGrid,
+  .famousFishesGrid.itemCount1,
+  .famousFishesGrid.itemCount2,
+  .famousFishesGrid.itemCount3,
+  .famousFishesGrid.itemCount4,
+  .famousFishesGrid.itemCount5,
+  .famousFishesGrid.itemCountMore {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+}
+
+/* Feature Cards Responsive */
+@media (max-width: 768px) {
+  .experienceContainer [class*="Row"] {
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+}

@@ -1,0 +1,206 @@
+/* ===== BASE CARD STYLES ===== */
+.blogCard {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border-secondary);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+}
+
+.interactive {
+  cursor: pointer;
+}
+
+.interactive:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-primary);
+  background-color: var(--color-bg-secondary);
+}
+
+.interactive:hover .arrowIcon {
+  transform: translateX(4px);
+}
+
+.interactive:hover .image {
+  transform: scale(1.05);
+}
+
+/* ===== CONTENT STRUCTURE ===== */
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: var(--space-6);
+  gap: var(--space-3);
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  background: var(--color-border-secondary);
+  overflow: hidden;
+  border-radius: 20px 60px 20px 60px;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: unset !important;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.categoryBadge {
+  position: absolute;
+  top: var(--space-4);
+  left: var(--space-4);
+  display: flex;
+  align-items: center;
+  padding: var(--space-2) var(--space-4);
+  background-color: var(--color-white);
+  border-radius: var(--radius-base);
+  box-shadow: var(--shadow-sm);
+}
+
+.categoryText {
+  font-family: var(--font-family-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: var(--font-size-xs);
+  line-height: 18px;
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.textContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  flex-grow: 1;
+}
+
+.headerContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.title {
+  font-family: var(--font-family-display);
+  font-style: normal;
+  font-weight: 400;
+  font-size: var(--font-size-3xl);
+  line-height: 32px;
+  color: var(--color-secondary);
+  margin: 0;
+  flex-grow: 1;
+}
+
+.arrowIcon {
+  flex-shrink: 0;
+  margin-top: 4px;
+  transition: transform 0.3s ease;
+}
+
+.description {
+  font-family: var(--font-family-primary);
+  font-style: normal;
+  font-weight: 400;
+  font-size: var(--font-size-sm);
+  line-height: 22px;
+  color: var(--color-text-secondary);
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  margin-top: auto;
+}
+
+.date {
+  font-family: var(--font-family-primary);
+  font-style: normal;
+  font-weight: 500;
+  font-size: var(--font-size-xs);
+  line-height: 18px;
+  color: var(--color-text-disabled);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Tablet (768px - 1199px) */
+@media (max-width: 768px) {
+  .blogCard {
+    max-width: 100%;
+  }
+
+  .contentContainer {
+    padding: var(--space-4);
+  }
+
+  .imageWrapper {
+    height: 200px;
+  }
+
+  .textContent {
+    gap: var(--space-3);
+  }
+
+  .title {
+    font-size: var(--font-size-xl);
+    line-height: 28px;
+  }
+
+  .description {
+    font-size: var(--font-size-xs);
+    line-height: 20px;
+  }
+}
+
+/* Mobile (480px and below) */
+@media (max-width: 480px) {
+  .imageWrapper {
+    height: 180px;
+  }
+
+  .title {
+    font-size: var(--font-size-lg);
+    line-height: 26px;
+  }
+
+  .categoryBadge {
+    top: var(--space-3);
+    left: var(--space-3);
+    padding: var(--space-1) var(--space-3);
+  }
+
+  .categoryText {
+    font-size: var(--font-size-2xs);
+    line-height: 16px;
+  }
+}
+
+/* ===== FOCUS STATES ===== */
+.blogCard:focus-visible {
+  outline: 2px solid var(--color-focus-outline);
+  outline-offset: 2px;
+  box-shadow: var(--shadow-focus);
+}

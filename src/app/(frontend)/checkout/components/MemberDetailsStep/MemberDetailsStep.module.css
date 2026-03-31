@@ -1,0 +1,257 @@
+.header {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.header p {
+  color: var(--color-text-secondary);
+}
+
+.bookingInfo {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: var(--color-bg-secondary);
+  border-radius: 8px;
+}
+
+.bookingInfo h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--color-text-primary);
+}
+
+.bookingItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 6px;
+  margin-bottom: 0.75rem;
+}
+
+.bookingIcon {
+  font-size: 1.5rem;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-primary-light);
+  border-radius: 50%;
+}
+
+.bookingDetails {
+  flex: 1;
+}
+
+.bookingDetails h4 {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: var(--color-text-primary);
+}
+
+.bookingDetails p {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+.bookingPrice {
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: var(--color-primary);
+}
+
+.memberCard {
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.memberHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.memberHeader h4 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.removeButton {
+  color: var(--color-alert-error);
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-alert-error-light);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.removeButton:hover {
+  transform: translateY(-2px);
+}
+
+.removeButton:active {
+  transform: translateY(0);
+}
+
+.memberFields {
+  display: grid;
+  gap: 1rem;
+}
+
+.fieldRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .fieldRow {
+    grid-template-columns: 1fr;
+  }
+}
+
+.addMemberSection {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.addMemberButton {
+  padding: 0.75rem 1.5rem;
+}
+
+.maxPassengersMessage {
+  display: flex;
+  justify-content: center;
+  margin: var(--space-6) 0;
+  padding: var(--space-4);
+  background: var(--color-bg-tertiary, #f8f9fa);
+  border: 1px solid var(--color-border-light, #e9ecef);
+  border-radius: var(--radius-sm);
+  text-align: center;
+}
+
+.maxPassengersMessage p {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+.termsSection {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: var(--color-bg-secondary);
+  border-radius: 8px;
+}
+
+.termsLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+}
+
+.termsCheckbox {
+  margin-top: 0.125rem;
+}
+
+.termsText {
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+}
+
+.termsLink {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.termsLink:hover {
+  color: var(--color-primary-dark);
+}
+
+.termsError {
+  margin-top: 0.5rem;
+  color: var(--color-error);
+  font-size: 0.875rem;
+}
+
+.submitSection {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.submitButton {
+  padding: 0.75rem 2rem;
+  font-size: 1.125rem;
+}
+
+/* Foreign passenger fields styling */
+.foreignPassengerFields {
+  padding: var(--space-4);
+  background: var(--color-bg-tertiary, #f8f9fa);
+  border: 1px solid var(--color-border-light, #e9ecef);
+  border-radius: var(--radius-sm);
+}
+
+.foreignFieldsTitle {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.inputLabel {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.dateSelectField {
+  height: 100% !important;
+}
+
+.dateInput {
+  padding: 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.dateInput:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-light);
+}
+
+.inputError {
+  border-color: var(--color-error);
+}
+
+.errorMessage {
+  font-size: 0.75rem;
+  color: var(--color-error);
+  margin-top: 0.25rem;
+}

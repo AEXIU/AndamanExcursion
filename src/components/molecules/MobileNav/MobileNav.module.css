@@ -1,0 +1,315 @@
+.trigger {
+  cursor: pointer;
+  padding: var(--space-2);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-secondary);
+  transition: background-color 0.2s ease;
+  min-width: 44px;
+  min-height: 44px;
+  z-index: 1000;
+}
+
+.trigger:hover {
+  background-color: var(--color-bg-tertiary);
+  color: var(--color-primary);
+}
+
+.trigger:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 999;
+}
+
+.content {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: min(320px, 85vw);
+  height: 100vh;
+  background-color: var(--color-white);
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.1);
+  padding: 0;
+  animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  font-family: var(--font-family-primary);
+  display: flex;
+  flex-direction: column;
+  z-index: 10000000;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-6) var(--space-8);
+  border-bottom: 1px solid var(--color-border-primary, #e5e7eb);
+  background-color: var(--color-white);
+}
+
+.close {
+  cursor: pointer;
+  padding: var(--space-2);
+  color: var(--color-text-primary);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+  min-width: 32px;
+  min-height: 32px;
+}
+
+.close:hover {
+  background-color: var(--color-bg-secondary);
+}
+
+.close:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.nav {
+  flex: 1;
+  padding: var(--space-6);
+  overflow-y: auto;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  width: 100%;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: var(--space-4) var(--space-6);
+  color: var(--color-text-primary);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+  font-weight: 500;
+  font-size: var(--font-size-body-small, 14px);
+}
+
+.link:hover {
+  background-color: var(--color-bg-secondary);
+}
+
+.link:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.childLink {
+  padding-left: var(--space-6);
+  font-weight: 400;
+  font-size: var(--font-size-caption, 13px);
+}
+
+.active {
+  color: var(--color-primary);
+  background-color: var(--color-primary-light, var(--color-bg-secondary));
+}
+
+.unique {
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  font-weight: 600;
+}
+
+.unique:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.dropdownContainer {
+  width: 100%;
+}
+
+.dropdownTrigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-6);
+  color: var(--color-text-primary);
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+  font-weight: 500;
+  font-size: var(--font-size-body-small, 14px);
+  cursor: pointer;
+}
+
+.dropdownTrigger:hover {
+  background-color: var(--color-bg-secondary);
+}
+
+.dropdownTrigger:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.dropdownIcon {
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.dropdownTrigger[data-state="open"] .dropdownIcon {
+  transform: rotate(180deg);
+}
+
+.dropdownContent {
+  width: 100%;
+  margin-top: var(--space-2);
+}
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-2);
+  background-color: var(--color-bg-secondary);
+  border-radius: var(--radius-sm);
+  margin-left: var(--space-4);
+}
+
+.dropdownGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-2);
+  padding: var(--space-4);
+}
+
+.dropdownGrid .childLink {
+  padding: var(--space-2);
+  text-align: left;
+}
+
+@keyframes overlayShow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes contentShow {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@media (min-width: 1285px) {
+  .trigger {
+    display: none;
+  }
+}
+
+.parentLink {
+  margin-bottom: var(--space-2);
+  font-weight: 600;
+}
+
+.dropdownLabel {
+  font-size: var(--font-size-caption);
+  color: var(--color-text-secondary);
+}
+
+.nestedDestinationsDropdown {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  background-color: var(--color-bg-secondary);
+  border-radius: var(--radius-sm);
+  margin-left: var(--space-4);
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.mainCategorySection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.mainCategoryLink {
+  font-weight: 600 !important;
+  color: var(--color-text-primary) !important;
+  padding: var(--space-3) var(--space-4) !important;
+  background-color: var(--color-white);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-primary, #e5e7eb);
+}
+
+.mainCategoryLink:hover {
+  background-color: var(
+    --color-primary-light,
+    var(--color-bg-secondary)
+  ) !important;
+  color: var(--color-primary) !important;
+}
+
+.subcategoryList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding-left: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+.subcategoryLink {
+  font-weight: 400 !important;
+  font-size: var(--font-size-caption, 13px) !important;
+  color: var(--color-text-secondary) !important;
+  padding: var(--space-2) var(--space-3) !important;
+  background-color: transparent;
+  border-radius: var(--radius-sm);
+}
+
+.subcategoryLink:hover {
+  background-color: var(--color-bg-tertiary) !important;
+  color: var(--color-primary) !important;
+}
+
+.mainCategoryLink.active {
+  background-color: var(
+    --color-primary-light,
+    var(--color-bg-secondary)
+  ) !important;
+  color: var(--color-primary) !important;
+  font-weight: 600 !important;
+}
+
+.subcategoryLink.active {
+  background-color: var(
+    --color-primary-light,
+    var(--color-bg-secondary)
+  ) !important;
+  color: var(--color-primary) !important;
+  font-weight: 500 !important;
+}

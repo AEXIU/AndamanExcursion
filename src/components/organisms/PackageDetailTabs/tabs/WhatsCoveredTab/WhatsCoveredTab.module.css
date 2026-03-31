@@ -1,0 +1,55 @@
+.whatsCoveredContainer {
+  width: 100%;
+}
+
+.sectionsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.section {
+  width: 100%;
+}
+
+.sectionTitle {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  margin-bottom: var(--space-8);
+  color: var(--color-text-primary);
+}
+
+.itemsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-2);
+}
+
+.notesItemsGrid {
+  display: block; /* Changed from grid to block */
+  border-radius: var(--radius-md);
+  background-color: var(--color-blue-50);
+  padding: var(--space-4);
+  list-style-type: disc; /* Enable disc bullets */
+  padding-left: var(--space-8); /* Add padding for bullet spacing */
+}
+
+.noteItem {
+  display: list-item; /* Ensure list-item display */
+  margin-bottom: var(--space-2); /* Add spacing between items */
+  color: var(--color-text-primary);
+  font-size: var(--font-size-xs);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .sectionTitle {
+    margin-bottom: 0;
+  }
+
+  .itemsGrid {
+    grid-template-columns: 1fr;
+  }
+}

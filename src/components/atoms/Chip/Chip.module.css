@@ -1,0 +1,30 @@
+.chipContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: var(--space-2) var(--space-4);
+  gap: var(--space-2);
+  box-shadow: var(--shadow-elevated);
+  border-radius: var(--radius-md);
+  width: fit-content;
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chipText {
+  font-family: var(--font-family-primary);
+  font-style: normal;
+  font-weight: 400;
+  font-size: var(--font-size-base);
+  line-height: 20px;
+  color: var(--color-black);
+  max-width: 150px;
+}
+
+.small {
+  font-size: var(--font-size-xs);
+}

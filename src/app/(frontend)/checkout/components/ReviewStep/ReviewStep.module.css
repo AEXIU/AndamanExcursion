@@ -1,0 +1,241 @@
+.header {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+/* .header h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--color-text-primary);
+} */
+
+.header p {
+  color: var(--color-text-secondary);
+}
+
+.bookingSummary {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: var(--color-bg-secondary);
+  border-radius: 8px;
+}
+
+.bookingSummary h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--color-text-primary);
+}
+
+.bookingItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  border: 1px solid var(--color-border);
+}
+
+.itemIcon {
+  font-size: 1.5rem;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-primary-light);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.itemDetails {
+  flex: 1;
+}
+
+.itemDetails h4 {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--color-text-primary);
+}
+
+.itemMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.itemMeta span {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.passengerInfo {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.itemPrice {
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: var(--color-primary);
+  text-align: right;
+}
+
+.totalPrice {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 2px solid var(--color-border);
+}
+
+.totalRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.passengerDetails {
+  margin-bottom: 2rem;
+}
+
+.passengerDetails h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--color-text-primary);
+}
+
+.passengerList {
+  display: grid;
+  gap: 1rem;
+}
+
+.passengerCard {
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.passengerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.passengerHeader h4 {
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.passengerAge {
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.passengerInfoGrid {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.passengerRow {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 1rem;
+}
+
+.passengerRow span:first-child {
+  font-weight: 500;
+  color: var(--color-text-secondary);
+}
+
+.passengerRow span:last-child {
+  color: var(--color-text-primary);
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.backButton {
+  padding: 0.75rem 1.5rem;
+}
+
+.paymentButton {
+  padding: 0.75rem 2rem;
+  font-size: 1.125rem;
+}
+
+.termsNotice {
+  text-align: center;
+  margin-top: 2rem;
+  padding: 1rem;
+  background: var(--color-bg-secondary);
+  border-radius: 6px;
+}
+
+.termsNotice p {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.termsNotice a {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.termsNotice a:hover {
+  color: var(--color-primary-dark);
+}
+
+.errorState {
+  text-align: center;
+  padding: 2rem;
+}
+
+.errorState h3 {
+  color: var(--color-error);
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .actions {
+    flex-direction: column;
+  }
+
+  .passengerRow {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+
+  .itemMeta {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}

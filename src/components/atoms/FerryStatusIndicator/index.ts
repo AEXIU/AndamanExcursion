@@ -1,0 +1,1 @@
+export { FerryStatusIndicator } from "./FerryStatusIndicator";

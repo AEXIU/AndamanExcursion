@@ -1,0 +1,435 @@
+/* FerryResults.module.css */
+
+.ferryResultsContainer {
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Loading States */
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.loadingSpinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid #e5e7eb;
+  border-top: 4px solid #3b82f6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 24px;
+}
+
+.loadingContainer h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.loadingContainer p {
+  font-size: 16px;
+  color: #6b7280;
+  margin-bottom: 24px;
+}
+
+.loadingProgress {
+  width: 100%;
+  max-width: 400px;
+}
+
+.operatorStatus {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 16px;
+  padding: 16px;
+  background: #f9fafb;
+  border-radius: 8px;
+}
+
+.operatorItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.statusDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+.statusDot.checking {
+  background: #fbbf24;
+}
+
+.progressNote {
+  font-size: 14px;
+  color: #6b7280;
+  font-style: italic;
+}
+
+/* Error States */
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.errorHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.errorIcon {
+  color: #dc2626;
+  margin-bottom: 16px;
+}
+
+.errorTitle {
+  font-size: 24px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+}
+
+.errorText {
+  font-size: 16px;
+  color: #6b7280;
+  margin-bottom: 24px;
+  max-width: 500px;
+  line-height: 1.5;
+}
+
+.operatorErrorDetails {
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 32px;
+  text-align: left;
+}
+
+.operatorErrorDetails h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 12px;
+}
+
+.operatorErrorItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.operatorErrorIcon {
+  color: #dc2626;
+  flex-shrink: 0;
+}
+
+.operatorErrorItem strong {
+  color: #991b1b;
+}
+
+.operatorErrorItem span {
+  color: #7f1d1d;
+}
+
+.errorActions {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.errorFooter {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* Partial Failure Warning */
+.partialFailureWarning {
+  background: #fffbeb;
+  border: 1px solid #f59e0b;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 24px;
+}
+
+.warningHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.warningIcon {
+  color: #f59e0b;
+  flex-shrink: 0;
+}
+
+.warningHeader h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #92400e;
+  margin: 0;
+}
+
+.warningText {
+  font-size: 14px;
+  color: #92400e;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+.operatorDetails {
+  margin-bottom: 12px;
+}
+
+.operatorDetails summary {
+  font-size: 14px;
+  color: #92400e;
+  cursor: pointer;
+  padding: 4px 0;
+  font-weight: 500;
+}
+
+.operatorStatusList {
+  margin-top: 8px;
+  padding-left: 16px;
+}
+
+.operatorStatusItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+  font-size: 13px;
+}
+
+.statusError {
+  color: #dc2626;
+}
+
+.statusSuccess {
+  color: #059669;
+}
+
+.operatorName {
+  font-weight: 500;
+  text-transform: capitalize;
+  min-width: 80px;
+}
+
+.operatorErrorText {
+  color: var(--color-alert-error);
+}
+
+.operatorSuccessText {
+  color: var(--color-alert-success);
+}
+
+.warningActions {
+  display: flex;
+  gap: var(--space-4);
+}
+
+/* No Results State */
+.noResultsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-20) var(--space-8);
+  text-align: center;
+  gap: var(--space-6);
+  border-radius: var(--radius-card);
+  border: 2px dashed var(--color-border);
+}
+
+.noResultsContainer > p {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  max-width: 500px;
+}
+
+.suggestions {
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 32px;
+  text-align: left;
+}
+
+.suggestions h3 {
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 12px;
+}
+
+.suggestions ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.suggestions li {
+  padding: 8px 0;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-base);
+  position: relative;
+  padding-left: 20px;
+}
+
+.suggestions li::before {
+  content: "•";
+  color: var(--color-primary);
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+.noResultsActions {
+  display: flex;
+  gap: 12px;
+}
+
+/* Success State */
+.ferryList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.resultsFooter {
+  background: var(--color-white);
+  border-radius: var(--radius-card);
+  padding: var(--space-6);
+  margin-top: var(--space-6);
+  border: 1px solid var(--color-border-secondary);
+}
+
+.resultsInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.infoIcon {
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.resultsInfo p {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  margin: 0;
+  font-weight: 500;
+}
+
+.resultsNote {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  margin: 8px 0 0 0;
+}
+
+.serviceNote {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  margin: 4px 0 0 0;
+  font-style: italic;
+}
+
+/* Animations */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .errorActions,
+  .noResultsActions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .errorActions button,
+  .noResultsActions button {
+    width: 100%;
+  }
+
+  .operatorStatus {
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .operatorItem {
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .partialFailureWarning {
+    padding: 12px;
+  }
+
+  .warningActions {
+    justify-content: center;
+  }
+}
+
+/* Enhanced button styles for error states */
+.retryButton {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.retryButton:hover {
+  background: #2563eb;
+}
+
+.retryButton:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}

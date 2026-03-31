@@ -1,0 +1,111 @@
+.textareaWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  transition: all var(--duration-fast) var(--easing-standard);
+  position: relative;
+  padding: var(--space-4);
+  background-color: var(--color-white);
+}
+
+.textareaWrapper:hover {
+  border-color: var(--color-primary);
+}
+
+.textareaWrapper:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px var(--color-focus-blue);
+}
+
+.textareaWrapper.error {
+  border-color: var(--color-alert-error);
+}
+
+.textareaWrapper.error:focus-within {
+  border-color: var(--color-alert-error);
+  box-shadow: 0 0 0 2px rgba(255, 68, 68, 0.1);
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  margin-bottom: 4px;
+  cursor: pointer;
+  transition: color var(--duration-fast) var(--easing-standard);
+  display: block;
+  width: 100%;
+}
+
+.label:hover {
+  color: var(--color-primary);
+}
+
+.required {
+  color: var(--color-alert-error);
+  margin-left: var(--space-1);
+}
+
+.textarea {
+  width: 100%;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  font-size: var(--font-size-base);
+  color: var(--color-text-primary);
+  outline: none;
+  resize: vertical;
+  font-family: var(--font-family-primary);
+}
+
+.textarea::placeholder {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+}
+
+.textarea:disabled {
+  background-color: transparent;
+  cursor: not-allowed;
+  color: var(--color-text-disabled);
+}
+
+.errorMessage {
+  font-size: var(--font-size-xs);
+  color: var(--color-alert-error);
+  margin: 4px 0 0 0;
+  animation: slideIn var(--duration-fast) var(--easing-standard);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .textareaWrapper {
+    padding: 8px;
+  }
+
+  .textarea {
+    font-size: var(--font-size-sm);
+    min-height: 80px;
+  }
+
+  .label {
+    font-size: var(--font-size-xs);
+    margin-bottom: 2px;
+  }
+
+  .errorMessage {
+    font-size: var(--font-size-xs);
+  }
+}
