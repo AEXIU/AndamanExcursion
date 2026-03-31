@@ -25,13 +25,13 @@ export class PhonePeOAuthService {
       : process.env.PHONEPE_API_URL || "https://api-preprod.phonepe.com/apis/pg-sandbox";
 
     if (!this.clientId || !this.clientSecret) {
-      throw new Error("PhonePe OAuth credentials not configured. Check PHONEPE_MERCHANT_ID and PHONEPE_SALT_KEY");
+      console.warn("⚠️ PhonePe OAuth credentials not configured. Will throw if actual payment is attempted.");
+    } else {
+      console.log("PhonePe OAuth Service initialized:", {
+        isProduction,
+        hasCredentials: !!(this.clientId && this.clientSecret),
+      });
     }
-
-    console.log("PhonePe OAuth Service initialized:", {
-      isProduction,
-      hasCredentials: !!(this.clientId && this.clientSecret),
-    });
   }
 
   /**

@@ -29,7 +29,7 @@ export class PhonePeServiceV2 {
       : process.env.PHONEPE_API_URL || "https://api-preprod.phonepe.com/apis/pg-sandbox";
 
     if (!this.merchantId) {
-      throw new Error("PhonePe merchant ID not configured. Check PHONEPE_MERCHANT_ID");
+      console.warn("⚠️ PhonePe merchant ID not configured. Will fail if payment is attempted.");
     }
 
     console.log("PhonePe Service V2 initialized:", {

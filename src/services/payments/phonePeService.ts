@@ -22,7 +22,7 @@ export class PhonePeService {
     this.devMode = process.env.PHONEPE_DEV_MODE === "true";
 
     if (!this.merchantId || !this.saltKey) {
-      throw new Error("PhonePe credentials not configured. Check PHONEPE_MERCHANT_ID and PHONEPE_SALT_KEY");
+      console.warn("⚠️ PhonePe credentials not configured. Will fail if payment is attempted.");
     }
 
     console.log("PhonePe Service initialized:", {
