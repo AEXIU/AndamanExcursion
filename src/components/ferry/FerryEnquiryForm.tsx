@@ -123,12 +123,12 @@ export const FerryEnquiryForm: React.FC<FerryEnquiryFormProps> = ({
   }, [watchedPassengers, setValue]);
 
   // Handle local change of Class dropdown
-  const handleClassChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const classId = e.target.value;
+  // Note: Radix Select's onValueChange passes a string, not a DOM event
+  const handleClassChange = (classId: string) => {
     setValue("classId", classId);
     
     // Find the actual class object to notify the parent
-    const classData = ferry?.classes?.find((c) => c.id === classId);
+    const classData = ferry?.classes?.find((c: FerryClass) => c.id === classId);
     if (classData) onClassSelect(classData);
   };
 

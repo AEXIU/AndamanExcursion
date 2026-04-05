@@ -38,6 +38,7 @@ export default function SimplifiedFerryBookingPage() {
   const [showValidationAlert, setShowValidationAlert] = useState(false);
   const [validationMessage, setValidationMessage] = useState("");
   const [termsAccepted, setTermsAccepted] = useState(false);
+  const [isSubmittingEnquiry, setIsSubmittingEnquiry] = useState(false);
 
   // Client state from Zustand
   const {
@@ -200,12 +201,11 @@ export default function SimplifiedFerryBookingPage() {
   }
 
   // Check if we are in enquiry mode for Green Ocean or Nautica
-  const isEnquiryMode = isOfflineEnquiryOperator(ferry);
+  const isEnquiryMode = ferry ? isOfflineEnquiryOperator(ferry) : false;
   const enquiryFormId = "ferry-enquiry-form";
 
-  const [isSubmittingEnquiry, setIsSubmittingEnquiry] = useState(false);
-
   const handleEnquirySubmit = async (data: EnquiryFormData) => {
+    if (!ferry) return;
     try {
       setIsSubmittingEnquiry(true);
       const res = await fetch("/api/ferry/enquiry", {
@@ -222,7 +222,6 @@ export default function SimplifiedFerryBookingPage() {
 
       const result = await res.json();
       if (result.success) {
-        // Show success, maybe alert then redirect
         alert("Your offline booking enquiry has been submitted. Our team will contact you shortly.");
         router.push("/ferry");
       } else {

@@ -49,3 +49,4 @@ package-lock.json
 .scripts/dry-run-migrate.mjs
 
 CLIENT_CREDENTIALS.md
+env
