@@ -44,20 +44,6 @@ export const FerrySummary: React.FC<FerrySummaryProps> = ({
   formId,
 }) => {
   const totalPassengers = searchParams.adults + searchParams.children;
-// <unmodified lines up to the button>
-// We need to match the return block. The row is selected from line 30 to 198, let's just make smaller atomic replacements to avoid overwriting too much!
-}
-
-export const FerrySummary: React.FC<FerrySummaryProps> = ({
-  ferry,
-  selectedClass,
-  selectedSeats,
-  searchParams,
-  onBack,
-  onCheckout,
-  termsAccepted = false,
-}) => {
-  const totalPassengers = searchParams.adults + searchParams.children;
   // Use structured pricing to calculate correct totals
   const baseFare = selectedClass?.pricing?.basePrice || selectedClass?.price || 0;
   const portFee = selectedClass?.pricing?.fees || 0;
