@@ -55,9 +55,12 @@ export const isOfflineEnquiryOperator = (ferry: UnifiedFerryResult | null | unde
   if (!ferry?.operator) return false;
   
   const operatorLower = ferry.operator.toLowerCase();
+  const ferryNameLower = (ferry.ferryName || '').toLowerCase();
   return (
     operatorLower.includes('greenocean') || 
     operatorLower.includes('green ocean') || 
-    operatorLower.includes('nautica')
+    operatorLower.includes('nautica') ||
+    ferryNameLower.includes('nautika') ||
+    ferryNameLower.includes('nautica')
   );
 };
