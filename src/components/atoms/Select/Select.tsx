@@ -83,7 +83,9 @@ export const Select = ({
             avoidCollisions={false}
           >
             <SelectPrimitive.Viewport>
-              {options.map((option) => (
+              {options
+                .filter((option) => option.value !== "")
+                .map((option) => (
                 <SelectPrimitive.Item
                   key={option.value}
                   value={option.value}
