@@ -1,0 +1,88 @@
+import { NextRequest, NextResponse } from "next/server";
+import { getPayload } from "payload";
+import configPromise from "@payload-config";
+
+export async function POST(req: NextRequest) {
+  try {
+    const data = await req.json();
+    const payload = await getPayload({ config: configPromise });
+
+    // Extract basic data
+    const { formData, ferryId, ferryName, searchParams, selectedClass } = data;
+    const passengers = formData.passengers;
+    const primaryPassenger = passengers[0];
+
+    // Format all passenger details into a readable string for the message
+    const formattedPassengers = passengers.map((p: any, i: number) => {
+      const parts = [
+        `Passenger ${i + 1}: ${p.fullName}`,
+        `Age: ${p.age}`,
+        `Gender: ${p.gender}`,
+        `Nationality: ${p.nationality}`,
+      ];
+      if (p.passportNumber) parts.push(`Passport: ${p.passportNumber}`);
+      if (p.whatsappNumber) parts.push(`WhatsApp: ${p.phoneCountryCode} ${p.whatsappNumber}`);
+      if (p.email) parts.push(`Email: ${p.email}`);
+      return parts.join(", ");
+    }).join("\n");
+
+    const message = `
+Ferry Booking Enquiry
+---------------------
+Ferry: ${ferryName} (ID: ${ferryId})
+Class: ${selectedClass?.name || 'Not specified'}
+Route: ${searchParams.fromPort} to ${searchParams.toPort}
+Date: ${searchParams.travelDate}
+
+Passenger Details:
+${formattedPassengers}
+    `.trim();
+
+    // Create the enquiry inside Payload CMS Enquiries collection
+    const enquiry = await payload.create({
+      collection: "enquiries",
+      data: {
+        customerInfo: {
+          fullName: primaryPassenger.fullName,
+          email: primaryPassenger.email || "no-email@example.com",
+          phone: primaryPassenger.whatsappNumber 
+            ? `${primaryPassenger.phoneCountryCode}${primaryPassenger.whatsappNumber}` 
+            : "Not provided",
+          age: primaryPassenger.age,
+        },
+        bookingDetails: {
+          adults: searchParams.adults,
+          children: searchParams.children,
+        },
+        messages: {
+          message: message,
+          additionalMessage: "Submitted via Offline Ferry Booking Flow",
+        },
+        enquiryMetadata: {
+          enquirySource: "other", // We use 'other' unless we amend Enquiries.ts
+          status: "new",
+          priority: "high",
+        },
+        communicationLog: [
+          {
+            type: "internal-note",
+            message: "Ferry offline inquiry created from simplified booking page.",
+            timestamp: new Date().toISOString(),
+          }
+        ]
+      },
+    });
+
+    return NextResponse.json({
+      success: true,
+      message: "Enquiry submitted successfully",
+      enquiryId: enquiry.enquiryId,
+    });
+  } catch (error) {
+    console.error("Ferry Enquiry API Error:", error);
+    return NextResponse.json(
+      { success: false, message: "Failed to submit enquiry" },
+      { status: 500 }
+    );
+  }
+}

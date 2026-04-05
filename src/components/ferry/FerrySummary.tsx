@@ -28,6 +28,24 @@ interface FerrySummaryProps {
   onBack: () => void;
   onCheckout: () => void;
   termsAccepted?: boolean;
+  isEnquiry?: boolean;
+  formId?: string;
+}
+
+export const FerrySummary: React.FC<FerrySummaryProps> = ({
+  ferry,
+  selectedClass,
+  selectedSeats,
+  searchParams,
+  onBack,
+  onCheckout,
+  termsAccepted = false,
+  isEnquiry = false,
+  formId,
+}) => {
+  const totalPassengers = searchParams.adults + searchParams.children;
+// <unmodified lines up to the button>
+// We need to match the return block. The row is selected from line 30 to 198, let's just make smaller atomic replacements to avoid overwriting too much!
 }
 
 export const FerrySummary: React.FC<FerrySummaryProps> = ({
@@ -172,14 +190,16 @@ export const FerrySummary: React.FC<FerrySummaryProps> = ({
 
         {/* Action Button */}
         {selectedClass ? (
-          termsAccepted ? (
+          (isEnquiry || termsAccepted) ? (
             <Button
               variant="primary"
               size="large"
-              onClick={onCheckout}
+              type={isEnquiry ? "submit" : "button"}
+              form={isEnquiry ? formId : undefined}
+              onClick={!isEnquiry ? onCheckout : undefined}
               className={styles.checkoutBtn}
             >
-              Proceed to Checkout
+              {isEnquiry ? "Proceed to enquiry" : "Proceed to Checkout"}
             </Button>
           ) : (
             <div className={styles.prompt}>

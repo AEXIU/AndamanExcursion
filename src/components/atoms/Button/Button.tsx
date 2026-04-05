@@ -18,6 +18,7 @@ export const Button = ({
   ariaLabel,
   icon,
   loading = false,
+  form,
 }: ButtonProps) => {
   const buttonClasses = [
     styles.button,
@@ -73,6 +74,7 @@ export const Button = ({
       onClick={onClick}
       aria-label={ariaLabel}
       disabled={disabled || loading}
+      form={form}
     >
       {content}
     </button>

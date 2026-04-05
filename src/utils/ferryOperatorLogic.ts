@@ -46,3 +46,18 @@ export const supportsOnlyAutoAssignment = (ferry: UnifiedFerryResult): boolean =
     ferry.operator !== "sealink"
   );
 };
+
+/**
+ * Check if the operator should use the offline enquiry flow instead of regular booking
+ * E.g., Green Ocean, Go Nautica
+ */
+export const isOfflineEnquiryOperator = (ferry: UnifiedFerryResult | null | undefined): boolean => {
+  if (!ferry?.operator) return false;
+  
+  const operatorLower = ferry.operator.toLowerCase();
+  return (
+    operatorLower.includes('greenocean') || 
+    operatorLower.includes('green ocean') || 
+    operatorLower.includes('nautica')
+  );
+};

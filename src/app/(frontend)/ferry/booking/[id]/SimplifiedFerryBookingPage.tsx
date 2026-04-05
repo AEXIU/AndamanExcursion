@@ -13,6 +13,8 @@ import {
   validateSeatSelection,
   canProceedToCheckout,
 } from "@/utils/ferryValidation";
+import { FerryEnquiryForm, EnquiryFormData } from "@/components/ferry/FerryEnquiryForm";
+import { isOfflineEnquiryOperator } from "@/utils/ferryOperatorLogic";
 import { shouldLoadSeatLayoutAutomatically } from "@/utils/ferryOperatorLogic";
 import { ClassSelection } from "@/components/ferry/ClassSelection";
 import { SimplifiedSeatSelectionSection } from "@/components/ferry/SimplifiedSeatSelectionSection";
@@ -197,52 +199,102 @@ export default function SimplifiedFerryBookingPage() {
     );
   }
 
+  // Check if we are in enquiry mode for Green Ocean or Nautica
+  const isEnquiryMode = isOfflineEnquiryOperator(ferry);
+  const enquiryFormId = "ferry-enquiry-form";
+
+  const [isSubmittingEnquiry, setIsSubmittingEnquiry] = useState(false);
+
+  const handleEnquirySubmit = async (data: EnquiryFormData) => {
+    try {
+      setIsSubmittingEnquiry(true);
+      const res = await fetch("/api/ferry/enquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          formData: data,
+          ferryId: ferry.id,
+          ferryName: ferry.ferryName,
+          searchParams: ferrySearchParams,
+          selectedClass,
+        }),
+      });
+
+      const result = await res.json();
+      if (result.success) {
+        // Show success, maybe alert then redirect
+        alert("Your offline booking enquiry has been submitted. Our team will contact you shortly.");
+        router.push("/ferry");
+      } else {
+        alert("Failed to submit enquiry: " + result.message);
+      }
+    } catch (error) {
+      console.error("Enquiry submission error:", error);
+      alert("Something went wrong. Please try again.");
+    } finally {
+      setIsSubmittingEnquiry(false);
+    }
+  };
+
   return (
     <main className={styles.main}>
       <div className={styles.container}>
         <div className={styles.twoColumnLayout}>
           <div className={styles.leftColumn}>
-            <ClassSelection
-              classes={ferry.classes}
-              selectedClass={selectedClass}
-              onClassSelect={handleClassSelection}
-            />
+            {isEnquiryMode ? (
+              <FerryEnquiryForm
+                formId={enquiryFormId}
+                ferry={ferry}
+                selectedClass={selectedClass}
+                onClassSelect={handleClassSelection}
+                numberOfPassengers={totalPassengers}
+                onSubmitEnquiry={handleEnquirySubmit}
+              />
+            ) : (
+              <>
+                <ClassSelection
+                  classes={ferry.classes}
+                  selectedClass={selectedClass}
+                  onClassSelect={handleClassSelection}
+                />
 
-            <SimplifiedSeatSelectionSection
-              ferry={ferry}
-              selectedClass={selectedClass}
-              seats={seats} // Direct seat array instead of complex SeatLayout
-              selectedSeats={selectedSeats}
-              onSeatSelect={handleSeatSelect}
-              isLoading={loadingSeatLayout}
-              preference={preference}
-              onPreferenceChange={setPreference}
-              onManualSelected={handleManualSelected}
-              passengers={totalPassengers}
-              onRefreshLayout={refreshLayout}
-            />
+                <SimplifiedSeatSelectionSection
+                  ferry={ferry}
+                  selectedClass={selectedClass}
+                  seats={seats} // Direct seat array instead of complex SeatLayout
+                  selectedSeats={selectedSeats}
+                  onSeatSelect={handleSeatSelect}
+                  isLoading={loadingSeatLayout}
+                  preference={preference}
+                  onPreferenceChange={setPreference}
+                  onManualSelected={handleManualSelected}
+                  passengers={totalPassengers}
+                  onRefreshLayout={refreshLayout}
+                />
 
-            {/* Terms & Conditions */}
-            {selectedClass && (
-              <div className={styles.termsSection}>
-                <h3 className={styles.termsTitle}>Terms & Conditions</h3>
-                <ul className={styles.termsList}>
-                  <li>Cancellation 48 hours or more before ferry departure: Rs 250 per ticket</li>
-                  <li>Cancellation between 24 and 48 hours before departure: 50% of the ticket price</li>
-                  <li>Cancellation within 24 hours of departure: 100% of the ticket price</li>
-                  <li>Date change is subject to availability and may incur additional charges</li>
-                  <li>Passengers must carry a valid government-issued photo ID during travel</li>
-                </ul>
-                <label className={styles.termsCheckboxLabel}>
-                  <input
-                    type="checkbox"
-                    checked={termsAccepted}
-                    onChange={(e) => setTermsAccepted(e.target.checked)}
-                    className={styles.termsCheckbox}
-                  />
-                  <span>I agree with the <strong>Terms & Conditions</strong></span>
-                </label>
-              </div>
+                {/* Terms & Conditions */}
+                {selectedClass && (
+                  <div className={styles.termsSection}>
+                    <h3 className={styles.termsTitle}>Terms & Conditions</h3>
+                    <ul className={styles.termsList}>
+                      <li>Cancellation 48 hours or more before ferry departure: Rs 250 per ticket</li>
+                      <li>Cancellation between 24 and 48 hours before departure: 50% of the ticket price</li>
+                      <li>Cancellation within 24 hours of departure: 100% of the ticket price</li>
+                      <li>Date change is subject to availability and may incur additional charges</li>
+                      <li>Passengers must carry a valid government-issued photo ID during travel</li>
+                    </ul>
+                    <label className={styles.termsCheckboxLabel}>
+                      <input
+                        type="checkbox"
+                        checked={termsAccepted}
+                        onChange={(e) => setTermsAccepted(e.target.checked)}
+                        className={styles.termsCheckbox}
+                      />
+                      <span>I agree with the <strong>Terms & Conditions</strong></span>
+                    </label>
+                  </div>
+                )}
+              </>
             )}
           </div>
 
@@ -255,6 +307,8 @@ export default function SimplifiedFerryBookingPage() {
               onBack={handleBackToResults}
               onCheckout={handleProceedToCheckout}
               termsAccepted={termsAccepted}
+              isEnquiry={isEnquiryMode}
+              formId={enquiryFormId}
             />
           </div>
         </div>

@@ -16,4 +16,5 @@ export interface ButtonProps {
   ariaLabel?: string;
   icon?: ReactNode;
   loading?: boolean;
+  form?: string;
 }
