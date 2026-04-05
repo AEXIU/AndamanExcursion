@@ -72,9 +72,9 @@ export default function SimplifiedFerryBookingPage() {
   const { preference, canChoosePreference, setPreference } =
     useSeatPreference(ferry);
 
-  // Auto-load seat layout for operators that require it
+  // Auto-load seat layout for operators that require it (skip for offline enquiry operators)
   useEffect(() => {
-    if (ferry && selectedClass && shouldLoadSeatLayoutAutomatically(ferry)) {
+    if (ferry && selectedClass && shouldLoadSeatLayoutAutomatically(ferry) && !isOfflineEnquiryOperator(ferry)) {
       console.log(
         "🔄 Auto-loading simplified seat layout for",
         ferry.operator,
@@ -89,8 +89,8 @@ export default function SimplifiedFerryBookingPage() {
     selectClass(classData);
     clearSelection();
 
-    // Load seat layout for operators that require manual selection
-    if (ferry && shouldLoadSeatLayoutAutomatically(ferry)) {
+    // Load seat layout for operators that require manual selection (skip for enquiry operators)
+    if (ferry && shouldLoadSeatLayoutAutomatically(ferry) && !isOfflineEnquiryOperator(ferry)) {
       console.log(
         "🔄 Loading simplified seat layout for class:",
         classData.name
