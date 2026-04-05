@@ -43,7 +43,7 @@ export const FerrySummary: React.FC<FerrySummaryProps> = ({
   isEnquiry = false,
   formId,
 }) => {
-  const totalPassengers = searchParams.adults + searchParams.children;
+  const totalPassengers = (searchParams?.adults || 0) + (searchParams?.children || 0);
   // Use structured pricing to calculate correct totals
   const baseFare = selectedClass?.pricing?.basePrice || selectedClass?.price || 0;
   const portFee = selectedClass?.pricing?.fees || 0;
@@ -53,21 +53,21 @@ export const FerrySummary: React.FC<FerrySummaryProps> = ({
 
   const formatPassengers = () => {
     const parts = [];
-    if (searchParams.adults > 0)
+    if ((searchParams?.adults || 0) > 0)
       parts.push(
-        `${searchParams.adults} Adult${searchParams.adults > 1 ? "s" : ""}`
+        `${searchParams!.adults} Adult${searchParams!.adults > 1 ? "s" : ""}`
       );
-    if (searchParams.children > 0)
+    if ((searchParams?.children || 0) > 0)
       parts.push(
-        `${searchParams.children} Child${
-          searchParams.children > 1 ? "ren" : ""
+        `${searchParams!.children} Child${
+          searchParams!.children > 1 ? "ren" : ""
         }`
       );
-    if (searchParams.infants > 0)
+    if ((searchParams?.infants || 0) > 0)
       parts.push(
-        `${searchParams.infants} Infant${searchParams.infants > 1 ? "s" : ""}`
+        `${searchParams!.infants} Infant${searchParams!.infants > 1 ? "s" : ""}`
       );
-    return parts.join(", ");
+    return parts.join(", ") || "0 Passengers";
   };
 
   const getSeatDisplay = () => {
@@ -95,26 +95,26 @@ export const FerrySummary: React.FC<FerrySummaryProps> = ({
             <div className={styles.ferryInfo}>
               {/* <Ship color="var(--color-text-primary)" size={20} /> */}
               <div className={styles.ferryDetails}>
-                <h3>{ferry.ferryName}</h3>
-                <p>{ferry.operator}</p>
+                <h3>{ferry?.ferryName || "Ferry Booking"}</h3>
+                <p>{ferry?.operator || "Operator"}</p>
               </div>
             </div>
 
             <div className={styles.scheduleInfo}>
               <div className={styles.timeInfo}>
                 <span className={styles.departureTime}>
-                  {ferry.schedule.departureTime}
+                  {ferry?.schedule?.departureTime || "TBD"}
                 </span>
                 <span>-</span>
-                <span>{ferry.schedule.arrivalTime}</span>
+                <span>{ferry?.schedule?.arrivalTime || "TBD"}</span>
               </div>
               <div className={styles.locationInfo}>
                 <p className={styles.duration}>
-                  <MapPin size={14} /> {ferry.route.from.name} →{" "}
-                  {ferry.route.to.name}
+                  <MapPin size={14} /> {ferry?.route?.from?.name || "Origin"} →{" "}
+                  {ferry?.route?.to?.name || "Destination"}
                 </p>
                 <p className={styles.travelDate}>
-                  {ferry.schedule.date}
+                  {ferry?.schedule?.date || "Date Unassigned"}
                 </p>
               </div>
             </div>

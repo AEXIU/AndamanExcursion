@@ -68,7 +68,7 @@ export const FerryEnquiryForm: React.FC<FerryEnquiryFormProps> = ({
     resolver: zodResolver(enquirySchema),
     defaultValues: {
       classId: selectedClass?.id || "",
-      passengers: Array.from({ length: numberOfPassengers }, (_, i) => ({
+      passengers: Array.from({ length: Math.max(1, Number(numberOfPassengers) || 1) }, (_, i) => ({
         fullName: "",
         age: "" as unknown as number,
         gender: "" as unknown as "Male",
@@ -107,7 +107,7 @@ export const FerryEnquiryForm: React.FC<FerryEnquiryFormProps> = ({
   const watchedPassengers = watch("passengers");
 
   useEffect(() => {
-    watchedPassengers.forEach((p: EnquiryFormData["passengers"][0], index: number) => {
+    (watchedPassengers || []).forEach((p: EnquiryFormData["passengers"][0], index: number) => {
       // Auto-update country code for primary contact
       if (index === 0 && p.nationality) {
         const countryMapping =
@@ -128,13 +128,13 @@ export const FerryEnquiryForm: React.FC<FerryEnquiryFormProps> = ({
     setValue("classId", classId);
     
     // Find the actual class object to notify the parent
-    const classData = ferry.classes.find((c) => c.id === classId);
+    const classData = ferry?.classes?.find((c) => c.id === classId);
     if (classData) onClassSelect(classData);
   };
 
   const classOptions = [
     { value: "", label: "Select Class" },
-    ...ferry.classes.map((c: FerryClass) => ({
+    ...(ferry?.classes || []).map((c: FerryClass) => ({
       value: c.id,
       label: c.name,
     })),
@@ -163,7 +163,7 @@ export const FerryEnquiryForm: React.FC<FerryEnquiryFormProps> = ({
             </label>
             <input
               type="text"
-              value={ferry.ferryName}
+              value={ferry?.ferryName || ""}
               disabled
               style={{
                 width: "100%", padding: "0.75rem", borderRadius: "0.5rem",
@@ -191,7 +191,7 @@ export const FerryEnquiryForm: React.FC<FerryEnquiryFormProps> = ({
       {fields.map((field: Record<string, any>, index: number) => {
         const isPrimary = index === 0;
         const passengerErrors = errors.passengers?.[index];
-        const isForeigner = watchedPassengers[index]?.nationality !== "Indian";
+        const isForeigner = (watchedPassengers || [])[index]?.nationality !== "Indian";
 
         return (
           <div key={field.id} className={styles.sectionCard}>
@@ -269,9 +269,9 @@ export const FerryEnquiryForm: React.FC<FerryEnquiryFormProps> = ({
                     hasError={!!passengerErrors?.whatsappNumber}
                     required
                     defaultCountryCode={
-                      watchedPassengers[index]?.phoneCountryCode || "+91"
+                      (watchedPassengers || [])[index]?.phoneCountryCode || "+91"
                     }
-                    countryCode={watchedPassengers[index]?.phoneCountryCode}
+                    countryCode={(watchedPassengers || [])[index]?.phoneCountryCode}
                     onCountryChange={(countryCode, countryName) => {
                       setValue(
                         `passengers.${index}.phoneCountryCode`,
