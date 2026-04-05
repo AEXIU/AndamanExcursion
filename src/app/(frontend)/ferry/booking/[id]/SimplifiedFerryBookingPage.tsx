@@ -42,15 +42,18 @@ export default function SimplifiedFerryBookingPage() {
 
   // Client state from Zustand
   const {
-    selectedFerry: ferry,
+    selectedFerry,
     selectedClass,
     searchParams: ferrySearchParams,
     selectClass,
   } = useFerryStore();
 
-  // Custom hooks
+  // Custom hooks - useFerryDetails can recover ferry from search results
   const { ferry: ferryDetails, isLoading, error } = useFerryDetails();
-  const totalPassengers = ferrySearchParams.adults + ferrySearchParams.children;
+  
+  // Use ferryDetails (recovered from search results or store) as primary source
+  const ferry = ferryDetails || selectedFerry;
+  const totalPassengers = (ferrySearchParams?.adults || 0) + (ferrySearchParams?.children || 0);
 
   // Use simplified seat layout hook
   const {
