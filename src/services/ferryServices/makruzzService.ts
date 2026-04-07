@@ -42,6 +42,7 @@ interface MakruzzScheduleData {
   ugst_amount: number;
   psf: number;
   commision: string;
+  fuel_surcharge?: number | string;
 }
 
 interface MakruzzScheduleResponse {
@@ -362,7 +363,8 @@ export class MakruzzService {
         const cgstAmount = schedule.cgst_amount || 0;
         const ugstAmount = schedule.ugst_amount || 0;
         const psfAmount = schedule.psf || 0;
-        const totalPrice = baseFare + cgstAmount + ugstAmount + psfAmount;
+        const fuelSurchargeAmount = schedule.fuel_surcharge ? parseFloat(schedule.fuel_surcharge.toString()) : 300;
+        const totalPrice = baseFare + cgstAmount + ugstAmount + psfAmount + fuelSurchargeAmount;
 
         console.log(
           `   Class: ${schedule.ship_class_title} - ₹${totalPrice} (${schedule.seat} seats)`
@@ -378,6 +380,7 @@ export class MakruzzService {
             basePrice: baseFare,
             taxes: cgstAmount + ugstAmount,
             fees: psfAmount,
+            fuelSurcharge: fuelSurchargeAmount,
             total: totalPrice,
           },
         };

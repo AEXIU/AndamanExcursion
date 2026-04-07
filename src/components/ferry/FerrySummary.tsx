@@ -164,6 +164,13 @@ export const FerrySummary: React.FC<FerrySummaryProps> = ({
                     <span>₹{(taxes * totalPassengers).toLocaleString()}</span>
                   </div>
                 )}
+
+                {ferry?.operator === "makruzz" && selectedClass.pricing.fuelSurcharge && (
+                  <div className={styles.row}>
+                    <span>Fuel Surcharge</span>
+                    <span>₹{(selectedClass.pricing.fuelSurcharge * totalPassengers).toLocaleString()}</span>
+                  </div>
+                )}
               </div>
 
               <div className={styles.total}>

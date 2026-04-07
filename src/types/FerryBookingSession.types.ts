@@ -113,6 +113,7 @@ export interface FerryClass {
     basePrice: number;
     taxes?: number;
     fees?: number;
+    fuelSurcharge?: number;
     total: number;
   };
   price: number; // Keep for backward compatibility
