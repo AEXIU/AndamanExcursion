@@ -9,7 +9,7 @@ import {
 } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { AlertCircle } from "lucide-react";
+import { AlertCircle, UserPlus } from "lucide-react";
 
 import { Input } from "@/components/atoms/Input/Input";
 import { Select } from "@/components/atoms/Select/Select";
@@ -91,7 +91,7 @@ export const FerryEnquiryForm: React.FC<FerryEnquiryFormProps> = ({
     formState: { errors },
   } = form;
 
-  const { fields } = useFieldArray({
+  const { fields, append } = useFieldArray({
     control,
     name: "passengers",
   });
@@ -157,18 +157,15 @@ export const FerryEnquiryForm: React.FC<FerryEnquiryFormProps> = ({
           <h3>Ferry Details</h3>
         </div>
         <div className={styles.row}>
-          <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "0.25rem" }}>
-            <label style={{ fontSize: "0.875rem", fontWeight: 500, color: "var(--color-text-secondary)" }}>
+          <div className={styles.ferryNameField}>
+            <label className={styles.ferryNameLabel}>
               Ferry
             </label>
             <input
               type="text"
               value={ferry?.ferryName || ""}
               disabled
-              style={{
-                width: "100%", padding: "0.75rem", borderRadius: "0.5rem",
-                border: "1px solid var(--color-border)", background: "var(--color-background-soft)"
-              }}
+              className={styles.ferryNameInput}
             />
           </div>
           <Controller
@@ -301,6 +298,28 @@ export const FerryEnquiryForm: React.FC<FerryEnquiryFormProps> = ({
           </div>
         );
       })}
+
+      {/* Add Passenger Button */}
+      <button
+        type="button"
+        className={styles.addPassengerBtn}
+        onClick={() =>
+          append({
+            fullName: "",
+            age: 0,
+            gender: "Male" as const,
+            nationality: DEFAULT_VALUES.NATIONALITY,
+            passportNumber: "",
+            whatsappNumber: "",
+            phoneCountryCode: DEFAULT_VALUES.PHONE_COUNTRY_CODE,
+            phoneCountry: DEFAULT_VALUES.PHONE_COUNTRY,
+            email: "",
+          })
+        }
+      >
+        <UserPlus size={18} />
+        <span>Add Another Passenger</span>
+      </button>
     </form>
   );
 };

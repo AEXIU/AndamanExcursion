@@ -185,7 +185,7 @@ export const FerrySummary: React.FC<FerrySummaryProps> = ({
               onClick={!isEnquiry ? onCheckout : undefined}
               className={styles.checkoutBtn}
             >
-              {isEnquiry ? "Proceed to enquiry" : "Proceed to Checkout"}
+              {isEnquiry ? "Proceed to Submit" : "Proceed to Checkout"}
             </Button>
           ) : (
             <div className={styles.prompt}>
