@@ -158,15 +158,17 @@ export const FerryEnquiryForm: React.FC<FerryEnquiryFormProps> = ({
         </div>
         <div className={styles.row}>
           <div className={styles.ferryNameField}>
-            <label className={styles.ferryNameLabel}>
-              Ferry
-            </label>
-            <input
-              type="text"
-              value={ferry?.ferryName || ""}
-              disabled
-              className={styles.ferryNameInput}
-            />
+            <div className={styles.ferryNameBox}>
+              <label className={styles.ferryNameLabel}>
+                Ferry
+              </label>
+              <input
+                type="text"
+                value={ferry?.ferryName || ""}
+                disabled
+                className={styles.ferryNameInput}
+              />
+            </div>
           </div>
           <Controller
             name="classId"
