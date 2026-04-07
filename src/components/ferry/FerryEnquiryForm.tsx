@@ -9,7 +9,7 @@ import {
 } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { AlertCircle, UserPlus } from "lucide-react";
+import { AlertCircle, UserPlus, Trash2 } from "lucide-react";
 
 import { Input } from "@/components/atoms/Input/Input";
 import { Select } from "@/components/atoms/Select/Select";
@@ -91,7 +91,7 @@ export const FerryEnquiryForm: React.FC<FerryEnquiryFormProps> = ({
     formState: { errors },
   } = form;
 
-  const { fields, append } = useFieldArray({
+  const { fields, append, remove } = useFieldArray({
     control,
     name: "passengers",
   });
@@ -196,6 +196,16 @@ export const FerryEnquiryForm: React.FC<FerryEnquiryFormProps> = ({
               <h3>
                 {isPrimary ? "Adult 1" : `Adult ${index + 1}`}
               </h3>
+              {!isPrimary && (
+                <button
+                  type="button"
+                  className={styles.removePassengerBtn}
+                  onClick={() => remove(index)}
+                  title="Remove passenger"
+                >
+                  <Trash2 size={16} />
+                </button>
+              )}
             </div>
 
             <div className={styles.fieldGroup}>
