@@ -5,8 +5,19 @@
   font-family: var(--font-family-primary);
   contain: layout style;
   width: 100%;
-  /* Fill any subpixel SVG edge gaps with the footer color instead of white page background */
-  background-color: var(--color-primary);
+}
+
+.waveGraphic {
+  width: 100%;
+  min-width: 100%;
+  height: auto;
+  display: block;
+  line-height: 0;
+  margin-bottom: -1px; /* Fill any subpixel edge gaps */
+  position: relative;
+  z-index: 10;
+  object-fit: cover;
+  object-position: center bottom;
 }
 
 .footer::after {

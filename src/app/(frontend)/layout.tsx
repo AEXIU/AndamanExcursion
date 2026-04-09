@@ -100,12 +100,6 @@ export default async function RootLayout({
                 <div className="main-content">{children}</div>
               </Container>
             </PageBackgroundProvider>
-            <img
-              src="/graphics/wavePlusBoat.svg"
-              alt=""
-              aria-hidden="true"
-              style={{ width: "100%", display: "block", lineHeight: 0, verticalAlign: "bottom" }}
-            />
             <Footer />
           </ReactQueryProvider>
         </TopLoadingBarProvider>

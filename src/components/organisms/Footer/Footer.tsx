@@ -2,7 +2,6 @@ import React, { memo } from "react";
 import styles from "./Footer.module.css";
 import Image from "next/image";
 import logo from "@icons/logo_white.svg";
-import wavePlusBoat from "@graphics/wavePlusBoat.svg";
 import { footerItems } from "./Footer.content";
 import Instagram from "@icons/socials/instagram.svg";
 import Threads from "@icons/socials/threads.svg";
@@ -90,6 +89,12 @@ NavColumn.displayName = "NavColumn";
 export const Footer = memo<FooterProps>(({ className, ...props }) => {
   return (
     <footer className={`${styles.footer} ${className || ""}`} {...props}>
+      <img
+        src="/graphics/wavePlusBoat.svg"
+        alt=""
+        aria-hidden="true"
+        className={styles.waveGraphic}
+      />
       <div className={styles.container}>
         <div className={styles.wrapper}>
           {/* Main content */}
