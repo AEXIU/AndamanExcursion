@@ -8,7 +8,7 @@ import styles from "@components/ferry/layouts/SeatLayout.module.css";
 export const getSeatImage = (seat: Seat) => {
   // Priority order: selected > booked > blocked > premium > accessible > available
   if (seat.status === "selected") return seatSelected;
-  if (seat.status === "booked") return seatBooked;
+  if (seat.status === "booked" || seat.status === "blocked") return seatBooked;
 
   return seatAvailable;
 };

@@ -32,7 +32,7 @@ interface MakruzzScheduleData {
   to_date: string;
   ship_title: string;
   ship_class_title: string;
-  ship_class_id: string; // ✅ ADD: Missing field for class ID
+  ship_class_id: string;
   total_seat: string;
   ship_class_price: string;
   seat: number;
@@ -43,6 +43,28 @@ interface MakruzzScheduleData {
   psf: number;
   commision: string;
   fuel_surcharge?: number | string;
+  // v1.3 API additional fields
+  original_price?: number | string | null;
+  ship_class_original_price?: number | string;
+  booking_type?: string; // "B2C"
+  commision_type?: string; // "percentage"
+  sourse_code?: string; // Note: API typo — "sourse" not "source"
+  destination_code?: string;
+  source_name?: string;
+  destination_name?: string;
+  display_name?: string;
+  is_meal?: string; // "Y" | "N"
+  meal_description?: string;
+  meal_price?: string;
+  via_schedule?: string;
+  booking_start_date?: string;
+  booking_end_date?: string;
+  ticket_code?: string;
+  schedule_type?: string;
+  ship_id?: string;
+  is_active?: string;
+  is_deleted?: string;
+  is_package?: string;
 }
 
 interface MakruzzScheduleResponse {
@@ -72,7 +94,7 @@ interface MakruzzConfirmResponse {
 
 export class MakruzzService {
   private static readonly BASE_URL =
-    process.env.MAKRUZZ_API_URL || "https://staging.makruzz.com/booking_api/";
+    process.env.MAKRUZZ_API_URL || "https://stage-web.makruzz.com/booking_api/";
   private static readonly USERNAME = process.env.MAKRUZZ_USERNAME;
   private static readonly PASSWORD = process.env.MAKRUZZ_PASSWORD;
   private static authToken: string | null = null;
@@ -125,7 +147,7 @@ export class MakruzzService {
       id: seat.seat_id,
       number: seat.seat_id,
       displayNumber: seat.seat_id,
-      status: seat.status === "booked" ? "booked" : "available",
+      status: (seat.status === "booked" || seat.status === "blocked") ? "booked" : "available",
     }));
 
     return {
@@ -352,7 +374,10 @@ export class MakruzzService {
         .map(Number);
       const depMinutes = depHour * 60 + depMin;
       const arrMinutes = arrHour * 60 + arrMin;
-      const durationMinutes = arrMinutes - depMinutes;
+      // Handle overnight ferries where arrival is past midnight
+      const durationMinutes = arrMinutes >= depMinutes 
+        ? arrMinutes - depMinutes 
+        : (24 * 60 - depMinutes) + arrMinutes;
       const hours = Math.floor(durationMinutes / 60);
       const minutes = durationMinutes % 60;
       const duration = `${hours}h ${minutes}m`;
@@ -363,7 +388,7 @@ export class MakruzzService {
         const cgstAmount = schedule.cgst_amount || 0;
         const ugstAmount = schedule.ugst_amount || 0;
         const psfAmount = schedule.psf || 0;
-        const fuelSurchargeAmount = schedule.fuel_surcharge ? parseFloat(schedule.fuel_surcharge.toString()) : 300;
+        const fuelSurchargeAmount = schedule.fuel_surcharge ? parseFloat(schedule.fuel_surcharge.toString()) : 0;
         const totalPrice = baseFare + cgstAmount + ugstAmount + psfAmount + fuelSurchargeAmount;
 
         console.log(
@@ -443,7 +468,7 @@ export class MakruzzService {
           supportsAutoAssignment: true,
           hasAC: true,
           hasWiFi: false,
-          mealIncluded: classes.some((cls) => this.hasMealIncluded(cls.name)),
+          mealIncluded: schedules.some((s) => s.is_meal === "Y"),
         },
         operatorData: {
           originalResponse: schedules, // Store all schedules for this group
@@ -526,6 +551,12 @@ export class MakruzzService {
       name: string;
     };
     totalFare: number;
+    selectedSeats?: string[]; // Seat IDs from seat layout (e.g. ["P1G", "P1H"])
+    // Return trip fields (optional)
+    returnScheduleId?: string;
+    returnClassId?: string;
+    returnTravelDate?: string;
+    returnSelectedSeats?: string[];
   }): Promise<{
     success: boolean;
     pnr?: string;
@@ -611,6 +642,11 @@ export class MakruzzService {
       name: string;
     };
     totalFare: number;
+    selectedSeats?: string[];
+    returnScheduleId?: string;
+    returnClassId?: string;
+    returnTravelDate?: string;
+    returnSelectedSeats?: string[];
   }): Promise<{
     success: boolean;
     bookingId?: number;
@@ -631,10 +667,11 @@ export class MakruzzService {
       };
     });
 
-    // ✅ FIXED: Correct request format
-    const requestBody = {
+    // ✅ FIXED: Correct request format per v1.3 API docs
+    const requestBody: { data: Record<string, any> } = {
       data: {
         passenger: passengerData,
+        seats: bookingData.selectedSeats || [], // ✅ Required: seat IDs from get_seats API (e.g. ["P1G"])
         c_name: bookingData.contactDetails.name,
         c_mobile: bookingData.contactDetails.phone,
         c_email: bookingData.contactDetails.email,
@@ -648,6 +685,16 @@ export class MakruzzService {
         tc_check: true,
       },
     };
+
+    // Add return trip fields if provided
+    if (bookingData.returnScheduleId) {
+      requestBody.data.return_schedule_id = bookingData.returnScheduleId;
+      requestBody.data.return_class_id = bookingData.returnClassId;
+      requestBody.data.return_travel_date = bookingData.returnTravelDate;
+    }
+    if (bookingData.returnSelectedSeats && bookingData.returnSelectedSeats.length > 0) {
+      requestBody.data.seats_2 = bookingData.returnSelectedSeats;
+    }
 
     console.log("📝 Makruzz save passengers request: passengers=", bookingData.passengers.length);
 

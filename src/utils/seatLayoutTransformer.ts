@@ -147,7 +147,7 @@ export function transformMakruzzToSeats(makruzzData: MakruzzSeatData): Seat[] {
     id: seat.seat_id,
     number: seat.seat_id,
     displayNumber: seat.seat_id,
-    status: seat.status === "booked" ? "booked" as SeatStatus : "available" as SeatStatus,
+    status: (seat.status === "booked" || seat.status === "blocked") ? "booked" as SeatStatus : "available" as SeatStatus,
     isAccessible: false,
     isPremium: false,
   }));

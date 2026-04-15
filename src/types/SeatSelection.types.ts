@@ -117,7 +117,7 @@ export interface MakruzzSeatData {
 
 export interface MakruzzSeatItem {
   seat_id: string;  // e.g. "P1A", "D3F", "R2C"
-  status: "available" | "booked";
+  status: "available" | "booked" | "blocked";
 }
 
 // ===== SEAT SELECTION TYPES =====
