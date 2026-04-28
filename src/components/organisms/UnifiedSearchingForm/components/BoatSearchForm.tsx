@@ -391,10 +391,10 @@ export function BoatSearchForm({
                 value={field.value || ""}
                 onChange={field.onChange}
                 options={toLocationOptions}
-                placeholder="Destination Port"
+                placeholder={!currentSearchParams.fromLocation ? "Select Departure first" : "Destination Port"}
                 hasError={!!errors.toLocation}
                 errorMessage={errors.toLocation?.message}
-                // disabled={!currentSearchParams.fromLocation}
+                disabled={!currentSearchParams.fromLocation}
               />
             )}
           />

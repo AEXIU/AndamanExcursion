@@ -20,6 +20,7 @@ export const LocationSelect = ({
   hasError,
   placeholder,
   errorMessage,
+  disabled,
 }: LocationSelectPropsWithError) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -48,8 +49,8 @@ export const LocationSelect = ({
   const labelId = React.useId();
 
   return (
-    <div className={styles.fieldContainer}>
-      <Select.Root value={value} onValueChange={onChange} open={isOpen} onOpenChange={setIsOpen}>
+    <div className={cn(styles.fieldContainer, disabled && styles.disabled)}>
+      <Select.Root value={value} onValueChange={onChange} open={isOpen && !disabled} onOpenChange={setIsOpen} disabled={disabled}>
         <Select.Trigger
           className={cn(
             styles.selectWrapper,
