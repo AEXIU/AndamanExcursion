@@ -23,7 +23,8 @@
  */
 .collageGrid {
     display: grid;
-    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.2fr) minmax(0, 0.85fr);
+    width: 100%;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.41fr) minmax(0, 1fr);
     gap: 20px;
     align-items: start;
 }
