@@ -8,6 +8,8 @@ import { ActivitySearchFormRQ } from "./components/ActivitySearchFormRQ";
 import { FerrySearchForm } from "./components/FerrySearchForm";
 import { BoatSearchForm } from "./components/BoatSearchForm";
 import { Activity, TimeSlot } from "@payload-types";
+import { useFormOptions } from "@/hooks/queries";
+import { useBoatFormOptions } from "@/hooks/queries/useBoats";
 
 interface UnifiedSearchingFormProps {
   className?: string;
@@ -58,6 +60,10 @@ export function UnifiedSearchingForm({
 }: UnifiedSearchingFormProps) {
   const [selectedTab, setSelectedTab] = useState<string>(initialTab);
   const [isTabClicked, setIsTabClicked] = useState<boolean>(false);
+
+  // Prefetch data for other tabs so they load instantly when clicked
+  useFormOptions();
+  useBoatFormOptions();
 
   const handleTabChange = (value: string) => {
     setSelectedTab(value);
