@@ -20,6 +20,7 @@ export const SectionTitle = ({
   headingLevel = "h2",
   titleTextClasses,
   specialWordStyles,
+  hideUnderline = false,
 }: SectionTitleProps) => {
   const titleClasses = [styles.sectionTitle, className || ""].join(" ").trim();
   const [isHovered, setIsHovered] = useState(false);
@@ -110,7 +111,7 @@ export const SectionTitle = ({
         </h2>
       )}
 
-      {specialWord &&
+      {specialWord && !hideUnderline &&
         underlinePositions.map((position, index) => {
           // Smart selection: use short underline for narrow words, long for wider words
           const useShortUnderline = position.width < UNDERLINE_THRESHOLD;

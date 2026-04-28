@@ -64,6 +64,7 @@ export const ThingsToDo: React.FC<ThingsToDoProps> = ({ id, content }) => {
                                 id="things-to-do-title"
                                 className={styles.sectionTitle}
                                 specialWordStyles={styles.specialWordBlock}
+                                hideUnderline={true}
                             />
                         </div>
                         <div className={styles.imageCenter}>
