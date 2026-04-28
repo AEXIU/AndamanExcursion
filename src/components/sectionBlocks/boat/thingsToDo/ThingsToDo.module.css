@@ -60,6 +60,7 @@
 
 .specialWordBlock {
     display: block;
+    white-space: pre-line;
 }
 
 /* Center image - landscape, opposite corner pattern */
