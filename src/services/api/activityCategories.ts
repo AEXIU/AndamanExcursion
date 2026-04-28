@@ -1,7 +1,7 @@
 // services/api/activityCategories.ts
 import { ActivityCategory } from "@payload-types";
 
-const API_BASE = process.env.NEXT_PUBLIC_PAYLOAD_URL || "http://localhost:3000";
+const API_BASE = typeof window !== "undefined" ? "" : (process.env.NEXT_PUBLIC_PAYLOAD_URL || "http://localhost:3000");
 
 export const activityCategoryApi = {
   // Get all active categories

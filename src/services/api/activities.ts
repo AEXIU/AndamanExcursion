@@ -1,7 +1,7 @@
 // services/api/activities.ts
 import { Activity } from "@payload-types";
 
-const API_BASE = process.env.NEXT_PUBLIC_PAYLOAD_URL || "http://localhost:3000";
+const API_BASE = typeof window !== "undefined" ? "" : (process.env.NEXT_PUBLIC_PAYLOAD_URL || "http://localhost:3000");
 const NEXT_API_BASE = "/api"; // Next.js API routes
 
 export const activityApi = {
