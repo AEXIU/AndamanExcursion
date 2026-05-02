@@ -664,7 +664,7 @@ export const CartSummaryRQ: React.FC<CartSummaryProps> = ({
         {/* Trust Signals Row */}
         <div className={styles.trustSignalsRow}>
           <p className={styles.trustItem}>✓ Instant Confirmation</p>
-          <p className={styles.trustSubtext}>Free cancellation</p>
+          <p className={styles.trustItem}>✓ Free cancellation</p>
         </div>
 
         {/* Action Section */}
