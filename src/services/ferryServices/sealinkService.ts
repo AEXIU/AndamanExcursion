@@ -304,13 +304,16 @@ export class SealinkService {
       (seat) => seat.isBooked === 0 && seat.isBlocked === 0
     ).length;
 
+    const fuelSurcharge = 550;
+
     const classes: FerryClass[] = [];
 
     if (pClassSeats.length > 0) {
+      const pTotal = trip.fares.pBaseFare + fuelSurcharge;
       classes.push({
         id: `${trip.id}-premium`,
         name: "Premium",
-        price: trip.fares.pBaseFare,
+        price: pTotal,
         availableSeats: pAvailable,
         amenities: ["Air Conditioning", "Comfortable Seating"],
         seatLayout: this.createSeatLayout(pClassSeats, "P"),
@@ -318,16 +321,18 @@ export class SealinkService {
           basePrice: trip.fares.pBaseFare,
           taxes: 0,
           fees: 0,
-          total: trip.fares.pBaseFare,
+          fuelSurcharge: fuelSurcharge,
+          total: pTotal,
         },
       });
     }
 
     if (bClassSeats.length > 0) {
+      const bTotal = trip.fares.bBaseFare + fuelSurcharge;
       classes.push({
         id: `${trip.id}-business`,
         name: "Business",
-        price: trip.fares.bBaseFare,
+        price: bTotal,
         availableSeats: bAvailable,
         amenities: ["Premium Seating", "Air Conditioning", "Priority Boarding"],
         seatLayout: this.createSeatLayout(bClassSeats, "B"),
@@ -335,7 +340,8 @@ export class SealinkService {
           basePrice: trip.fares.bBaseFare,
           taxes: 0,
           fees: 0,
-          total: trip.fares.bBaseFare,
+          fuelSurcharge: fuelSurcharge,
+          total: bTotal,
         },
       });
     }
@@ -367,7 +373,7 @@ export class SealinkService {
         baseFare: Math.min(trip.fares.pBaseFare, trip.fares.bBaseFare),
         taxes: 0,
         portFee: 0,
-        total: Math.min(trip.fares.pBaseFare, trip.fares.bBaseFare),
+        total: Math.min(trip.fares.pBaseFare, trip.fares.bBaseFare) + fuelSurcharge,
         currency: "INR",
       },
       features: {
