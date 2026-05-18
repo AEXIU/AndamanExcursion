@@ -203,7 +203,7 @@ export default function SimplifiedFerryBookingPage() {
     );
   }
 
-  // Check if we are in enquiry mode for Green Ocean or Nautica
+  // Check if we are in enquiry mode for Green Ocean
   const isEnquiryMode = ferry ? isOfflineEnquiryOperator(ferry) : false;
   const enquiryFormId = "ferry-enquiry-form";
 
