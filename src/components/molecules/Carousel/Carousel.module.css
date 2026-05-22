@@ -112,6 +112,12 @@
   cursor: pointer;
 }
 
+/* Permanent underline on "View More" text */
+.viewMoreWrapper a span:first-child {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .viewMoreText {
   font-family: var(--font-family-primary);
   font-style: normal;

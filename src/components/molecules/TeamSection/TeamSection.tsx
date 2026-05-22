@@ -30,8 +30,8 @@ function TeamSection({ content }: TeamSectionProps) {
       <div className={styles.teamContainer}>
         <div className={styles.teamHeader}>
           <SectionTitle
-            specialWord="Team"
-            text="Our Team"
+            specialWord="Founders"
+            text="Meet Our Founders"
             id="team-section-title"
           />
         </div>

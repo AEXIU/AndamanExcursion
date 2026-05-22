@@ -32,7 +32,7 @@ export const PackageCarousel = ({ content }: PackageCarouselProps) => {
           className={styles.packageCarouselRow}
         >
           <SectionTitle
-            specialWord={title ? title.split(" ")[0] : "Package"}
+            specialWord="Package"
             text={title}
             id="package-carousel-title"
           />

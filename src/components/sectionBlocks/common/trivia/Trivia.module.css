@@ -1,5 +1,5 @@
 .triviaSection {
-  padding: var(--space-10) var(--space-container-inline);
+  padding: 0 var(--space-container-inline);
   background: var(--color-bg-primary);
   display: flex;
   flex-direction: column;

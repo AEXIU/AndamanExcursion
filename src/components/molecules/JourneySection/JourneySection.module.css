@@ -16,8 +16,6 @@
   background: #FFFFFF;
   overflow: hidden;
   width: 100%;
-  padding-top: 60px;
-  padding-bottom: 60px;
 }
 
 .header {
@@ -36,7 +34,7 @@
 .scrollWrapper {
   position: relative;
   /* needed so movingBoat is positioned within visible viewport */
-  height: 437px;
+  height: 390px;
   overflow-x: auto;
   overflow-y: hidden;
   scrollbar-width: none;
@@ -75,7 +73,7 @@
   position: relative;
   display: inline-flex;
   align-items: flex-start;
-  height: 437px;
+  height: 390px;
   /* Sync with Container padding/margin */
   --container-offset: var(--space-4);
   padding-left: var(--container-offset);

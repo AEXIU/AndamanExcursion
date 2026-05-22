@@ -78,7 +78,6 @@
 
 /* Explore Section Styles */
 .famousFishes {
-  padding: var(--space-16) 0;
   background-color: var(--color-bg-light);
 }
 

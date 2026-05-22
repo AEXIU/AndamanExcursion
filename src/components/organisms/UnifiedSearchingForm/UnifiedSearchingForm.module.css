@@ -7,8 +7,9 @@
   position: relative;
   z-index: 100 !important;
   padding: var(--space-4);
-  /* Use transform instead of margin-top so we don't pull subsequent page sections up */
-  transform: translateY(calc(var(--space-2) * -14));
+  /* Use margin-top so we pull subsequent page sections up, reducing the gap */
+  margin-top: calc(var(--space-2) * -14);
+  margin-bottom: var(--space-8);
 }
 
 /* Compact variant */

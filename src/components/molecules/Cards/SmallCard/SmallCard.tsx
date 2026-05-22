@@ -35,7 +35,7 @@ export const SmallCard = ({
           objectFit="cover"
           priority={priority}
         />
-        {!isMemberCard && <div className={styles.imageOverlay} />}
+        <div className={styles.imageOverlay} />
         <div
           className={cn(
             styles.contentContainer,

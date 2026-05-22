@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-section);
-  padding: 80px 0;
 }
 
 .contentContainer {
@@ -121,10 +120,6 @@
 }
 
 @media (max-width: 768px) {
-  .main {
-    padding: 60px 0;
-  }
-
   .featureTitle h2 {
     font-size: var(--font-size-heading-2);
   }
@@ -176,10 +171,6 @@
 }
 
 @media (max-width: 480px) {
-  .main {
-    padding: 40px 0;
-  }
-
   .title {
     font-size: var(--font-size-heading-3);
   }

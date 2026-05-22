@@ -1,5 +1,4 @@
 .section {
-    padding: var(--space-section) 0;
     position: relative;
     overflow: hidden;
 }
